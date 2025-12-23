@@ -44,6 +44,9 @@
       "$ref": "#/definitions/steps/WHILE"
     },
     {
+      "$ref": "#/definitions/steps/GET_PURE_TEXT"
+    },
+    {
       "$ref": "#/definitions/steps/GET_TEXT_CONTENT"
     },
     {
@@ -658,6 +661,46 @@
         },
         "additionalProperties": false
       },
+      "GET_PURE_TEXT": {
+        "type": "object",
+        "description": "Retrieves the full pure text content from the current document and sets it as output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "GET_PURE_TEXT"
+            ],
+            "description": "Retrieves the full pure text content from the current document and sets it as output."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "The pure text content of the document."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "GET_TEXT_CONTENT": {
         "type": "object",
         "description": "Retrieves text content from the document or a specific location and sets it as output.",
@@ -958,7 +1001,7 @@
       },
       "SHOW_RESPONSE": {
         "type": "object",
-        "description": "Shows a response to the user in a modal. Can run inline steps before showing and supports HTML mode.",
+        "description": "Shows a response to the user in a modal. Can run inline steps before showing and supports HTML and Markdown modes.",
         "required": [
           "step"
         ],
@@ -969,7 +1012,7 @@
               "SHOW_RESPONSE",
               "CTX_SHOW_RESPONSE"
             ],
-            "description": "Shows a response to the user in a modal. Can run inline steps before showing and supports HTML mode. (Note: Aliases CTX_SHOW_RESPONSE are deprecated, use 'SHOW_RESPONSE' instead)"
+            "description": "Shows a response to the user in a modal. Can run inline steps before showing and supports HTML and Markdown modes. (Note: Aliases CTX_SHOW_RESPONSE are deprecated, use 'SHOW_RESPONSE' instead)"
           },
           "inlineSteps": {
             "type": "array",
@@ -980,9 +1023,10 @@
           },
           "mode": {
             "type": "string",
-            "description": "Render mode for the response. Use \"html\" to render HTML; otherwise plain text is used.",
+            "description": "Render mode for the response. Use \"html\" to render HTML, \"markdown\" to render Markdown, or \"text\" for plain text.",
             "enum": [
               "html",
+              "markdown",
               "text"
             ]
           },
@@ -6884,5 +6928,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-11-10T10:15:26.968Z"
+  "x-generatedAt": "2025-12-23T15:25:22.100Z"
 }
