@@ -1571,7 +1571,7 @@
       },
       "SANITIZE": {
         "type": "object",
-        "description": "Sanitizes text input. Can strip markdown code blocks and validate/repair XML content before forwarding the result to the flow context.",
+        "description": "Sanitizes text input. Can strip markdown code blocks, normalize Unicode characters (quotes, dashes, spaces), and validate/repair XML content before forwarding the result to the flow context.",
         "required": [
           "step"
         ],
@@ -1581,7 +1581,7 @@
             "enum": [
               "SANITIZE"
             ],
-            "description": "Sanitizes text input. Can strip markdown code blocks and validate/repair XML content before forwarding the result to the flow context."
+            "description": "Sanitizes text input. Can strip markdown code blocks, normalize Unicode characters (quotes, dashes, spaces), and validate/repair XML content before forwarding the result to the flow context."
           },
           "stripMarkdown": {
             "type": "boolean",
@@ -1591,6 +1591,11 @@
           "validateAndRepairXml": {
             "type": "boolean",
             "description": "If true, attempts to validate and repair XML fragments found in the input.",
+            "default": false
+          },
+          "normalizeCharacters": {
+            "type": "boolean",
+            "description": "If true, normalizes Unicode characters to their standard equivalents (e.g., curly quotes to straight quotes, various dashes to hyphens, non-breaking spaces to regular spaces). This ensures consistency between AI responses and input text.",
             "default": false
           },
           "inputs": {
@@ -7027,5 +7032,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-23T16:23:33.197Z"
+  "x-generatedAt": "2025-12-23T17:00:36.531Z"
 }
