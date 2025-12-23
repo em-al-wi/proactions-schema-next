@@ -80,6 +80,9 @@
       "$ref": "#/definitions/steps/INSERT_LIST"
     },
     {
+      "$ref": "#/definitions/steps/TAG_PURE_TEXT"
+    },
+    {
       "$ref": "#/definitions/steps/SANITIZE"
     },
     {
@@ -688,7 +691,7 @@
                 "type": {
                   "type": "string",
                   "const": "text",
-                  "description": "The pure text content of the document."
+                  "description": "The pure text content of the document or report."
                 },
                 "name": {
                   "type": "string",
@@ -1468,6 +1471,55 @@
             }
           }
         ],
+        "additionalProperties": false
+      },
+      "TAG_PURE_TEXT": {
+        "type": "object",
+        "description": "Adds tags to pure text content in the document. Tags can highlight or annotate specific text ranges. In Swing, tags can be virtual (temporary) or persistent. In Prime, tags are always persistent.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "TAG_PURE_TEXT"
+            ],
+            "description": "Adds tags to pure text content in the document. Tags can highlight or annotate specific text ranges. In Swing, tags can be virtual (temporary) or persistent. In Prime, tags are always persistent."
+          },
+          "in": {
+            "type": "string",
+            "description": "Path or variable name to read the tags array from the flowContext. If omitted, reads from the default list input."
+          },
+          "virtual": {
+            "type": "boolean",
+            "description": "Whether tags should be virtual (temporary, not saved). Default is false (persistent tags). Only applies to Swing; Prime always persists tags.",
+            "default": false
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "list",
+                  "description": "Array of tags to add. Each tag must have: tag (tag name), start (position), size (length), and optional attributes (key-value pairs)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
         "additionalProperties": false
       },
       "SANITIZE": {
@@ -6928,5 +6980,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-23T15:25:22.100Z"
+  "x-generatedAt": "2025-12-23T16:07:34.486Z"
 }
