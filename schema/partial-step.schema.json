@@ -44,6 +44,9 @@
       "$ref": "#/definitions/steps/WHILE"
     },
     {
+      "$ref": "#/definitions/steps/CLEAR_TAGS"
+    },
+    {
       "$ref": "#/definitions/steps/GET_PURE_TEXT"
     },
     {
@@ -659,6 +662,50 @@
             "description": "Steps to execute in each iteration of the loop.",
             "items": {
               "$ref": "#"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "CLEAR_TAGS": {
+        "type": "object",
+        "description": "Removes all occurrences of the specified tags from the document or report while preserving their text content. This is useful for cleaning up temporary markup or removing specific tag types.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "CLEAR_TAGS"
+            ],
+            "description": "Removes all occurrences of the specified tags from the document or report while preserving their text content. This is useful for cleaning up temporary markup or removing specific tag types."
+          },
+          "tags": {
+            "type": "array",
+            "description": "Array of tag names to clear (e.g., [\"mark\", \"highlight\"]). Can be a hardcoded array, a flowContext variable, or read from the default list input."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "list",
+                  "description": "Default list input for tag names when tags config is not specified."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
             }
           }
         },
@@ -1487,9 +1534,9 @@
             ],
             "description": "Adds tags to pure text content in the document. Tags can highlight or annotate specific text ranges. In Swing, tags can be virtual (temporary) or persistent. In Prime, tags are always persistent."
           },
-          "in": {
-            "type": "string",
-            "description": "Path or variable name to read the tags array from the flowContext. If omitted, reads from the default list input."
+          "tags": {
+            "type": "array",
+            "description": "Array of tags to add. Each tag must have: tag (tag name), start (position), size (length), and optional attributes (key-value pairs). Can be a hardcoded array, a flowContext variable, or read from the default list input."
           },
           "virtual": {
             "type": "boolean",
@@ -1509,7 +1556,7 @@
                 "type": {
                   "type": "string",
                   "const": "list",
-                  "description": "Array of tags to add. Each tag must have: tag (tag name), start (position), size (length), and optional attributes (key-value pairs)."
+                  "description": "Default list input for tags when tags config is not specified."
                 },
                 "name": {
                   "type": "string",
@@ -6980,5 +7027,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-23T16:07:34.486Z"
+  "x-generatedAt": "2025-12-23T16:23:33.197Z"
 }
