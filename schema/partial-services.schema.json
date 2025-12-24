@@ -14,7 +14,6 @@
       },
       "endpoint": {
         "type": "string",
-        "format": "uri",
         "description": "Service endpoint URL"
       },
       "apiKey": {
