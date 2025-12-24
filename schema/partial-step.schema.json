@@ -323,7 +323,9 @@
           },
           "var": {
             "type": "string",
-            "description": "The name of the variable to set with the current iteration value."
+            "description": "The name of the variable to set with the current iteration value.",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+            "minLength": 1
           },
           "start": {
             "type": "number",
@@ -349,6 +351,96 @@
             }
           }
         },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "items",
+                "start"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "items",
+                "end"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "items",
+                "by"
+              ]
+            }
+          },
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "items"
+                ]
+              },
+              {
+                "required": [
+                  "start"
+                ]
+              }
+            ]
+          },
+          {
+            "if": {
+              "required": [
+                "start"
+              ]
+            },
+            "then": {
+              "required": [
+                "start",
+                "end"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "end"
+              ]
+            },
+            "then": {
+              "required": [
+                "start",
+                "end"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "items",
+                "start"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "items",
+                "end"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "items",
+                "by"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "IF": {
@@ -458,8 +550,13 @@
           "steps": {
             "type": "array",
             "description": "An array of step arrays, where each sub-array represents a branch of steps to execute in parallel.",
+            "minItems": 2,
             "items": {
-              "$ref": "#"
+              "type": "array",
+              "description": "A branch of steps to execute in parallel",
+              "items": {
+                "$ref": "#"
+              }
             }
           }
         },
@@ -552,11 +649,13 @@
           },
           "condition": {
             "type": "string",
-            "description": "The condition to evaluate for the switch value. Can be a template expression with {{ }} syntax."
+            "description": "The condition to evaluate for the switch value. Can be a template expression with {{ }} syntax.",
+            "minLength": 1
           },
           "switch": {
             "type": "string",
-            "description": "Legacy alternative to condition. The switch value to evaluate using JavaScript syntax."
+            "description": "Legacy alternative to condition. The switch value to evaluate using JavaScript syntax.",
+            "minLength": 1
           },
           "cases": {
             "type": "object",
@@ -576,9 +675,34 @@
                   "$ref": "#"
                 }
               }
-            }
+            },
+            "minProperties": 1
           }
         },
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "condition"
+                ]
+              },
+              {
+                "required": [
+                  "switch"
+                ]
+              }
+            ]
+          },
+          {
+            "not": {
+              "required": [
+                "condition",
+                "switch"
+              ]
+            }
+          }
+        ],
         "additionalProperties": true
       },
       "CALL_TEMPLATE": {
@@ -651,11 +775,13 @@
           },
           "condition": {
             "type": "string",
-            "description": "The condition to evaluate for the loop. Can be a template expression with {{ }} syntax."
+            "description": "The condition to evaluate for the loop. Can be a template expression with {{ }} syntax.",
+            "minLength": 1
           },
           "test": {
             "type": "string",
-            "description": "Legacy alternative to condition. The test expression to evaluate using JavaScript syntax."
+            "description": "Legacy alternative to condition. The test expression to evaluate using JavaScript syntax.",
+            "minLength": 1
           },
           "do": {
             "type": "array",
@@ -665,6 +791,30 @@
             }
           }
         },
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "condition"
+                ]
+              },
+              {
+                "required": [
+                  "test"
+                ]
+              }
+            ]
+          },
+          {
+            "not": {
+              "required": [
+                "condition",
+                "test"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "CLEAR_TAGS": {
@@ -4617,31 +4767,56 @@
               "gpt-image-1",
               "dall-e-3",
               "dall-e-2"
-            ]
+            ],
+            "default": "dall-e-3"
           },
           "instruction": {
             "type": "string",
-            "description": "The user prompt to send to the LLM (supports templates)"
+            "description": "The user prompt to send to the LLM (supports templates)",
+            "minLength": 1,
+            "maxLength": 4000
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)"
+            "description": "Desired image size (model-dependent)",
+            "enum": [
+              "256x256",
+              "512x512",
+              "1024x1024",
+              "1792x1024",
+              "1024x1792"
+            ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting"
+            "description": "Image quality setting",
+            "enum": [
+              "auto",
+              "standard",
+              "high",
+              "hd",
+              "medium",
+              "low"
+            ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)"
+            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 4
           },
           "style": {
             "type": "string",
-            "description": "Image style for supported models (e.g. natural, vivid)"
+            "description": "Image style for DALL-E 3 (natural, vivid)",
+            "enum": [
+              "natural",
+              "vivid"
+            ]
           },
           "response_format": {
             "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (gpt-image-1 returns b64_json)",
+            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
             "enum": [
               "url",
               "b64_json"
@@ -4649,7 +4824,7 @@
           },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 (png|jpeg|webp)",
+            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
             "enum": [
               "png",
               "jpeg",
@@ -4658,11 +4833,15 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting (e.g. transparent)"
+            "description": "Background setting for gpt-image-1 only (transparent)",
+            "enum": [
+              "transparent"
+            ]
           },
           "seed": {
             "type": "number",
-            "description": "Random seed for reproducible results"
+            "description": "Random seed for reproducible results (gpt-image-1 only)",
+            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -4670,15 +4849,24 @@
           },
           "timeoutMs": {
             "type": "number",
-            "description": "Request timeout in milliseconds"
+            "description": "Request timeout in milliseconds",
+            "default": 60000,
+            "minimum": 1000,
+            "maximum": 600000
           },
           "maxRetries": {
             "type": "number",
-            "description": "Maximum number of retries for recoverable errors"
+            "description": "Maximum number of retries for recoverable errors",
+            "default": 2,
+            "minimum": 0,
+            "maximum": 10
           },
           "outputKey": {
             "type": "string",
-            "description": "FlowContext key where images will be stored (default: imageList)"
+            "description": "FlowContext key where images will be stored (default: imageList)",
+            "default": "imageList",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+            "minLength": 1
           },
           "inputs": {
             "type": "array",
@@ -4750,6 +4938,104 @@
             }
           }
         },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "style",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "background",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "seed",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "HUB_IMAGE_GENERATION": {
@@ -4777,31 +5063,56 @@
               "gpt-image-1",
               "dall-e-3",
               "dall-e-2"
-            ]
+            ],
+            "default": "dall-e-3"
           },
           "instruction": {
             "type": "string",
-            "description": "The user prompt to send to the LLM (supports templates)"
+            "description": "The user prompt to send to the LLM (supports templates)",
+            "minLength": 1,
+            "maxLength": 4000
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)"
+            "description": "Desired image size (model-dependent)",
+            "enum": [
+              "256x256",
+              "512x512",
+              "1024x1024",
+              "1792x1024",
+              "1024x1792"
+            ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting"
+            "description": "Image quality setting",
+            "enum": [
+              "auto",
+              "standard",
+              "high",
+              "hd",
+              "medium",
+              "low"
+            ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)"
+            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 4
           },
           "style": {
             "type": "string",
-            "description": "Image style for supported models (e.g. natural, vivid)"
+            "description": "Image style for DALL-E 3 (natural, vivid)",
+            "enum": [
+              "natural",
+              "vivid"
+            ]
           },
           "response_format": {
             "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (gpt-image-1 returns b64_json)",
+            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
             "enum": [
               "url",
               "b64_json"
@@ -4809,7 +5120,7 @@
           },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 (png|jpeg|webp)",
+            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
             "enum": [
               "png",
               "jpeg",
@@ -4818,11 +5129,15 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting (e.g. transparent)"
+            "description": "Background setting for gpt-image-1 only (transparent)",
+            "enum": [
+              "transparent"
+            ]
           },
           "seed": {
             "type": "number",
-            "description": "Random seed for reproducible results"
+            "description": "Random seed for reproducible results (gpt-image-1 only)",
+            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -4830,15 +5145,24 @@
           },
           "timeoutMs": {
             "type": "number",
-            "description": "Request timeout in milliseconds"
+            "description": "Request timeout in milliseconds",
+            "default": 60000,
+            "minimum": 1000,
+            "maximum": 600000
           },
           "maxRetries": {
             "type": "number",
-            "description": "Maximum number of retries for recoverable errors"
+            "description": "Maximum number of retries for recoverable errors",
+            "default": 2,
+            "minimum": 0,
+            "maximum": 10
           },
           "outputKey": {
             "type": "string",
-            "description": "FlowContext key where images will be stored (default: imageList)"
+            "description": "FlowContext key where images will be stored (default: imageList)",
+            "default": "imageList",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+            "minLength": 1
           },
           "target": {
             "type": "string",
@@ -4914,6 +5238,104 @@
             }
           }
         },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "style",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "background",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "seed",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "AZURE_OPENAI_IMAGE_GENERATION": {
@@ -4942,31 +5364,56 @@
               "gpt-image-1",
               "dall-e-3",
               "dall-e-2"
-            ]
+            ],
+            "default": "dall-e-3"
           },
           "instruction": {
             "type": "string",
-            "description": "The user prompt to send to the LLM (supports templates)"
+            "description": "The user prompt to send to the LLM (supports templates)",
+            "minLength": 1,
+            "maxLength": 4000
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)"
+            "description": "Desired image size (model-dependent)",
+            "enum": [
+              "256x256",
+              "512x512",
+              "1024x1024",
+              "1792x1024",
+              "1024x1792"
+            ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting"
+            "description": "Image quality setting",
+            "enum": [
+              "auto",
+              "standard",
+              "high",
+              "hd",
+              "medium",
+              "low"
+            ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)"
+            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "default": 1,
+            "minimum": 1,
+            "maximum": 4
           },
           "style": {
             "type": "string",
-            "description": "Image style for supported models (e.g. natural, vivid)"
+            "description": "Image style for DALL-E 3 (natural, vivid)",
+            "enum": [
+              "natural",
+              "vivid"
+            ]
           },
           "response_format": {
             "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (gpt-image-1 returns b64_json)",
+            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
             "enum": [
               "url",
               "b64_json"
@@ -4974,7 +5421,7 @@
           },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 (png|jpeg|webp)",
+            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
             "enum": [
               "png",
               "jpeg",
@@ -4983,11 +5430,15 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting (e.g. transparent)"
+            "description": "Background setting for gpt-image-1 only (transparent)",
+            "enum": [
+              "transparent"
+            ]
           },
           "seed": {
             "type": "number",
-            "description": "Random seed for reproducible results"
+            "description": "Random seed for reproducible results (gpt-image-1 only)",
+            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -4995,15 +5446,24 @@
           },
           "timeoutMs": {
             "type": "number",
-            "description": "Request timeout in milliseconds"
+            "description": "Request timeout in milliseconds",
+            "default": 60000,
+            "minimum": 1000,
+            "maximum": 600000
           },
           "maxRetries": {
             "type": "number",
-            "description": "Maximum number of retries for recoverable errors"
+            "description": "Maximum number of retries for recoverable errors",
+            "default": 2,
+            "minimum": 0,
+            "maximum": 10
           },
           "outputKey": {
             "type": "string",
-            "description": "FlowContext key where images will be stored (default: imageList)"
+            "description": "FlowContext key where images will be stored (default: imageList)",
+            "default": "imageList",
+            "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$",
+            "minLength": 1
           },
           "inputs": {
             "type": "array",
@@ -5075,6 +5535,104 @@
             }
           }
         },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "style",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "background",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "seed",
+                "response_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "output_format"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "background"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "response_format",
+                "seed"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "output_format",
+                "style"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "OPENAI_SPEECH": {
@@ -5683,7 +6241,8 @@
           },
           "url": {
             "type": "string",
-            "description": "The URL to call. Supports template expressions and variable resolution."
+            "description": "The URL to call. Supports template expressions and variable resolution.",
+            "minLength": 1
           },
           "method": {
             "type": "string",
@@ -5849,6 +6408,32 @@
             }
           }
         },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "body",
+                "formData"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "formData",
+                "body"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "body",
+                "formData"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "STABILITY_AI_UPSCALE": {
@@ -7044,5 +7629,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-24T08:30:59.289Z"
+  "x-generatedAt": "2025-12-24T15:09:10.714Z"
 }
