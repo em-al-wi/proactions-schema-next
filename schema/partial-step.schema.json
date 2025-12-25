@@ -3793,6 +3793,15 @@
               "auto"
             ]
           },
+          "functionErrorBehavior": {
+            "type": "string",
+            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
+            ]
+          },
           "functions": {
             "type": "array",
             "description": "Array of function descriptors for tool calling"
@@ -4135,6 +4144,15 @@
             "enum": [
               "none",
               "auto"
+            ]
+          },
+          "functionErrorBehavior": {
+            "type": "string",
+            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
             ]
           },
           "functions": {
@@ -4486,6 +4504,15 @@
               "auto"
             ]
           },
+          "functionErrorBehavior": {
+            "type": "string",
+            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
+            ]
+          },
           "functions": {
             "type": "array",
             "description": "Array of function descriptors for tool calling"
@@ -4773,8 +4800,7 @@
           "instruction": {
             "type": "string",
             "description": "The user prompt to send to the LLM (supports templates)",
-            "minLength": 1,
-            "maxLength": 4000
+            "minLength": 1
           },
           "size": {
             "type": "string",
@@ -4852,14 +4878,14 @@
             "description": "Request timeout in milliseconds",
             "default": 60000,
             "minimum": 1000,
-            "maximum": 600000
+            "maximum": 900000
           },
           "maxRetries": {
             "type": "number",
             "description": "Maximum number of retries for recoverable errors",
             "default": 2,
             "minimum": 0,
-            "maximum": 10
+            "maximum": 20
           },
           "outputKey": {
             "type": "string",
@@ -5069,8 +5095,7 @@
           "instruction": {
             "type": "string",
             "description": "The user prompt to send to the LLM (supports templates)",
-            "minLength": 1,
-            "maxLength": 4000
+            "minLength": 1
           },
           "size": {
             "type": "string",
@@ -5148,14 +5173,14 @@
             "description": "Request timeout in milliseconds",
             "default": 60000,
             "minimum": 1000,
-            "maximum": 600000
+            "maximum": 900000
           },
           "maxRetries": {
             "type": "number",
             "description": "Maximum number of retries for recoverable errors",
             "default": 2,
             "minimum": 0,
-            "maximum": 10
+            "maximum": 20
           },
           "outputKey": {
             "type": "string",
@@ -5370,8 +5395,7 @@
           "instruction": {
             "type": "string",
             "description": "The user prompt to send to the LLM (supports templates)",
-            "minLength": 1,
-            "maxLength": 4000
+            "minLength": 1
           },
           "size": {
             "type": "string",
@@ -5449,14 +5473,14 @@
             "description": "Request timeout in milliseconds",
             "default": 60000,
             "minimum": 1000,
-            "maximum": 600000
+            "maximum": 900000
           },
           "maxRetries": {
             "type": "number",
             "description": "Maximum number of retries for recoverable errors",
             "default": 2,
             "minimum": 0,
-            "maximum": 10
+            "maximum": 20
           },
           "outputKey": {
             "type": "string",
@@ -7629,5 +7653,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-24T15:09:10.714Z"
+  "x-generatedAt": "2025-12-25T12:11:53.302Z"
 }
