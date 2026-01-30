@@ -1834,10 +1834,6 @@
             ],
             "default": "primary"
           },
-          "actions": {
-            "type": "array",
-            "description": "Custom action buttons. Each action has: id, label, type (primary/secondary/success/warning/danger)."
-          },
           "timeout": {
             "type": "number",
             "description": "Optional timeout in seconds. Auto-cancels if user does not respond."
@@ -1846,46 +1842,23 @@
             "type": "array",
             "description": "Output mappings from step outputs to flow context",
             "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "boolean",
-                      "description": "In Yes/No mode: true if confirmed, false if cancelled."
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "boolean",
+                  "description": "true if confirmed, false if cancelled. Default output: flowContext.confirmed"
                 },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "text",
-                      "description": "In custom actions mode: the ID of the selected action."
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
                 }
-              ]
+              },
+              "additionalProperties": false
             }
           }
         },
@@ -7930,5 +7903,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-01-30T19:12:45.436Z"
+  "x-generatedAt": "2026-01-30T23:21:37.879Z"
 }
