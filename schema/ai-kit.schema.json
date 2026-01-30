@@ -53,6 +53,17 @@
             }
           ]
         },
+        "MONITOR": {
+          "oneOf": [
+            {
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-monitor.schema.json"
+            },
+            {
+              "type": "string",
+              "description": "Path to an external monitor configuration file using !include directive"
+            }
+          ]
+        },
         "TEMPLATES": {
           "oneOf": [
             {

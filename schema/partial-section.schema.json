@@ -46,6 +46,41 @@
       "type": "string",
       "description": "Icon html for this section"
     },
+    "monitor": {
+      "type": "object",
+      "description": "Monitor configuration override for this section",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable monitor for this section"
+        },
+        "showProgress": {
+          "type": "boolean",
+          "description": "Show progress bar"
+        },
+        "showStepNames": {
+          "type": "boolean",
+          "description": "Show current step name"
+        },
+        "showElapsedTime": {
+          "type": "boolean",
+          "description": "Show elapsed time"
+        },
+        "enableCancellation": {
+          "type": "boolean",
+          "description": "Allow cancelling this flow"
+        },
+        "confirmCancellation": {
+          "type": "boolean",
+          "description": "Confirm before cancelling"
+        },
+        "renderMarkdown": {
+          "type": "boolean",
+          "description": "Render markdown in feedback messages"
+        }
+      },
+      "additionalProperties": false
+    },
     "actions": {
       "type": "array",
       "description": "List of actions in this section",

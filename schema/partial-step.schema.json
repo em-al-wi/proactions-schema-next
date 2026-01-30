@@ -86,6 +86,18 @@
       "$ref": "#/definitions/steps/TAG_PURE_TEXT"
     },
     {
+      "$ref": "#/definitions/steps/MONITOR_CHOICE"
+    },
+    {
+      "$ref": "#/definitions/steps/MONITOR_CONFIRM"
+    },
+    {
+      "$ref": "#/definitions/steps/MONITOR_INPUT"
+    },
+    {
+      "$ref": "#/definitions/steps/MONITOR_STATUS"
+    },
+    {
       "$ref": "#/definitions/steps/SANITIZE"
     },
     {
@@ -1715,6 +1727,271 @@
               },
               "additionalProperties": false
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "MONITOR_CHOICE": {
+        "type": "object",
+        "description": "Display a selection of choices in the Flow Monitor. Pauses workflow until user selects.",
+        "required": [
+          "step",
+          "message",
+          "choices"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "MONITOR_CHOICE"
+            ],
+            "description": "Display a selection of choices in the Flow Monitor. Pauses workflow until user selects."
+          },
+          "message": {
+            "type": "string",
+            "description": "The prompt message asking user to make a selection."
+          },
+          "choices": {
+            "type": "array",
+            "description": "Array of choices. Each choice has: id (returned value), label (display text)."
+          },
+          "default": {
+            "type": "string",
+            "description": "ID of the default/pre-selected choice."
+          },
+          "allowCancel": {
+            "type": "boolean",
+            "description": "If true, shows a Cancel option that returns empty string.",
+            "default": true
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "The ID of the selected choice."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "MONITOR_CONFIRM": {
+        "type": "object",
+        "description": "Display a confirmation dialog in the Flow Monitor. Pauses workflow until user responds.",
+        "required": [
+          "step",
+          "message"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "MONITOR_CONFIRM"
+            ],
+            "description": "Display a confirmation dialog in the Flow Monitor. Pauses workflow until user responds."
+          },
+          "message": {
+            "type": "string",
+            "description": "The confirmation message to display. Supports variable resolution with {{variable}}."
+          },
+          "content": {
+            "type": "string",
+            "description": "Optional rich content to display (e.g., AI-generated text for review). Supports markdown."
+          },
+          "confirm": {
+            "type": "string",
+            "description": "Label for the confirm button (default: \"Confirm\"). Used in Yes/No mode.",
+            "default": "Confirm"
+          },
+          "cancel": {
+            "type": "string",
+            "description": "Label for the cancel button (default: \"Cancel\"). Used in Yes/No mode.",
+            "default": "Cancel"
+          },
+          "confirmType": {
+            "type": "string",
+            "description": "Visual style of the confirm button.",
+            "enum": [
+              "primary",
+              "success",
+              "warning",
+              "danger"
+            ],
+            "default": "primary"
+          },
+          "actions": {
+            "type": "array",
+            "description": "Custom action buttons. Each action has: id, label, type (primary/secondary/success/warning/danger)."
+          },
+          "timeout": {
+            "type": "number",
+            "description": "Optional timeout in seconds. Auto-cancels if user does not respond."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "boolean",
+                      "description": "In Yes/No mode: true if confirmed, false if cancelled."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "In custom actions mode: the ID of the selected action."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "MONITOR_INPUT": {
+        "type": "object",
+        "description": "Display an inline text input field in the Flow Monitor.",
+        "required": [
+          "step",
+          "message"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "MONITOR_INPUT"
+            ],
+            "description": "Display an inline text input field in the Flow Monitor."
+          },
+          "message": {
+            "type": "string",
+            "description": "The prompt message asking for input."
+          },
+          "placeholder": {
+            "type": "string",
+            "description": "Placeholder text shown in the input field."
+          },
+          "default": {
+            "type": "string",
+            "description": "Default value pre-filled in the input field."
+          },
+          "required": {
+            "type": "boolean",
+            "description": "If true, empty input is not allowed.",
+            "default": false
+          },
+          "maxLength": {
+            "type": "number",
+            "description": "Maximum number of characters allowed."
+          },
+          "errorMessage": {
+            "type": "string",
+            "description": "Error message shown when the field is submitted empty and required is true.",
+            "default": "This field is required"
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "The text entered by the user."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "MONITOR_STATUS": {
+        "type": "object",
+        "description": "Display status messages in the Flow Monitor during workflow execution.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "MONITOR_STATUS"
+            ],
+            "description": "Display status messages in the Flow Monitor during workflow execution."
+          },
+          "message": {
+            "type": "string",
+            "description": "The status message to display. Supports variable resolution with {{variable}}."
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of status message.",
+            "enum": [
+              "info",
+              "status",
+              "warning",
+              "success",
+              "error"
+            ],
+            "default": "info"
+          },
+          "clear": {
+            "type": "boolean",
+            "description": "If true, clears all previous messages before showing this one.",
+            "default": false
           }
         },
         "additionalProperties": false
@@ -7653,5 +7930,5 @@
       }
     }
   },
-  "x-generatedAt": "2025-12-25T12:11:53.302Z"
+  "x-generatedAt": "2026-01-30T19:12:45.436Z"
 }
