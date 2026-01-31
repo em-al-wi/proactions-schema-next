@@ -4110,8 +4110,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "type": "string",
-              "description": "Tool class name or configuration object"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "outputs": {
@@ -4471,8 +4470,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "type": "string",
-              "description": "Tool class name or configuration object"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "target": {
@@ -4837,8 +4835,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "type": "string",
-              "description": "Tool class name or configuration object"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "outputs": {
@@ -7927,5 +7924,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-01-31T19:40:31.303Z"
+  "x-generatedAt": "2026-01-31T21:40:15.380Z"
 }

@@ -9,6 +9,7 @@
         "ContainerInfoTools",
         "ContentReadTools",
         "ContentWriteTools",
+        "CustomTools",
         "DocumentInfoTools",
         "FeedbackTools",
         "UserInfoTools",
@@ -38,10 +39,12 @@
         "getContainerVirtualAttributesString",
         "getContainerWorkflowStatus",
         "getContainerXmlContents",
+        "getCurrentTimestamp",
         "getDocumentId",
         "getDocumentIssueDate",
         "getDocumentLoid",
         "getDocumentName",
+        "getDocumentSummaryInfo",
         "getDocumentUuid",
         "getDocumentWorkfolder",
         "getMetadata",
@@ -112,7 +115,8 @@
             "DocumentInfoTools",
             "ContainerInfoTools",
             "UserInfoTools",
-            "UtilityTools"
+            "UtilityTools",
+            "CustomTools"
           ],
           "description": "Tool class name"
         },
@@ -227,7 +231,9 @@
             "xmlToMarkdown",
             "markdownToHtml",
             "validateAndRepairXml",
-            "stripMarkdown"
+            "stripMarkdown",
+            "getCurrentTimestamp",
+            "getDocumentSummaryInfo"
           ],
           "description": "Underlying tool to call when this alias is invoked"
         },
