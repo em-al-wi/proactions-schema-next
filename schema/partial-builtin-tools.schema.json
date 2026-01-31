@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Built-in AI Tools Configuration",
+  "description": "Configuration for enabling built-in AI tools in ProActions workflows",
+  "oneOf": [
+    {
+      "type": "string",
+      "enum": [
+        "ContentReadTools",
+        "ContentWriteTools",
+        "FeedbackTools",
+        "DocumentInfoTools",
+        "ContainerInfoTools",
+        "UserInfoTools",
+        "UtilityTools"
+      ],
+      "description": "Enable all tools from this class by specifying the class name"
+    },
+    {
+      "type": "object",
+      "required": [
+        "class"
+      ],
+      "properties": {
+        "class": {
+          "type": "string",
+          "enum": [
+            "ContentReadTools",
+            "ContentWriteTools",
+            "FeedbackTools",
+            "DocumentInfoTools",
+            "ContainerInfoTools",
+            "UserInfoTools",
+            "UtilityTools"
+          ],
+          "description": "Tool class name"
+        },
+        "only": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Only enable these specific tools from the class (optional)"
+        },
+        "xpaths": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Named XPath mappings available as tool parameters (optional)"
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

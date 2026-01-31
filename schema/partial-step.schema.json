@@ -4106,6 +4106,14 @@
             "type": "array",
             "description": "Array of generic attachments (images, audio, text) to include in the user message"
           },
+          "builtinTools": {
+            "type": "array",
+            "description": "List of built-in tool classes to enable for the AI model",
+            "items": {
+              "type": "string",
+              "description": "Tool class name or configuration object"
+            }
+          },
           "outputs": {
             "type": "array",
             "description": "Output mappings from step outputs to flow context",
@@ -4458,6 +4466,14 @@
           "attachments": {
             "type": "array",
             "description": "Array of generic attachments (images, audio, text) to include in the user message"
+          },
+          "builtinTools": {
+            "type": "array",
+            "description": "List of built-in tool classes to enable for the AI model",
+            "items": {
+              "type": "string",
+              "description": "Tool class name or configuration object"
+            }
           },
           "target": {
             "type": "string",
@@ -4816,6 +4832,14 @@
           "attachments": {
             "type": "array",
             "description": "Array of generic attachments (images, audio, text) to include in the user message"
+          },
+          "builtinTools": {
+            "type": "array",
+            "description": "List of built-in tool classes to enable for the AI model",
+            "items": {
+              "type": "string",
+              "description": "Tool class name or configuration object"
+            }
           },
           "outputs": {
             "type": "array",
@@ -7903,5 +7927,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-01-30T23:21:37.879Z"
+  "x-generatedAt": "2026-01-31T18:27:02.233Z"
 }
