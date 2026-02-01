@@ -12,6 +12,7 @@
         "CustomTools",
         "DocumentInfoTools",
         "FeedbackTools",
+        "HubMcp",
         "UserInfoTools",
         "UtilityTools",
         "addFeedback",
@@ -20,6 +21,7 @@
         "addMetricsFeedback",
         "addPureTextTags",
         "addTableFeedback",
+        "callMcpTool",
         "clearPureTextTags",
         "getChannel",
         "getContainerChannel",
@@ -116,7 +118,8 @@
             "ContainerInfoTools",
             "UserInfoTools",
             "UtilityTools",
-            "CustomTools"
+            "CustomTools",
+            "HubMcp"
           ],
           "description": "Tool class name"
         },
@@ -233,7 +236,8 @@
             "validateAndRepairXml",
             "stripMarkdown",
             "getCurrentTimestamp",
-            "getDocumentSummaryInfo"
+            "getDocumentSummaryInfo",
+            "callMcpTool"
           ],
           "description": "Underlying tool to call when this alias is invoked"
         },
