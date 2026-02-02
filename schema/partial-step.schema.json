@@ -116,6 +116,12 @@
       "$ref": "#/definitions/steps/BASE64_TO_BLOB"
     },
     {
+      "$ref": "#/definitions/steps/HUB_MCP_INVOKE"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_MCP_TOOLS"
+    },
+    {
       "$ref": "#/definitions/steps/BRIGHTER_AI"
     },
     {
@@ -2327,6 +2333,113 @@
                   "type": "string",
                   "const": "blob",
                   "description": "The resulting Blob created from the base64 input."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_MCP_INVOKE": {
+        "type": "object",
+        "description": "Invoke a tool on an MCP server via the Hub.",
+        "required": [
+          "step",
+          "server",
+          "tool"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_MCP_INVOKE"
+            ],
+            "description": "Invoke a tool on an MCP server via the Hub."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "server": {
+            "type": "string",
+            "description": "The name of the MCP server."
+          },
+          "tool": {
+            "type": "string",
+            "description": "The name of the tool to invoke."
+          },
+          "arguments": {
+            "type": "object",
+            "description": "The arguments to pass to the tool."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The result of the tool invocation."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_MCP_TOOLS": {
+        "type": "object",
+        "description": "List available tools from an MCP server via the Hub.",
+        "required": [
+          "step",
+          "server"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_MCP_TOOLS"
+            ],
+            "description": "List available tools from an MCP server via the Hub."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "server": {
+            "type": "string",
+            "description": "The name of the MCP server to list tools from."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The list of available tools (and resources/prompts if provided by the Hub API)."
                 },
                 "name": {
                   "type": "string",
@@ -7924,5 +8037,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-01T13:06:39.745Z"
+  "x-generatedAt": "2026-02-01T15:27:04.179Z"
 }
