@@ -2407,8 +2407,7 @@
         "type": "object",
         "description": "List available tools from an MCP server via the Hub.",
         "required": [
-          "step",
-          "server"
+          "step"
         ],
         "properties": {
           "step": {
@@ -8037,5 +8036,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-01T15:27:04.179Z"
+  "x-generatedAt": "2026-02-04T18:18:39.686Z"
 }
