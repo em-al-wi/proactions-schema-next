@@ -83,6 +83,17 @@
       "default": true,
       "description": "Render markdown in feedback messages"
     },
+    "defaultWidth": {
+      "type": "number",
+      "minimum": 200,
+      "default": 350,
+      "description": "Default width of the monitor in pixels"
+    },
+    "defaultHeight": {
+      "type": "number",
+      "minimum": 100,
+      "description": "Default height of the monitor in pixels. If not set, height is determined by content."
+    },
     "forUsers": {
       "type": "array",
       "items": {

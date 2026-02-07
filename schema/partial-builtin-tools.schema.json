@@ -10,9 +10,12 @@
         "ContentReadTools",
         "ContentWriteTools",
         "CustomTools",
+        "CustomTools__getCurrentTimestamp",
+        "CustomTools__getDocumentSummaryInfo",
         "DocumentInfoTools",
         "FeedbackTools",
         "HubMcp",
+        "HubMcp__callMcpTool",
         "UserInfoTools",
         "UtilityTools",
         "addFeedback",
@@ -22,7 +25,6 @@
         "addPureTextTags",
         "addTableFeedback",
         "askUserAction",
-        "callMcpTool",
         "clearPureTextTags",
         "confirm",
         "getChannel",
@@ -43,12 +45,10 @@
         "getContainerVirtualAttributesString",
         "getContainerWorkflowStatus",
         "getContainerXmlContents",
-        "getCurrentTimestamp",
         "getDocumentId",
         "getDocumentIssueDate",
         "getDocumentLoid",
         "getDocumentName",
-        "getDocumentSummaryInfo",
         "getDocumentUuid",
         "getDocumentWorkfolder",
         "getMetadata",
@@ -129,7 +129,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Only enable these specific tools from the class (optional)"
+          "description": "Only enable these specific tools from the class (optional). Accepts raw tool names or provider namespaced names (<toolClass>__<tool>)."
         },
         "xpaths": {
           "type": "object",
@@ -144,104 +144,33 @@
     {
       "type": "object",
       "required": [
-        "alias",
-        "tool"
+        "alias"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "target"
+          ]
+        },
+        {
+          "required": [
+            "extend"
+          ]
+        }
       ],
       "properties": {
         "alias": {
           "type": "string",
-          "description": "Name of the new virtual tool (how the AI will see it)"
+          "description": "Name of the new virtual tool (the alias namespace is added automatically)"
         },
-        "tool": {
+        "target": {
           "type": "string",
-          "enum": [
-            "getTextContent",
-            "getPureText",
-            "getXmlContent",
-            "getSelectedText",
-            "getSelectedXML",
-            "getParagraphText",
-            "getParagraphXML",
-            "getXmlAtXpath",
-            "getTextAtXpath",
-            "isTextSelected",
-            "getSelectedElement",
-            "getSelectedElementXpath",
-            "getContainerTextContent",
-            "getContainerXmlContents",
-            "insertTextAtCursor",
-            "insertTextAtXpath",
-            "insertXmlAtCursor",
-            "insertXmlAtXpath",
-            "replaceTextAtCursor",
-            "replaceTextAtCursorParagraph",
-            "replaceTextAtXpath",
-            "replaceXmlAtCursor",
-            "replaceXmlAtCursorParagraph",
-            "replaceXmlAtXpath",
-            "addPureTextTags",
-            "highlightTextSegments",
-            "clearPureTextTags",
-            "addFeedback",
-            "updateProgress",
-            "addTableFeedback",
-            "addJsonFeedback",
-            "addKeyValueFeedback",
-            "addMetricsFeedback",
-            "showNotification",
-            "askUserAction",
-            "confirm",
-            "getDocumentId",
-            "getDocumentLoid",
-            "getDocumentUuid",
-            "getDocumentName",
-            "getDocumentIssueDate",
-            "getObjectType",
-            "getWorkflowStatus",
-            "getProductName",
-            "getChannel",
-            "getMetadata",
-            "getMetadataString",
-            "getSystemMetadata",
-            "getSystemMetadataString",
-            "getVirtualAttributes",
-            "getVirtualAttributesString",
-            "getUsageTickets",
-            "getUsageTicketsString",
-            "isReadonly",
-            "getDocumentWorkfolder",
-            "getContainerId",
-            "getContainerLoid",
-            "getContainerUuid",
-            "getContainerObjectType",
-            "getContainerWorkflowStatus",
-            "getContainerProductName",
-            "getContainerChannel",
-            "getContainerMetadata",
-            "getContainerMetadataString",
-            "getContainerSystemMetadata",
-            "getContainerSystemMetadataString",
-            "getContainerVirtualAttributes",
-            "getContainerVirtualAttributesString",
-            "getContainerUsageTickets",
-            "getContainerUsageTicketsString",
-            "getUserName",
-            "getUserFullName",
-            "getUserGroups",
-            "getUserTeams",
-            "getUserMetadata",
-            "getUserMetadataString",
-            "getUserSystemMetadata",
-            "getUserSystemMetadataString",
-            "xmlToMarkdown",
-            "markdownToHtml",
-            "validateAndRepairXml",
-            "stripMarkdown",
-            "getCurrentTimestamp",
-            "getDocumentSummaryInfo",
-            "callMcpTool"
-          ],
-          "description": "Underlying tool to call when this alias is invoked"
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "description": "Underlying tool to call when this alias is invoked (supports <tool>, <toolClass>__<tool>, <toolClass>.<tool>, mcp__<server>__<tool>, mcp.<server>.<tool>)"
+        },
+        "extend": {
+          "type": "string",
+          "description": "Optional alias template name to extend"
         },
         "description": {
           "type": "string",
@@ -250,6 +179,53 @@
         "args": {
           "type": "object",
           "description": "Preset arguments to pass to the underlying tool (merged with AI-provided arguments)"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "aliasTemplate",
+        "target"
+      ],
+      "properties": {
+        "aliasTemplate": {
+          "type": "string",
+          "description": "Name of the alias template (used by aliases via extend)"
+        },
+        "target": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+$",
+          "description": "Underlying tool to call when this template is used (supports <tool>, <toolClass>__<tool>, <toolClass>.<tool>, mcp__<server>__<tool>, mcp.<server>.<tool>)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description for aliases extending this template"
+        },
+        "args": {
+          "type": "object",
+          "description": "Preset arguments applied by aliases extending this template"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "mcp"
+      ],
+      "properties": {
+        "mcp": {
+          "type": "string",
+          "description": "MCP server name as registered in the Hub"
+        },
+        "only": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional list of MCP tool names to expose (accepts <tool>, mcp__<server>__<tool>, mcp.<server>.<tool>, or <server>.<tool>)"
         }
       },
       "additionalProperties": false

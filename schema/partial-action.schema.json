@@ -175,6 +175,16 @@
         "renderMarkdown": {
           "type": "boolean",
           "description": "Render markdown in feedback messages"
+        },
+        "defaultWidth": {
+          "type": "number",
+          "minimum": 200,
+          "description": "Override default width of the monitor in pixels for this action"
+        },
+        "defaultHeight": {
+          "type": "number",
+          "minimum": 100,
+          "description": "Override default height of the monitor in pixels for this action"
         }
       },
       "additionalProperties": false

@@ -4139,9 +4139,13 @@
             "type": "object",
             "description": "Configuration object to request audio output (voice/format)"
           },
-          "tool_choice": {
+          "toolChoice": {
             "type": "string",
-            "description": "Optional tool selection policy"
+            "description": "Optional tool selection policy (mapped to tool_choice in the model request)"
+          },
+          "parallelToolCalls": {
+            "type": "boolean",
+            "description": "Allow model/providers to emit multiple tool calls in one assistant turn (mapped to parallel_tool_calls)"
           },
           "maxToolIterations": {
             "type": "number",
@@ -4224,6 +4228,150 @@
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
+          },
+          "toolGuidance": {
+            "type": "object",
+            "description": "Optional tool schema guidance (e.g., addTableFeedback columns or addMetricsFeedback metric keys and ranges)",
+            "properties": {
+              "addTableFeedback": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "table": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "tableSchema": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "addMetricsFeedback": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metrics": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metricsSchema": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "toolStrict": {
+            "type": "boolean",
+            "description": "Enable strict tool argument validation (reject missing/extra arguments)",
+            "default": false
           },
           "outputs": {
             "type": "array",
@@ -4499,9 +4647,13 @@
             "type": "object",
             "description": "Configuration object to request audio output (voice/format)"
           },
-          "tool_choice": {
+          "toolChoice": {
             "type": "string",
-            "description": "Optional tool selection policy"
+            "description": "Optional tool selection policy (mapped to tool_choice in the model request)"
+          },
+          "parallelToolCalls": {
+            "type": "boolean",
+            "description": "Allow model/providers to emit multiple tool calls in one assistant turn (mapped to parallel_tool_calls)"
           },
           "maxToolIterations": {
             "type": "number",
@@ -4584,6 +4736,150 @@
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
+          },
+          "toolGuidance": {
+            "type": "object",
+            "description": "Optional tool schema guidance (e.g., addTableFeedback columns or addMetricsFeedback metric keys and ranges)",
+            "properties": {
+              "addTableFeedback": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "table": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "tableSchema": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "addMetricsFeedback": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metrics": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metricsSchema": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "toolStrict": {
+            "type": "boolean",
+            "description": "Enable strict tool argument validation (reject missing/extra arguments)",
+            "default": false
           },
           "target": {
             "type": "string",
@@ -4864,9 +5160,13 @@
             "type": "object",
             "description": "Configuration object to request audio output (voice/format)"
           },
-          "tool_choice": {
+          "toolChoice": {
             "type": "string",
-            "description": "Optional tool selection policy"
+            "description": "Optional tool selection policy (mapped to tool_choice in the model request)"
+          },
+          "parallelToolCalls": {
+            "type": "boolean",
+            "description": "Allow model/providers to emit multiple tool calls in one assistant turn (mapped to parallel_tool_calls)"
           },
           "maxToolIterations": {
             "type": "number",
@@ -4949,6 +5249,150 @@
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
             }
+          },
+          "toolGuidance": {
+            "type": "object",
+            "description": "Optional tool schema guidance (e.g., addTableFeedback columns or addMetricsFeedback metric keys and ranges)",
+            "properties": {
+              "addTableFeedback": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "table": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "tableSchema": {
+                "type": "object",
+                "description": "Guidance for addTableFeedback",
+                "properties": {
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Column names to enforce for addTableFeedback data rows"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "addMetricsFeedback": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metrics": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "metricsSchema": {
+                "type": "object",
+                "description": "Guidance for addMetricsFeedback",
+                "properties": {
+                  "metrics": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Metric keys to enforce (e.g., engagement, clarity)"
+                  },
+                  "min": {
+                    "type": "number",
+                    "description": "Minimum allowed metric value"
+                  },
+                  "max": {
+                    "type": "number",
+                    "description": "Maximum allowed metric value"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional tool description override"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "toolStrict": {
+            "type": "boolean",
+            "description": "Enable strict tool argument validation (reject missing/extra arguments)",
+            "default": false
           },
           "outputs": {
             "type": "array",
@@ -8036,5 +8480,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-04T18:18:39.686Z"
+  "x-generatedAt": "2026-02-07T07:24:39.127Z"
 }
