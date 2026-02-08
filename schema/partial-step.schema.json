@@ -4168,13 +4168,21 @@
               "once"
             ]
           },
+          "tools": {
+            "type": "array",
+            "description": "Array of tool/function descriptors for tool calling"
+          },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+          },
+          "toolsReuseContext": {
+            "type": "boolean",
+            "description": "Whether to reuse full flowContext when executing tool templates"
           },
           "functionsReuseContext": {
             "type": "boolean",
-            "description": "Whether to reuse full flowContext when executing function templates"
+            "description": "Whether to reuse full flowContext when executing function templates (deprecated, use toolsReuseContext instead)"
           },
           "safetyIdentifier": {
             "type": "string",
@@ -4685,13 +4693,21 @@
               "once"
             ]
           },
+          "tools": {
+            "type": "array",
+            "description": "Array of tool/function descriptors for tool calling"
+          },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+          },
+          "toolsReuseContext": {
+            "type": "boolean",
+            "description": "Whether to reuse full flowContext when executing tool templates"
           },
           "functionsReuseContext": {
             "type": "boolean",
-            "description": "Whether to reuse full flowContext when executing function templates"
+            "description": "Whether to reuse full flowContext when executing function templates (deprecated, use toolsReuseContext instead)"
           },
           "safetyIdentifier": {
             "type": "string",
@@ -5207,13 +5223,21 @@
               "once"
             ]
           },
+          "tools": {
+            "type": "array",
+            "description": "Array of tool/function descriptors for tool calling"
+          },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+          },
+          "toolsReuseContext": {
+            "type": "boolean",
+            "description": "Whether to reuse full flowContext when executing tool templates"
           },
           "functionsReuseContext": {
             "type": "boolean",
-            "description": "Whether to reuse full flowContext when executing function templates"
+            "description": "Whether to reuse full flowContext when executing function templates (deprecated, use toolsReuseContext instead)"
           },
           "safetyIdentifier": {
             "type": "string",
@@ -8507,5 +8531,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-08T16:43:48.910Z"
+  "x-generatedAt": "2026-02-08T16:57:46.939Z"
 }
