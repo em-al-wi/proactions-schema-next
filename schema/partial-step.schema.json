@@ -4373,6 +4373,15 @@
             "description": "Enable strict tool argument validation (reject missing/extra arguments)",
             "default": false
           },
+          "stream": {
+            "type": "boolean",
+            "description": "Enable streaming mode for incremental response delivery. When enabled, tokens are delivered as they are generated rather than waiting for the full response. Streaming is automatically disabled for incompatible configurations (json_schema, list, audio output). Defaults to false.",
+            "default": false
+          },
+          "feedback": {
+            "type": "boolean",
+            "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
+          },
           "outputs": {
             "type": "array",
             "description": "Output mappings from step outputs to flow context",
@@ -4880,6 +4889,15 @@
             "type": "boolean",
             "description": "Enable strict tool argument validation (reject missing/extra arguments)",
             "default": false
+          },
+          "stream": {
+            "type": "boolean",
+            "description": "Enable streaming mode for incremental response delivery. When enabled, tokens are delivered as they are generated rather than waiting for the full response. Streaming is automatically disabled for incompatible configurations (json_schema, list, audio output). Defaults to false.",
+            "default": false
+          },
+          "feedback": {
+            "type": "boolean",
+            "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
           },
           "target": {
             "type": "string",
@@ -5393,6 +5411,15 @@
             "type": "boolean",
             "description": "Enable strict tool argument validation (reject missing/extra arguments)",
             "default": false
+          },
+          "stream": {
+            "type": "boolean",
+            "description": "Enable streaming mode for incremental response delivery. When enabled, tokens are delivered as they are generated rather than waiting for the full response. Streaming is automatically disabled for incompatible configurations (json_schema, list, audio output). Defaults to false.",
+            "default": false
+          },
+          "feedback": {
+            "type": "boolean",
+            "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
           },
           "outputs": {
             "type": "array",
@@ -8480,5 +8507,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-07T07:24:39.127Z"
+  "x-generatedAt": "2026-02-08T12:47:14.796Z"
 }
