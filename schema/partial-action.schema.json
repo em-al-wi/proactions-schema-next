@@ -141,6 +141,57 @@
             }
           },
           "required": ["enable"]
+        },
+        "onBlockDrop": {
+          "type": "object",
+          "description": "Trigger action when a block element is dropped in the editor (e.g., drag and drop between stories)",
+          "properties": {
+            "enable": {
+              "type": "boolean",
+              "description": "Enable this integration"
+            },
+            "runWhen": {
+              "type": "object",
+              "description": "Simple conditions that must match for the action to run. All conditions must be true.",
+              "properties": {
+                "isCrossStory": {
+                  "type": "boolean",
+                  "description": "Only run when block is dropped between different stories"
+                },
+                "fromOldVersion": {
+                  "type": "boolean",
+                  "description": "Only run when content is being restored from a previous version"
+                },
+                "betweenChannelCopy": {
+                  "type": "boolean",
+                  "description": "Only run when block is copied between different channels"
+                },
+                "isSameContainer": {
+                  "type": "boolean",
+                  "description": "Only run when block is moved within the same container"
+                },
+                "blockType": {
+                  "type": "string",
+                  "description": "Only run for specific block types (e.g., 'image', 'video')"
+                }
+              },
+              "additionalProperties": {
+                "oneOf": [
+                  { "type": "boolean" },
+                  { "type": "string" }
+                ]
+              }
+            },
+            "when": {
+              "type": "string",
+              "description": "Custom JavaScript expression for complex conditions. Has access to 'options' (block drop info) and 'ctx' (editor context). Must return true for the action to run.",
+              "examples": [
+                "options.sourceLanguage !== options.targetLanguage",
+                "options.blockType === 'image' && options.textContent.length > 100"
+              ]
+            }
+          },
+          "required": ["enable"]
         }
       }
     },
