@@ -4159,9 +4159,18 @@
               "auto"
             ]
           },
+          "toolErrorBehavior": {
+            "type": "string",
+            "description": "How to handle tool execution errors: \"retry\" allows LLM to retry failed tools (default), \"fail\" stops the flow immediately on any tool error, \"once\" prevents retrying the same tool after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
+            ]
+          },
           "functionErrorBehavior": {
             "type": "string",
-            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "description": "How to handle function execution errors (deprecated, use toolErrorBehavior instead)",
             "enum": [
               "retry",
               "fail",
@@ -4684,9 +4693,18 @@
               "auto"
             ]
           },
+          "toolErrorBehavior": {
+            "type": "string",
+            "description": "How to handle tool execution errors: \"retry\" allows LLM to retry failed tools (default), \"fail\" stops the flow immediately on any tool error, \"once\" prevents retrying the same tool after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
+            ]
+          },
           "functionErrorBehavior": {
             "type": "string",
-            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "description": "How to handle function execution errors (deprecated, use toolErrorBehavior instead)",
             "enum": [
               "retry",
               "fail",
@@ -5214,9 +5232,18 @@
               "auto"
             ]
           },
+          "toolErrorBehavior": {
+            "type": "string",
+            "description": "How to handle tool execution errors: \"retry\" allows LLM to retry failed tools (default), \"fail\" stops the flow immediately on any tool error, \"once\" prevents retrying the same tool after it fails once",
+            "enum": [
+              "retry",
+              "fail",
+              "once"
+            ]
+          },
           "functionErrorBehavior": {
             "type": "string",
-            "description": "How to handle function execution errors: \"retry\" allows LLM to retry failed functions (default), \"fail\" stops the flow immediately on any function error, \"once\" prevents retrying the same function after it fails once",
+            "description": "How to handle function execution errors (deprecated, use toolErrorBehavior instead)",
             "enum": [
               "retry",
               "fail",
@@ -8531,5 +8558,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-08T16:57:46.939Z"
+  "x-generatedAt": "2026-02-09T10:19:31.091Z"
 }
