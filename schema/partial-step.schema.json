@@ -4399,6 +4399,10 @@
             "type": "boolean",
             "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
           },
+          "skills": {
+            "type": "array",
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from <skillsBasePath>/<skillName>/SKILL.md.'"
+          },
           "outputs": {
             "type": "array",
             "description": "Output mappings from step outputs to flow context",
@@ -4932,6 +4936,10 @@
           "feedback": {
             "type": "boolean",
             "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
+          },
+          "skills": {
+            "type": "array",
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from <skillsBasePath>/<skillName>/SKILL.md.'"
           },
           "target": {
             "type": "string",
@@ -5471,6 +5479,10 @@
           "feedback": {
             "type": "boolean",
             "description": "Show streaming response in the Flow Execution Monitor. Defaults to true when stream is enabled. Set to false to use streaming for performance (faster time-to-first-token) without monitor visualization."
+          },
+          "skills": {
+            "type": "array",
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from <skillsBasePath>/<skillName>/SKILL.md.'"
           },
           "outputs": {
             "type": "array",
@@ -8558,5 +8570,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-09T19:53:36.823Z"
+  "x-generatedAt": "2026-02-10T12:05:05.368Z"
 }
