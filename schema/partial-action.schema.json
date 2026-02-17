@@ -21,13 +21,13 @@
       "oneOf": [
         {
           "type": "string",
-          "enum": ["all", "report", "story", "dwp", "dashboard"]
+          "enum": ["all", "report", "story", "dwp", "dashboard", "page", "picture", "planner"]
         },
         {
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["all", "report", "story", "dwp", "dashboard"]
+            "enum": ["all", "report", "story", "dwp", "dashboard", "page", "picture", "planner"]
           }
         }
       ],
