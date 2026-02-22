@@ -99,7 +99,6 @@
         "replaceXmlAtCursorParagraph",
         "replaceXmlAtXpath",
         "showNotification",
-        "stripMarkdown",
         "updateProgress",
         "validateAndRepairXml",
         "xmlToMarkdown"
