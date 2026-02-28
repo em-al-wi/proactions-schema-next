@@ -17,6 +17,9 @@
       "$ref": "#/definitions/steps/DEBUG"
     },
     {
+      "$ref": "#/definitions/steps/EMIT_EVENT"
+    },
+    {
       "$ref": "#/definitions/steps/FOR"
     },
     {
@@ -344,6 +347,33 @@
             "type": "boolean",
             "description": "If true, skips triggering the debugger breakpoint.",
             "default": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "EMIT_EVENT": {
+        "type": "object",
+        "description": "Emits a custom internal event that can trigger other actions subscribed via action events.",
+        "required": [
+          "step",
+          "name"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "EMIT_EVENT",
+              "DISPATCH_EVENT"
+            ],
+            "description": "Emits a custom internal event that can trigger other actions subscribed via action events. (Note: Aliases DISPATCH_EVENT are deprecated, use 'EMIT_EVENT' instead)"
+          },
+          "name": {
+            "type": "string",
+            "description": "Event name to emit. Supports variable resolution."
+          },
+          "payload": {
+            "type": "object",
+            "description": "Optional event payload object. Supports variable resolution."
           }
         },
         "additionalProperties": false
@@ -8979,5 +9009,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-27T15:53:37.523Z"
+  "x-generatedAt": "2026-02-27T21:49:53.213Z"
 }

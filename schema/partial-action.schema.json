@@ -48,6 +48,51 @@
         "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json"
       }
     },
+    "events": {
+      "type": "array",
+      "description": "Optional event subscriptions that automatically trigger this action.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Event source namespace.",
+            "enum": ["aikit", "system", "swing", "custom", "dom"]
+          },
+          "name": {
+            "type": "string",
+            "description": "Event name to subscribe to."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable or disable this subscription.",
+            "default": true
+          },
+          "condition": {
+            "type": "string",
+            "description": "Optional condition expression evaluated for each trigger event."
+          },
+          "ifRunning": {
+            "type": "string",
+            "description": "Behavior when trigger fires while action is already running.",
+            "enum": ["skip", "queue", "parallel"],
+            "default": "skip"
+          },
+          "debounceMs": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Optional debounce window in milliseconds to suppress bursts."
+          },
+          "allowSelfTrigger": {
+            "type": "boolean",
+            "description": "Allow this action to trigger itself from its own emitted events.",
+            "default": false
+          }
+        },
+        "required": ["source", "name"],
+        "additionalProperties": false
+      }
+    },
     "onError": {
       "type": "array",
       "description": "Steps to execute if an error occurs",
