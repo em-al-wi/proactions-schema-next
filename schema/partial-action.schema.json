@@ -57,7 +57,7 @@
           "source": {
             "type": "string",
             "description": "Event source namespace.",
-            "enum": ["aikit", "system", "swing", "custom", "dom"]
+            "enum": ["aikit", "system", "custom"]
           },
           "name": {
             "type": "string",
