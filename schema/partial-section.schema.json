@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-section.schema.json",
   "title": "ProActions Section Schema",
   "type": "object",
   "description": "A logical section containing grouped actions",
@@ -90,6 +91,44 @@
         }
       },
       "additionalProperties": false
+    },
+    "imports": {
+      "oneOf": [
+        {
+          "type": "array",
+          "description": "Reusable block modules imported into the section scope.",
+          "items": {
+            "type": "object",
+            "required": ["from", "as"],
+            "properties": {
+              "from": {
+                "type": "string",
+                "description": "Path to the module file. Supports template resolution."
+              },
+              "as": {
+                "type": "string",
+                "description": "Alias used under imports.<alias> namespace."
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "string",
+          "description": "Path to an external imports file using !include directive"
+        }
+      ]
+    },
+    "blocks": {
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-blocks.schema.json"
+        },
+        {
+          "type": "string",
+          "description": "Path to an external blocks file using !include directive"
+        }
+      ]
     },
     "actions": {
       "type": "array",

@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-blocks.schema.json",
+  "title": "ProActions Blocks Definitions Schema",
+  "type": "object",
+  "description": "Reusable block definitions for scoped constants, vars, flows, and scripts.",
+  "properties": {
+    "constants": {
+      "type": "object",
+      "description": "Static values accessible via scoped namespaces (global.constants.*, section.constants.*, local.constants.*, imports.<alias>.constants.*).",
+      "additionalProperties": true
+    },
+    "vars": {
+      "type": "object",
+      "description": "Lazy template variables resolved at runtime from scoped namespaces.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "flows": {
+      "type": "object",
+      "description": "Reusable flow definitions callable via CALL_FLOW/CALL_TEMPLATE ref.",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json"
+        }
+      }
+    },
+    "scripts": {
+      "type": "object",
+      "description": "Reusable scripts callable via SCRIPTING.scriptRef.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

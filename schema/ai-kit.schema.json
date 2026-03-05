@@ -75,6 +75,17 @@
             }
           ]
         },
+        "BLOCKS": {
+          "oneOf": [
+            {
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-blocks.schema.json"
+            },
+            {
+              "type": "string",
+              "description": "Path to an external blocks file using !include directive"
+            }
+          ]
+        },
         "SECTIONS": {
           "type": "array",
           "description": "Sections defining the grouping of actions in the UI",

@@ -779,24 +779,44 @@
       },
       "CALL_TEMPLATE": {
         "type": "object",
-        "description": "Calls a predefined template of steps by name and executes it.",
+        "description": "Calls a reusable flow by legacy template name (`name`) or scoped reference (`ref`).",
         "required": [
-          "step",
-          "name"
+          "step"
         ],
         "properties": {
           "step": {
             "type": "string",
             "enum": [
-              "CALL_TEMPLATE"
+              "CALL_TEMPLATE",
+              "CALL_FLOW"
             ],
-            "description": "Calls a predefined template of steps by name and executes it."
+            "description": "Calls a reusable flow by legacy template name (`name`) or scoped reference (`ref`)."
           },
           "name": {
             "type": "string",
             "description": "The name of the template to call from the TEMPLATES: section."
+          },
+          "ref": {
+            "type": "string",
+            "description": "Reference path to a reusable flow (for example global.flows.myFlow or imports.common.flows.myFlow)."
           }
         },
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "name"
+                ]
+              },
+              {
+                "required": [
+                  "ref"
+                ]
+              }
+            ]
+          }
+        ],
         "additionalProperties": false
       },
       "TRY": {
@@ -2499,6 +2519,10 @@
             "type": "string",
             "description": "A template string that will be resolved using the step context and then parsed as JSON. Use this when you want to build structured output."
           },
+          "scriptRef": {
+            "type": "string",
+            "description": "Reference path to a reusable script (for example local.scripts.normalizeName or imports.common.scripts.normalizeName)."
+          },
           "mode": {
             "type": "string",
             "description": "Execution mode for scripts. Use \"async\" to run the script using the asynchronous evaluator.",
@@ -2521,6 +2545,11 @@
               },
               {
                 "required": [
+                  "scriptRef"
+                ]
+              },
+              {
+                "required": [
                   "template"
                 ]
               }
@@ -2530,6 +2559,22 @@
             "not": {
               "required": [
                 "script",
+                "scriptRef"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "script",
+                "template"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "scriptRef",
                 "template"
               ]
             }
@@ -4603,11 +4648,11 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling"
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
           },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead). Supports template, steps, script, or scriptRef."
           },
           "toolsReuseContext": {
             "type": "boolean",
@@ -5146,11 +5191,11 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling"
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
           },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead). Supports template, steps, script, or scriptRef."
           },
           "toolsReuseContext": {
             "type": "boolean",
@@ -5694,11 +5739,11 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling"
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
           },
           "functions": {
             "type": "array",
-            "description": "Array of function descriptors for tool calling (deprecated, use tools instead)"
+            "description": "Array of function descriptors for tool calling (deprecated, use tools instead). Supports template, steps, script, or scriptRef."
           },
           "toolsReuseContext": {
             "type": "boolean",
@@ -9009,5 +9054,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-02-28T12:42:19.236Z"
+  "x-generatedAt": "2026-03-04T18:54:59.999Z"
 }

@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Execution Monitor Configuration",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-monitor.schema.json",
+  "title": "ProActions Progress Monitor Schema",
   "description": "Configuration for the Flow Monitor",
   "type": "object",
   "properties": {
