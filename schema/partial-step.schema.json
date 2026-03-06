@@ -32,6 +32,9 @@
       "$ref": "#/definitions/steps/PARALLEL"
     },
     {
+      "$ref": "#/definitions/steps/PLATFORM"
+    },
+    {
       "$ref": "#/definitions/steps/SET"
     },
     {
@@ -632,6 +635,77 @@
             }
           }
         },
+        "additionalProperties": false
+      },
+      "PLATFORM": {
+        "type": "object",
+        "description": "Routes flow execution to platform-specific branches (`swing`, `prime`, `standalone`) with optional `default` fallback.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "PLATFORM"
+            ],
+            "description": "Routes flow execution to platform-specific branches (`swing`, `prime`, `standalone`) with optional `default` fallback."
+          },
+          "swing": {
+            "type": "array",
+            "description": "Steps executed when running in Swing.",
+            "items": {
+              "$ref": "#"
+            }
+          },
+          "prime": {
+            "type": "array",
+            "description": "Steps executed when running in Prime.",
+            "items": {
+              "$ref": "#"
+            }
+          },
+          "standalone": {
+            "type": "array",
+            "description": "Steps executed when running in Standalone mode.",
+            "items": {
+              "$ref": "#"
+            }
+          },
+          "default": {
+            "type": "array",
+            "description": "Fallback steps executed when no platform-specific branch matches.",
+            "items": {
+              "$ref": "#"
+            }
+          }
+        },
+        "allOf": [
+          {
+            "anyOf": [
+              {
+                "required": [
+                  "swing"
+                ]
+              },
+              {
+                "required": [
+                  "prime"
+                ]
+              },
+              {
+                "required": [
+                  "standalone"
+                ]
+              },
+              {
+                "required": [
+                  "default"
+                ]
+              }
+            ]
+          }
+        ],
         "additionalProperties": false
       },
       "SET": {
@@ -9054,5 +9128,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-03-04T18:54:59.999Z"
+  "x-generatedAt": "2026-03-06T12:07:15.485Z"
 }
