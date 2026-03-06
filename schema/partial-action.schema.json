@@ -200,6 +200,25 @@
             "isActive": {
               "type": "string",
               "description": "Nunjucks expression for button visibility"
+            },
+            "showIn": {
+              "type": "object",
+              "description": "Optional source-level visibility gates evaluated before isActive.",
+              "properties": {
+                "inlinetoolbar": {
+                  "type": "boolean",
+                  "description": "Show action when triggered from inline text selection toolbar"
+                },
+                "slashmenu": {
+                  "type": "boolean",
+                  "description": "Show action when triggered from contextual slash menu"
+                },
+                "blockmenu": {
+                  "type": "boolean",
+                  "description": "Show action when triggered from contextual block menu"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "required": ["enable"]
