@@ -4949,7 +4949,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from /SysConfig/ProActions/Skills/<skillName>/SKILL.md.'"
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
           },
           "outputs": {
             "type": "array",
@@ -5492,7 +5492,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from /SysConfig/ProActions/Skills/<skillName>/SKILL.md.'"
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
           },
           "target": {
             "type": "string",
@@ -6040,7 +6040,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from /SysConfig/ProActions/Skills/<skillName>/SKILL.md.'"
+            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
           },
           "outputs": {
             "type": "array",
@@ -9128,5 +9128,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-03-09T15:49:33.908Z"
+  "x-generatedAt": "2026-03-17T08:04:40.678Z"
 }
