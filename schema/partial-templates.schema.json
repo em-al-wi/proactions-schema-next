@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-templates.schema.json",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-templates.schema.json",
   "title": "ProActions Templates Setup Schema",
   "type": "object",
   "description": "Reusable template definitions that can be called from flows",
@@ -8,7 +8,7 @@
     "type": "array",
     "description": "Template steps",
     "items": {
-      "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json"
+      "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.schema.json"
     }
   }
 }

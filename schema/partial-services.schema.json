@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-services.schema.json",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-services.schema.json",
   "title": "ProActions AI-Kit Services Schema",
   "description": "Schema for service definitions in AI-Kit",
   "type": "object",

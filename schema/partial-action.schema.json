@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-action.schema.json",
+  "$id": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-action.schema.json",
   "title": "ProActions Action Schema",
   "description": "Schema for a single action entry used inside a section",
   "type": "object",
@@ -46,7 +46,7 @@
       "type": "array",
       "description": "List of steps to execute",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json"
+        "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.schema.json"
       }
     },
     "imports": {
@@ -79,7 +79,7 @@
     "blocks": {
       "oneOf": [
         {
-          "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-blocks.schema.json"
+          "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-blocks.schema.json"
         },
         {
           "type": "string",
@@ -136,7 +136,7 @@
       "type": "array",
       "description": "Steps to execute if an error occurs",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json"
+        "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.schema.json"
       }
     },
     "hidden": {

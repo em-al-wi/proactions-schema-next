@@ -4791,7 +4791,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "toolGuidance": {
@@ -5334,7 +5334,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "toolGuidance": {
@@ -5882,7 +5882,7 @@
             "type": "array",
             "description": "List of built-in tool classes to enable for the AI model",
             "items": {
-              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-builtin-tools.schema.json"
+              "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
           },
           "toolGuidance": {
@@ -8623,10 +8623,10 @@
             "additionalProperties": {
               "oneOf": [
                 {
-                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.form.schema.json#/definitions/formComponent"
+                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formComponent"
                 },
                 {
-                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.form.schema.json#/definitions/formGroup"
+                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formGroup"
                 }
               ]
             }
@@ -9128,5 +9128,5 @@
       }
     }
   },
-  "x-generatedAt": "2026-03-17T08:04:40.678Z"
+  "x-generatedAt": "2026-03-17T10:26:12.939Z"
 }

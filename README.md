@@ -1,48 +1,14 @@
-# proactions-schema
+# ProActions Schemas
 
-## Configuration
+This repository contains the published JSON schemas for ProActions tools and workflows.
 
-You can use the following configuration to use this schema in VS Code:
+## About
+The source for these schemas is maintained in the private ProActions repository. They are generated automatically based on TypeScript type declarations and explicit step metadata.
 
-_.vscode/settings.json_
-```json
-{
-  "yaml.customTags": ["!include scalar"],
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/ai-kit.schema.json": [
-      "*.ai-kit.yaml",
-      "*.ai-kit.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-services.schema.json": [
-      "*.ai-kit.serv.yaml",
-      "*.ai-kit.serv.yaml*",
-      "*.ai-kit.services.yaml",
-      "*.ai-kit.services.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-floatingMenu.schema.json": [
-      "*.ai-kit.menu.yaml",
-      "*.ai-kit.menu.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-templates.schema.json": [
-      "*.ai-kit.templ.yaml",
-      "*.ai-kit.templ.yaml*",
-      "*.ai-kit.template.yaml",
-      "*.ai-kit.template.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-section.schema.json": [
-      "*.ai-kit.sect.yaml",
-      "*.ai-kit.sect.yaml*",
-      "*.ai-kit.section.yaml",
-      "*.ai-kit.section.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-action.schema.json": [
-      "*.ai-kit.action.yaml",
-      "*.ai-kit.action.yaml*"
-    ],
-    "https://raw.githubusercontent.com/em-al-wi/proactions-schema/main/schema/partial-step.schema.json": [
-      "*.ai-kit.step.yaml",
-      "*.ai-kit.step.yaml*"
-    ]
-  }
-}
-```
+## Usage
+The schemas can be loaded into an IDE like VS Code or WebStorm to provide validation and autocomplete for your `*.ai-kit.yaml` and `*.pro-actions.ai-kit.yaml` files.
+
+You can configure VS Code workspace settings to point to the raw URLs defined here. See the primary documentation for how to configure your IDE.
+
+## License
+Copyright © Eidosmedia. All rights reserved.
