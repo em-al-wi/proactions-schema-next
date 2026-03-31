@@ -104,6 +104,9 @@
       "$ref": "#/definitions/steps/TAG_PURE_TEXT"
     },
     {
+      "$ref": "#/definitions/steps/INSERT_TEMPLATE_SECTION"
+    },
+    {
       "$ref": "#/definitions/steps/MONITOR_CHOICE"
     },
     {
@@ -126,6 +129,15 @@
     },
     {
       "$ref": "#/definitions/steps/MONITOR_TABLE"
+    },
+    {
+      "$ref": "#/definitions/steps/DIGITAL_PREVIEW"
+    },
+    {
+      "$ref": "#/definitions/steps/DOCUMENT_PANEL_COMMAND"
+    },
+    {
+      "$ref": "#/definitions/steps/PRINT_PREVIEW"
     },
     {
       "$ref": "#/definitions/steps/SANITIZE"
@@ -2080,6 +2092,32 @@
         },
         "additionalProperties": false
       },
+      "INSERT_TEMPLATE_SECTION": {
+        "type": "object",
+        "description": "Creates a new section in the document using the specified template path, relative to the currently elected item",
+        "required": [
+          "step",
+          "templatePath"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "INSERT_TEMPLATE_SECTION"
+            ],
+            "description": "Creates a new section in the document using the specified template path, relative to the currently elected item"
+          },
+          "templatePath": {
+            "type": "string",
+            "description": "The path to the template to be inserted (supports variables)"
+          },
+          "insertAfter": {
+            "type": "boolean",
+            "description": "Whether the section should be inserted after the current section (true) or before (false). Defaults to true"
+          }
+        },
+        "additionalProperties": false
+      },
       "MONITOR_CHOICE": {
         "type": "object",
         "description": "Display a selection of choices in the Flow Monitor. Pauses workflow until user selects.",
@@ -2489,6 +2527,62 @@
           "maxRows": {
             "type": "number",
             "description": "Maximum number of rows rendered before truncation."
+          }
+        },
+        "additionalProperties": false
+      },
+      "DIGITAL_PREVIEW": {
+        "type": "object",
+        "description": "Triggers the digital preview functionality",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "DIGITAL_PREVIEW"
+            ],
+            "description": "Triggers the digital preview functionality"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DOCUMENT_PANEL_COMMAND": {
+        "type": "object",
+        "description": "Executes an array of commands in the document preview panel (e.g. CREATE_PDF, CREATE_TOC)",
+        "required": [
+          "step",
+          "commands"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "DOCUMENT_PANEL_COMMAND"
+            ],
+            "description": "Executes an array of commands in the document preview panel (e.g. CREATE_PDF, CREATE_TOC)"
+          },
+          "commands": {
+            "type": "object",
+            "description": "Array of strings representing commands to execute (e.g. [\"CREATE_TOC\", \"CREATE_PDF\"])"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PRINT_PREVIEW": {
+        "type": "object",
+        "description": "Triggers the print design preview functionality",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "PRINT_PREVIEW"
+            ],
+            "description": "Triggers the print design preview functionality"
           }
         },
         "additionalProperties": false
