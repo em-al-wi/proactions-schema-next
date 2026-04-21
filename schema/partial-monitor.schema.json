@@ -8,13 +8,8 @@
     "enabled": {
       "description": "Enable or disable the monitor. 'ondemand' means it's enabled only when specific actions request it.",
       "oneOf": [
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "string",
-          "enum": ["ondemand"]
-        }
+        { "type": "boolean" },
+        { "type": "string", "enum": ["ondemand"] }
       ],
       "default": "ondemand"
     },
@@ -26,19 +21,15 @@
     },
     "theme": {
       "type": "string",
-      "enum": ["dark", "light"],
-      "default": "dark",
-      "description": "Visual theme for the monitor"
+      "enum": ["dark", "light", "auto"],
+      "default": "auto",
+      "description": "Visual theme for the monitor. 'auto' inherits from the host application."
     },
-    "autoHide": {
-      "type": "boolean",
-      "default": true,
-      "description": "Automatically hide the monitor when no flows are running"
-    },
-    "autoHideDelay": {
+    "completionFadeDelay": {
       "type": "number",
       "default": 3000,
-      "description": "Delay in milliseconds before auto-hiding"
+      "minimum": 1000,
+      "description": "Delay in milliseconds before the completion pill fades out"
     },
     "maxVisible": {
       "type": "number",
@@ -47,10 +38,7 @@
     },
     "apps": {
       "type": "array",
-      "items": {
-        "type": "string",
-        "enum": ["swing", "prime", "all"]
-      },
+      "items": { "type": "string", "enum": ["swing", "prime", "all"] },
       "default": ["all"],
       "description": "Applications where the monitor should be visible"
     },
@@ -93,27 +81,21 @@
     "defaultHeight": {
       "type": "number",
       "minimum": 100,
-      "description": "Default height of the monitor in pixels. If not set, height is determined by content."
+      "description": "Default height of the monitor in pixels"
     },
     "forUsers": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "description": "Restrict monitor to specific users"
     },
     "forGroups": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "description": "Restrict monitor to specific groups"
     },
     "forTeams": {
       "type": "array",
-      "items": {
-        "type": "string"
-      },
+      "items": { "type": "string" },
       "description": "Restrict monitor to specific teams"
     },
     "disabled": {
