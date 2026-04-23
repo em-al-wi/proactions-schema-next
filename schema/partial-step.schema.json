@@ -158,120 +158,6 @@
       "$ref": "#/definitions/steps/BASE64_TO_BLOB"
     },
     {
-      "$ref": "#/definitions/steps/HUB_MCP_INVOKE"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_MCP_TOOLS"
-    },
-    {
-      "$ref": "#/definitions/steps/BRIGHTER_AI"
-    },
-    {
-      "$ref": "#/definitions/steps/DEEPL_TRANSLATE"
-    },
-    {
-      "$ref": "#/definitions/steps/DEEPL_WRITE"
-    },
-    {
-      "$ref": "#/definitions/steps/EDAPI_OBJECT_CONTENT"
-    },
-    {
-      "$ref": "#/definitions/steps/UPLOAD_IMAGE"
-    },
-    {
-      "$ref": "#/definitions/steps/UPDATE_BINARY_CONTENT"
-    },
-    {
-      "$ref": "#/definitions/steps/UPLOAD"
-    },
-    {
-      "$ref": "#/definitions/steps/ELEVENLABS_TTS"
-    },
-    {
-      "$ref": "#/definitions/steps/ELEVENLABS_STT"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_INIT"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_STATUS"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_LOGOUT"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_YOUTUBE_UPLOAD"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_CONTENT_EXTRACTION"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_ASSISTANT"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_THREAD"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_DELETE_THREAD"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_THREAD_FILES"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_THREAD_MESSAGE"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_COMPLETION"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_COMPLETION"
-    },
-    {
-      "$ref": "#/definitions/steps/AZURE_OPENAI_COMPLETION"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_IMAGE_GENERATION"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_IMAGE_GENERATION"
-    },
-    {
-      "$ref": "#/definitions/steps/AZURE_OPENAI_IMAGE_GENERATION"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_SPEECH"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_SPEECH"
-    },
-    {
-      "$ref": "#/definitions/steps/AZURE_OPENAI_SPEECH"
-    },
-    {
-      "$ref": "#/definitions/steps/OPENAI_TRANSCRIPTION"
-    },
-    {
-      "$ref": "#/definitions/steps/HUB_TRANSCRIPTION"
-    },
-    {
-      "$ref": "#/definitions/steps/AZURE_OPENAI_TRANSCRIPTION"
-    },
-    {
-      "$ref": "#/definitions/steps/REST"
-    },
-    {
-      "$ref": "#/definitions/steps/STABILITY_AI_UPSCALE"
-    },
-    {
-      "$ref": "#/definitions/steps/STABILITY_AI_OUTPAINT"
-    },
-    {
-      "$ref": "#/definitions/steps/STABILITY_AI_SEARCH_AND_REPLACE"
-    },
-    {
-      "$ref": "#/definitions/steps/STABILITY_AI_SEARCH_AND_RECOLOR"
-    },
-    {
       "$ref": "#/definitions/steps/READ_CLIPBOARD"
     },
     {
@@ -315,6 +201,120 @@
     },
     {
       "$ref": "#/definitions/steps/CHANGE_VIEW_SIZE"
+    },
+    {
+      "$ref": "#/definitions/steps/DEEPL_TRANSLATE"
+    },
+    {
+      "$ref": "#/definitions/steps/DEEPL_WRITE"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_ASSISTANT"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_THREAD"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_DELETE_THREAD"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_THREAD_FILES"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_THREAD_MESSAGE"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_COMPLETION"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_COMPLETION"
+    },
+    {
+      "$ref": "#/definitions/steps/AZURE_OPENAI_COMPLETION"
+    },
+    {
+      "$ref": "#/definitions/steps/BRIGHTER_AI"
+    },
+    {
+      "$ref": "#/definitions/steps/ELEVENLABS_TTS"
+    },
+    {
+      "$ref": "#/definitions/steps/ELEVENLABS_STT"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_IMAGE_GENERATION"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_IMAGE_GENERATION"
+    },
+    {
+      "$ref": "#/definitions/steps/AZURE_OPENAI_IMAGE_GENERATION"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_SPEECH"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_SPEECH"
+    },
+    {
+      "$ref": "#/definitions/steps/AZURE_OPENAI_SPEECH"
+    },
+    {
+      "$ref": "#/definitions/steps/OPENAI_TRANSCRIPTION"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_TRANSCRIPTION"
+    },
+    {
+      "$ref": "#/definitions/steps/AZURE_OPENAI_TRANSCRIPTION"
+    },
+    {
+      "$ref": "#/definitions/steps/STABILITY_AI_UPSCALE"
+    },
+    {
+      "$ref": "#/definitions/steps/STABILITY_AI_OUTPAINT"
+    },
+    {
+      "$ref": "#/definitions/steps/STABILITY_AI_SEARCH_AND_REPLACE"
+    },
+    {
+      "$ref": "#/definitions/steps/STABILITY_AI_SEARCH_AND_RECOLOR"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_MCP_INVOKE"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_MCP_TOOLS"
+    },
+    {
+      "$ref": "#/definitions/steps/EDAPI_OBJECT_CONTENT"
+    },
+    {
+      "$ref": "#/definitions/steps/UPLOAD_IMAGE"
+    },
+    {
+      "$ref": "#/definitions/steps/UPDATE_BINARY_CONTENT"
+    },
+    {
+      "$ref": "#/definitions/steps/UPLOAD"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_INIT"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_STATUS"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_YOUTUBE_AUTH_LOGOUT"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_YOUTUBE_UPLOAD"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_CONTENT_EXTRACTION"
+    },
+    {
+      "$ref": "#/definitions/steps/REST"
     }
   ],
   "definitions": {
@@ -3178,41 +3178,23 @@
         },
         "additionalProperties": false
       },
-      "HUB_MCP_INVOKE": {
+      "READ_CLIPBOARD": {
         "type": "object",
-        "description": "Invoke a tool on an MCP server via the Hub.",
+        "description": "Reads content from the user clipboard. Prefers HTML content when available, falls back to plain text.",
         "required": [
-          "step",
-          "server",
-          "tool"
+          "step"
         ],
         "properties": {
           "step": {
             "type": "string",
             "enum": [
-              "HUB_MCP_INVOKE"
+              "READ_CLIPBOARD"
             ],
-            "description": "Invoke a tool on an MCP server via the Hub."
+            "description": "Reads content from the user clipboard. Prefers HTML content when available, falls back to plain text."
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "server": {
-            "type": "string",
-            "description": "The name of the MCP server."
-          },
-          "tool": {
-            "type": "string",
-            "description": "The name of the tool to invoke."
-          },
-          "arguments": {
-            "type": "object",
-            "description": "The arguments to pass to the tool."
           },
           "outputs": {
             "type": "array",
@@ -3226,8 +3208,8 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "const": "object",
-                  "description": "The result of the tool invocation."
+                  "const": "text",
+                  "description": "The clipboard content (HTML or plain text) stored in the default text output."
                 },
                 "name": {
                   "type": "string",
@@ -3240,9 +3222,9 @@
         },
         "additionalProperties": false
       },
-      "HUB_MCP_TOOLS": {
+      "WRITE_CLIPBOARD": {
         "type": "object",
-        "description": "List available tools from an MCP server via the Hub.",
+        "description": "Writes text to the user clipboard. Reads the content from the configured input (cfg.text) or from the default text input in the flow context.",
         "required": [
           "step"
         ],
@@ -3250,51 +3232,24 @@
           "step": {
             "type": "string",
             "enum": [
-              "HUB_MCP_TOOLS"
+              "WRITE_CLIPBOARD"
             ],
-            "description": "List available tools from an MCP server via the Hub."
+            "description": "Writes text to the user clipboard. Reads the content from the configured input (cfg.text) or from the default text input in the flow context."
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
-          "service": {
+          "text": {
             "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "server": {
-            "type": "string",
-            "description": "The name of the MCP server to list tools from."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "The list of available tools (and resources/prompts if provided by the Hub API)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
+            "description": "Text to write to clipboard. If omitted, uses the default text input from flow context."
           }
         },
         "additionalProperties": false
       },
-      "BRIGHTER_AI": {
+      "DOWNLOAD": {
         "type": "object",
-        "description": "Upload an image to BrighterAI, poll for processing completion and download the anonymized image. The resulting anonymized image blob is written to the configured output.",
+        "description": "Downloads a file constructed from text or an existing Blob. The filename is required.",
         "required": [
           "step"
         ],
@@ -3302,30 +3257,88 @@
           "step": {
             "type": "string",
             "enum": [
-              "BRIGHTER_AI",
-              "SERVICE_BRIGHTER_AI"
+              "DOWNLOAD",
+              "DOWNLOAD_TEXT"
             ],
-            "description": "Upload an image to BrighterAI, poll for processing completion and download the anonymized image. The resulting anonymized image blob is written to the configured output. (Note: Aliases SERVICE_BRIGHTER_AI are deprecated, use 'BRIGHTER_AI' instead)"
+            "description": "Downloads a file constructed from text or an existing Blob. The filename is required. (Note: Aliases DOWNLOAD_TEXT are deprecated, use 'DOWNLOAD' instead)"
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
-          "service": {
+          "filename": {
             "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'BRIGHTER_AI'."
+            "description": "Name of the file to download (required)."
           },
-          "serviceName": {
+          "contentType": {
             "type": "string",
-            "description": "Service operation name (e.g. blur, dnat, mask). If not provided, blur is used."
-          },
-          "params": {
-            "type": "object",
-            "description": "Optional url parameters object passed to the BrighterAI upload endpoint."
+            "description": "The content-type to set for the download of the file.",
+            "default": "text/plain"
           },
           "inputs": {
             "type": "array",
             "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "filename",
+                  "description": "The filename to be used - use cfg.filename instead"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "FILE_UPLOAD": {
+        "type": "object",
+        "description": "Opens a file upload dialog (modal) and stores selected file(s) into the flow context. Supports output mapping via the `outputs` config or default file output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "FILE_UPLOAD",
+              "USER_FILE_UPLOAD"
+            ],
+            "description": "Opens a file upload dialog (modal) and stores selected file(s) into the flow context. Supports output mapping via the `outputs` config or default file output. (Note: Aliases USER_FILE_UPLOAD are deprecated, use 'FILE_UPLOAD' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "promptText": {
+            "type": "string",
+            "description": "Prompt text shown in the upload dialog."
+          },
+          "accept": {
+            "type": "string",
+            "description": "Comma-separated list of accepted MIME types for upload (e.g. \"image/png,application/pdf\")."
+          },
+          "fileTypes": {
+            "type": "array",
+            "description": "Array of accepted MIME types for the upload (e.g. [\"audio/mp3\",\"audio/wav\"])."
+          },
+          "maxSize": {
+            "type": "number",
+            "description": "Maximum file size allowed in bytes."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
             "items": {
               "oneOf": [
                 {
@@ -3337,12 +3350,12 @@
                   "properties": {
                     "type": {
                       "type": "string",
-                      "const": "blob",
-                      "description": "Input image blob to be processed (can come from previous steps or a flow variable)."
+                      "const": "file",
+                      "description": "Default output: the uploaded File object (when no explicit outputs are configured)."
                     },
                     "name": {
                       "type": "string",
-                      "description": "Flow context key to read the input value from"
+                      "description": "Flow context key to store the output value in"
                     }
                   },
                   "additionalProperties": false
@@ -3356,17 +3369,399 @@
                   "properties": {
                     "type": {
                       "type": "string",
-                      "const": "imageName",
-                      "description": "Optional image name to use when uploading (defaults to \"image.jpg\")."
+                      "const": "text",
+                      "description": "If configured, file content can be read and stored as text in the configured output name."
                     },
                     "name": {
                       "type": "string",
-                      "description": "Flow context key to read the input value from"
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "arrayBuffer",
+                      "description": "If configured, file content can be read as an ArrayBuffer into the configured output name."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
                     }
                   },
                   "additionalProperties": false
                 }
               ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "PROMPT": {
+        "type": "object",
+        "description": "Shows a simple prompt to the user and stores the entered text into the default text output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "PROMPT",
+              "USER_PROMPT"
+            ],
+            "description": "Shows a simple prompt to the user and stores the entered text into the default text output. (Note: Aliases USER_PROMPT are deprecated, use 'PROMPT' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "promptText": {
+            "type": "string",
+            "description": "Text displayed in the prompt. Can contain template placeholders resolved against the flowContext."
+          },
+          "placeholder": {
+            "type": "string",
+            "description": "Optional placeholder shown inside the input field."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "The text entered by the user is written to the default text output (or the configured output variable)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "FORM": {
+        "type": "object",
+        "description": "Displays a configurable form to the user (via FormBuilder). The form definition is provided in `cfg.form`. When submitted, the returned values are merged into the flowContext.",
+        "required": [
+          "step",
+          "form"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "FORM"
+            ],
+            "description": "Displays a configurable form to the user (via FormBuilder). The form definition is provided in `cfg.form`. When submitted, the returned values are merged into the flowContext."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the form modal."
+          },
+          "form": {
+            "type": "object",
+            "description": "Form field definitions. Each key is the field name, and the value is a FormComponent object defining the field type and properties. See the comprehensive form documentation for all available field types and properties.",
+            "additionalProperties": {
+              "oneOf": [
+                {
+                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formComponent"
+                },
+                {
+                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formGroup"
+                }
+              ]
+            }
+          },
+          "buttons": {
+            "type": "array",
+            "description": "Optional buttons configuration for the form modal. Array of button objects defining submit/cancel buttons.",
+            "minItems": 1,
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "description": "Form button configuration",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Button type",
+                  "enum": [
+                    "submit",
+                    "cancel"
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "description": "Button label text"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Button name attribute (used when type is submit)"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "Button title attribute (tooltip)"
+                },
+                "class": {
+                  "type": "string",
+                  "description": "CSS class for button styling (e.g., \"btn btn-primary\")"
+                },
+                "flowAttribute": {
+                  "type": "string",
+                  "description": "Flow context variable name to store the button name/value when clicked"
+                }
+              },
+              "required": [
+                "type"
+              ]
+            }
+          },
+          "formConfig": {
+            "type": "object",
+            "description": "Optional modal-level configuration (width, height, fullScreen, typography). See FormModalConfig for all options.",
+            "properties": {
+              "dialogSize": {
+                "type": "string",
+                "description": "Bootstrap dialog size: \"sm\", \"md\", \"lg\", \"xl\""
+              },
+              "width": {
+                "type": "string",
+                "description": "Modal width (e.g., \"720px\", \"80vw\")"
+              },
+              "maxWidth": {
+                "type": "string",
+                "description": "Maximum modal width"
+              },
+              "height": {
+                "type": "string",
+                "description": "Modal height (e.g., \"600px\", \"80vh\")"
+              },
+              "maxHeight": {
+                "type": "string",
+                "description": "Maximum modal height"
+              },
+              "fullScreen": {
+                "type": "boolean",
+                "description": "Force modal to cover entire viewport"
+              },
+              "bodyFontSize": {
+                "type": "string",
+                "description": "Font size for modal body"
+              },
+              "bodyLineHeight": {
+                "type": "string",
+                "description": "Line height for modal body"
+              },
+              "labelFontSize": {
+                "type": "string",
+                "description": "Font size for form labels"
+              },
+              "inputFontSize": {
+                "type": "string",
+                "description": "Font size for form inputs"
+              },
+              "inputLineHeight": {
+                "type": "string",
+                "description": "Line height for form inputs"
+              },
+              "diffFontSize": {
+                "type": "string",
+                "description": "Font size for diff components"
+              },
+              "diffLineHeight": {
+                "type": "string",
+                "description": "Line height for diff components"
+              },
+              "modalClass": {
+                "type": "string",
+                "description": "Additional CSS class for modal"
+              }
+            }
+          },
+          "inlineSteps": {
+            "type": "array",
+            "description": "Optional steps to execute before showing the form while an in-place loading UI is shown.",
+            "items": {
+              "$ref": "#"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "PLAY_AUDIO": {
+        "type": "object",
+        "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "PLAY_AUDIO"
+            ],
+            "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "in": {
+            "type": "string",
+            "description": "Optional input path or variable name containing the audio source (data URL, http(s) URL or raw base64). If omitted, the default text input is used."
+          },
+          "autoplay": {
+            "type": "boolean",
+            "description": "Attempt autoplay on load. Note: browsers may block autoplay; in that case the player will show a hint and wait for user interaction.",
+            "default": true
+          },
+          "showProgress": {
+            "type": "boolean",
+            "description": "Show progress / seek bar in the player.",
+            "default": true
+          },
+          "showVolume": {
+            "type": "boolean",
+            "description": "Show volume controls in the player.",
+            "default": true
+          },
+          "showTimeDisplay": {
+            "type": "boolean",
+            "description": "Show current time and duration labels.",
+            "default": true
+          },
+          "theme": {
+            "type": "string",
+            "description": "Theme of the player: 'dark' | 'light' or any valid CSS color string.",
+            "default": "dark"
+          },
+          "position": {
+            "type": "string",
+            "description": "Player anchoring position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center' | 'center'.",
+            "default": "center"
+          },
+          "loop": {
+            "type": "boolean",
+            "description": "If true, loop playback.",
+            "default": false
+          },
+          "title": {
+            "type": "string",
+            "description": "Optional title shown in the player title bar."
+          },
+          "mimeType": {
+            "type": "string",
+            "description": "Optional MIME type hint used when the provided input is raw base64 without a data URL header (e.g. \"audio/mpeg\")."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "Audio source as data URL, http(s) URL, or raw base64. If omitted, reads from `in` config or default text input."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "USER_SELECT": {
+        "type": "object",
+        "description": "Displays a selection modal allowing the user to pick one item from a list. The list may be provided directly or produced by a pre-processing step (inlineSteps). The selected value is written to the default text output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "USER_SELECT"
+            ],
+            "description": "Displays a selection modal allowing the user to pick one item from a list. The list may be provided directly or produced by a pre-processing step (inlineSteps). The selected value is written to the default text output."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "inlineSteps": {
+            "type": "array",
+            "description": "Optional steps to execute before showing the selection modal. Useful to prepare or transform input.",
+            "items": {
+              "$ref": "#"
+            }
+          },
+          "promptText": {
+            "type": "string",
+            "description": "Prompt or title text shown at the top of the selection modal (supports variable resolution)."
+          },
+          "infoTitle": {
+            "type": "string",
+            "description": "Optional title shown above additional info in the selection modal."
+          },
+          "infoText": {
+            "type": "string",
+            "description": "Optional descriptive text shown in the selection modal (supports variable resolution)."
+          },
+          "enableKeyboardControl": {
+            "type": "boolean",
+            "description": "Enable keyboard navigation in the selection modal."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "list",
+                  "description": "List of options for the user to select from. If omitted, converts text input to a list automatically."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "outputs": {
@@ -3381,8 +3776,8 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "const": "blob",
-                  "description": "The anonymized image blob returned by the BrighterAI service."
+                  "const": "text",
+                  "description": "The selected option (string) stored in the default text output."
                 },
                 "name": {
                   "type": "string",
@@ -3391,6 +3786,241 @@
               },
               "additionalProperties": false
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "IMAGE_PICKER": {
+        "type": "object",
+        "description": "Shows an image picker modal allowing the user to pick one image from a provided list of image objects ({ url, previewUrl?, label? }). The selected image object is stored as an output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "IMAGE_PICKER",
+              "USER_IMAGE_PICKER"
+            ],
+            "description": "Shows an image picker modal allowing the user to pick one image from a provided list of image objects ({ url, previewUrl?, label? }). The selected image object is stored as an output. (Note: Aliases USER_IMAGE_PICKER are deprecated, use 'IMAGE_PICKER' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "promptText": {
+            "type": "string",
+            "description": "Prompt text shown in the image picker modal."
+          },
+          "imageList": {
+            "type": "array",
+            "description": "List of image objects to show. Each item should contain at least a `url` and optionally `previewUrl` and `label`."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "image",
+                  "description": "Selected image object (includes url, previewUrl?, label?)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "SHOW_PROGRESS": {
+        "type": "object",
+        "description": "Show a progress bar with optional status text. Use `position` to place it and `autoHide` to auto-hide after completion.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "SHOW_PROGRESS"
+            ],
+            "description": "Show a progress bar with optional status text. Use `position` to place it and `autoHide` to auto-hide after completion."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status text to display next to the progress bar. Supports variable resolution."
+          },
+          "position": {
+            "type": "string",
+            "description": "Position of the progress bar. Common values: 'bottom', 'top'.",
+            "enum": [
+              "bottom",
+              "top",
+              "left",
+              "right"
+            ]
+          },
+          "autoHide": {
+            "type": "boolean",
+            "description": "Whether the progress bar should auto-hide when completed."
+          }
+        },
+        "additionalProperties": false
+      },
+      "UPDATE_PROGRESS": {
+        "type": "object",
+        "description": "Update an existing progress bar. Provide percentage (0-100) and optional status text.",
+        "required": [
+          "step",
+          "percentage"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "UPDATE_PROGRESS"
+            ],
+            "description": "Update an existing progress bar. Provide percentage (0-100) and optional status text."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status text to update on the progress bar. Supports variable resolution."
+          },
+          "percentage": {
+            "description": "Progress percentage (0-100). Can be a number or a string that resolves to a number.",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "HIDE_PROGRESS": {
+        "type": "object",
+        "description": "Hide any shown progress bar.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HIDE_PROGRESS"
+            ],
+            "description": "Hide any shown progress bar."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          }
+        },
+        "additionalProperties": false
+      },
+      "SLEEP": {
+        "type": "object",
+        "description": "Pause execution for a given delay (ms). Useful for pacing flows or waiting for external state changes.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "SLEEP"
+            ],
+            "description": "Pause execution for a given delay (ms). Useful for pacing flows or waiting for external state changes."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "delay": {
+            "type": "number",
+            "description": "Delay in milliseconds to sleep. Defaults to 1000 ms."
+          }
+        },
+        "additionalProperties": false
+      },
+      "CLEAR_SELECTION": {
+        "type": "object",
+        "description": "Clears the current text selection and optionally repositions the cursor to the start or end of the selection. Available in Swing editor context only.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "CLEAR_SELECTION"
+            ],
+            "description": "Clears the current text selection and optionally repositions the cursor to the start or end of the selection. Available in Swing editor context only."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "cursorPosition": {
+            "type": "string",
+            "description": "Where to move the cursor after clearing selection. Use \"anchorStart\" to move to the start or \"anchorEnd\" to move to the end.",
+            "enum": [
+              "anchorStart",
+              "anchorEnd"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "CHANGE_VIEW_SIZE": {
+        "type": "object",
+        "description": "Requests a change of the view port size. Useful to resize the command palette view in Prime 8.",
+        "required": [
+          "step",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "CHANGE_VIEW_SIZE"
+            ],
+            "description": "Requests a change of the view port size. Useful to resize the command palette view in Prime 8."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "width": {
+            "type": "string",
+            "description": "Target width in pixels. Can be a number or an expression resolved against the flowContext."
+          },
+          "height": {
+            "type": "string",
+            "description": "Target height in pixels. Can be a number or an expression resolved against the flowContext."
           }
         },
         "additionalProperties": false
@@ -3585,963 +4215,6 @@
                   "type": "string",
                   "const": "text",
                   "description": "Rewritten text"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "EDAPI_OBJECT_CONTENT": {
-        "type": "object",
-        "description": "Fetch object content from EDAPI and return it as blob or configured outputs. The content id can be provided via cfg.contentId or via a text input.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "EDAPI_OBJECT_CONTENT"
-            ],
-            "description": "Fetch object content from EDAPI and return it as blob or configured outputs. The content id can be provided via cfg.contentId or via a text input."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "contentId": {
-            "type": "string",
-            "description": "Explicit content id to fetch. If omitted, the step will try to read the id from the default text input."
-          },
-          "format": {
-            "type": "string",
-            "description": "Format of the content to fetch.",
-            "default": "lowres"
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "Alternate input path to read the content id from the flow context (used if contentId is not provided)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "blob",
-                  "description": "The fetched content blob (default output)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "UPLOAD_IMAGE": {
-        "type": "object",
-        "description": "Upload an image to EDAPI by providing an image object (url or blob). Returns the created object metadata as output.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "UPLOAD_IMAGE",
-              "CTX_UPLOAD_IMAGE"
-            ],
-            "description": "Upload an image to EDAPI by providing an image object (url or blob). Returns the created object metadata as output. (Note: Aliases CTX_UPLOAD_IMAGE are deprecated, use 'UPLOAD_IMAGE' instead)"
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "objectType": {
-            "type": "string",
-            "description": "Type of object to create (default: Image)."
-          },
-          "createMode": {
-            "type": "string",
-            "description": "Creation mode, e.g. AUTO_RENAME."
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "image",
-                  "description": "Image input object or blob to upload (can come from file picker or previous step)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "The created object metadata returned by EDAPI."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "UPDATE_BINARY_CONTENT": {
-        "type": "object",
-        "description": "Update binary content of an existing object in EDAPI using the provided blob. Returns updated object metadata.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "UPDATE_BINARY_CONTENT",
-              "CTX_UPDATE_BINARY_CONTENT"
-            ],
-            "description": "Update binary content of an existing object in EDAPI using the provided blob. Returns updated object metadata. (Note: Aliases CTX_UPDATE_BINARY_CONTENT are deprecated, use 'UPDATE_BINARY_CONTENT' instead)"
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "blob",
-                      "description": "Binary blob to upload for the object"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to read the input value from"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "text",
-                      "description": "Id of the object to update"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to read the input value from"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "Updated object metadata"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "UPLOAD": {
-        "type": "object",
-        "description": "Upload content to EDAPI by providing a blob or specifying parameters (filename, type). Returns created object metadata.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "UPLOAD"
-            ],
-            "description": "Upload content to EDAPI by providing a blob or specifying parameters (filename, type). Returns created object metadata."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "options": {
-            "type": "object",
-            "description": "Obtions data for the UPLOAD"
-          },
-          "filename": {
-            "type": "string",
-            "description": "Filename to use for the uploaded object"
-          },
-          "basetype": {
-            "type": "string",
-            "description": "BaseType - Used to identify upload location when using basefolder configuration."
-          },
-          "type": {
-            "type": "string",
-            "description": "Object type to create (e.g. File, Image)"
-          },
-          "createMode": {
-            "type": "string",
-            "description": "Creation mode (e.g. AUTO_RENAME)"
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "blob",
-                  "description": "Binary blob to upload (preferred)"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "The created object metadata"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "ELEVENLABS_TTS": {
-        "type": "object",
-        "description": "Generate speech audio from text using ElevenLabs TTS. Text is taken from the default text input or a flow variable via `in`.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "ELEVENLABS_TTS"
-            ],
-            "description": "Generate speech audio from text using ElevenLabs TTS. Text is taken from the default text input or a flow variable via `in`."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'ELEVENLABS'."
-          },
-          "apiKey": {
-            "type": "string",
-            "description": "Override API key from service configuration"
-          },
-          "endpoint": {
-            "type": "string",
-            "description": "Override endpoint URL from service configuration"
-          },
-          "voice_id": {
-            "type": "string",
-            "description": "Voice identifier to use for synthesis"
-          },
-          "model_id": {
-            "type": "string",
-            "description": "TTS model id"
-          },
-          "voice_settings": {
-            "type": "object",
-            "description": "Optional voice settings object"
-          },
-          "output_format": {
-            "type": "string",
-            "description": "Desired audio output format (e.g. mp3, wav, pcm)"
-          },
-          "language_code": {
-            "type": "string",
-            "description": "Language code for the synthesis"
-          },
-          "pronunciation_dictionary_locators": {
-            "type": "string",
-            "description": "Pronunciation dictionary locators (array or string) - resolved"
-          },
-          "seed": {
-            "type": "string",
-            "description": "Seed for deterministic generation"
-          },
-          "previous_text": {
-            "type": "string",
-            "description": "Optional previous_text context"
-          },
-          "next_text": {
-            "type": "string",
-            "description": "Optional next_text context"
-          },
-          "apply_text_normalization": {
-            "type": "boolean",
-            "description": "Apply normalization to text"
-          },
-          "apply_language_text_normalization": {
-            "type": "boolean",
-            "description": "Apply language specific normalization"
-          },
-          "mime_type": {
-            "type": "string",
-            "description": "MIME type to use for the produced blob (e.g. audio/mpeg)"
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "Text to synthesize. If omitted, the default text input is used."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "blob",
-                  "description": "Generated audio blob"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "ELEVENLABS_STT": {
-        "type": "object",
-        "description": "Transcribe audio using ElevenLabs STT. Provides the transcribed text and optional JSON result.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "ELEVENLABS_STT"
-            ],
-            "description": "Transcribe audio using ElevenLabs STT. Provides the transcribed text and optional JSON result."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'ELEVENLABS'."
-          },
-          "apiKey": {
-            "type": "string",
-            "description": "Override API key from service configuration"
-          },
-          "endpoint": {
-            "type": "string",
-            "description": "Override endpoint URL from service configuration"
-          },
-          "model_id": {
-            "type": "string",
-            "description": "Model id to use for transcription - default: scribe_v1"
-          },
-          "language_code": {
-            "type": "string",
-            "description": "Language code for transcription"
-          },
-          "tag_audio_events": {
-            "type": "boolean",
-            "description": "Tag audio events option"
-          },
-          "num_speakers": {
-            "type": "number",
-            "description": "Number of speakers to detect"
-          },
-          "timestamps_granularity": {
-            "type": "string",
-            "description": "Timestamps granularity"
-          },
-          "diarize": {
-            "type": "boolean",
-            "description": "Enable diarization"
-          },
-          "additional_formats": {
-            "type": "array",
-            "description": "Additional output formats"
-          },
-          "file_format": {
-            "type": "string",
-            "description": "Input file format (e.g. wav, mp3)"
-          },
-          "cloud_storage_url": {
-            "type": "string",
-            "description": "URL to fetch input from cloud"
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "file",
-                  "description": "Audio file or blob to transcribe"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "text",
-                      "description": "Transcribed text"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "json",
-                      "description": "Full transcription result (optional)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "HUB_YOUTUBE_AUTH_INIT": {
-        "type": "object",
-        "description": "Initiate OAuth authorization flow for YouTube (requires ProActions-Hub). Opens the auth URL when available unless cfg.omitOpenAuth is true.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HUB_YOUTUBE_AUTH_INIT"
-            ],
-            "description": "Initiate OAuth authorization flow for YouTube (requires ProActions-Hub). Opens the auth URL when available unless cfg.omitOpenAuth is true."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "omitOpenAuth": {
-            "type": "boolean",
-            "description": "If true, do not automatically open the authorization URL in a new window; return the URL in the response instead."
-          },
-          "account": {
-            "type": "string",
-            "description": "Optional account identifier used by the Hub API."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "Result object returned by the auth/init call (contains authUrl etc.)"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "HUB_YOUTUBE_AUTH_STATUS": {
-        "type": "object",
-        "description": "Check the status of a previously initiated YouTube OAuth authorization flow.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HUB_YOUTUBE_AUTH_STATUS"
-            ],
-            "description": "Check the status of a previously initiated YouTube OAuth authorization flow."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "account": {
-            "type": "string",
-            "description": "Optional account identifier used by the Hub API."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "Status object returned by the auth/status endpoint"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "HUB_YOUTUBE_AUTH_LOGOUT": {
-        "type": "object",
-        "description": "Log out the configured Hub YouTube account. Uses POST to logout and returns the resulting object.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HUB_YOUTUBE_AUTH_LOGOUT"
-            ],
-            "description": "Log out the configured Hub YouTube account. Uses POST to logout and returns the resulting object."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "account": {
-            "type": "string",
-            "description": "Account identifier to log out (resolved)."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "Result from the logout endpoint"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "HUB_YOUTUBE_UPLOAD": {
-        "type": "object",
-        "description": "Upload a video to YouTube via the Hub service. Supports video file, optional thumbnail, metadata fields (title, description, privacyStatus, categoryId), tags and additionalMetadata. Progress can be shown when cfg.updateProgress is true.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HUB_YOUTUBE_UPLOAD"
-            ],
-            "description": "Upload a video to YouTube via the Hub service. Supports video file, optional thumbnail, metadata fields (title, description, privacyStatus, categoryId), tags and additionalMetadata. Progress can be shown when cfg.updateProgress is true."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "title": {
-            "type": "string",
-            "description": "Video title"
-          },
-          "description": {
-            "type": "string",
-            "description": "Video description"
-          },
-          "privacyStatus": {
-            "type": "string",
-            "description": "Privacy status: public, unlisted, or private",
-            "enum": [
-              "public",
-              "unlisted",
-              "private"
-            ]
-          },
-          "categoryId": {
-            "type": "string",
-            "description": "YouTube category id"
-          },
-          "tags": {
-            "type": "array",
-            "description": "Array of tags to set on the uploaded video"
-          },
-          "additionalMetadata": {
-            "type": "object",
-            "description": "Optional object with additional metadata to attach"
-          },
-          "updateProgress": {
-            "type": "boolean",
-            "description": "If true, progress will be reported to ProgressBar during upload"
-          },
-          "account": {
-            "type": "string",
-            "description": "Account identifier for the Hub target (resolved)"
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "video",
-                      "description": "Primary video file or blob to upload"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to read the input value from"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "thumbnail",
-                      "description": "Optional thumbnail file/blob"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to read the input value from"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "Result object returned by the upload endpoint (video metadata)"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "HUB_CONTENT_EXTRACTION": {
-        "type": "object",
-        "description": "Extract textual content from a URL using the ProActions-Hub extraction tool. The URL can be provided via the default text input or the `in`/`url` configuration.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HUB_CONTENT_EXTRACTION"
-            ],
-            "description": "Extract textual content from a URL using the ProActions-Hub extraction tool. The URL can be provided via the default text input or the `in`/`url` configuration."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "service": {
-            "type": "string",
-            "description": "Optional service name override. If not specified, defaults to 'HUB'."
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "URL to extract content from. If omitted, the step will try to read the URL from the default text input."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "object",
-                  "description": "The parsed extraction result object returned by the Hub extraction API."
                 },
                 "name": {
                   "type": "string",
@@ -6629,6 +6302,374 @@
         },
         "additionalProperties": false
       },
+      "BRIGHTER_AI": {
+        "type": "object",
+        "description": "Upload an image to BrighterAI, poll for processing completion and download the anonymized image. The resulting anonymized image blob is written to the configured output.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "BRIGHTER_AI",
+              "SERVICE_BRIGHTER_AI"
+            ],
+            "description": "Upload an image to BrighterAI, poll for processing completion and download the anonymized image. The resulting anonymized image blob is written to the configured output. (Note: Aliases SERVICE_BRIGHTER_AI are deprecated, use 'BRIGHTER_AI' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'BRIGHTER_AI'."
+          },
+          "serviceName": {
+            "type": "string",
+            "description": "Service operation name (e.g. blur, dnat, mask). If not provided, blur is used."
+          },
+          "params": {
+            "type": "object",
+            "description": "Optional url parameters object passed to the BrighterAI upload endpoint."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "blob",
+                      "description": "Input image blob to be processed (can come from previous steps or a flow variable)."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "imageName",
+                      "description": "Optional image name to use when uploading (defaults to \"image.jpg\")."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "blob",
+                  "description": "The anonymized image blob returned by the BrighterAI service."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "ELEVENLABS_TTS": {
+        "type": "object",
+        "description": "Generate speech audio from text using ElevenLabs TTS. Text is taken from the default text input or a flow variable via `in`.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "ELEVENLABS_TTS"
+            ],
+            "description": "Generate speech audio from text using ElevenLabs TTS. Text is taken from the default text input or a flow variable via `in`."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'ELEVENLABS'."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Override API key from service configuration"
+          },
+          "endpoint": {
+            "type": "string",
+            "description": "Override endpoint URL from service configuration"
+          },
+          "voice_id": {
+            "type": "string",
+            "description": "Voice identifier to use for synthesis"
+          },
+          "model_id": {
+            "type": "string",
+            "description": "TTS model id"
+          },
+          "voice_settings": {
+            "type": "object",
+            "description": "Optional voice settings object"
+          },
+          "output_format": {
+            "type": "string",
+            "description": "Desired audio output format (e.g. mp3, wav, pcm)"
+          },
+          "language_code": {
+            "type": "string",
+            "description": "Language code for the synthesis"
+          },
+          "pronunciation_dictionary_locators": {
+            "type": "string",
+            "description": "Pronunciation dictionary locators (array or string) - resolved"
+          },
+          "seed": {
+            "type": "string",
+            "description": "Seed for deterministic generation"
+          },
+          "previous_text": {
+            "type": "string",
+            "description": "Optional previous_text context"
+          },
+          "next_text": {
+            "type": "string",
+            "description": "Optional next_text context"
+          },
+          "apply_text_normalization": {
+            "type": "boolean",
+            "description": "Apply normalization to text"
+          },
+          "apply_language_text_normalization": {
+            "type": "boolean",
+            "description": "Apply language specific normalization"
+          },
+          "mime_type": {
+            "type": "string",
+            "description": "MIME type to use for the produced blob (e.g. audio/mpeg)"
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "Text to synthesize. If omitted, the default text input is used."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "blob",
+                  "description": "Generated audio blob"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "ELEVENLABS_STT": {
+        "type": "object",
+        "description": "Transcribe audio using ElevenLabs STT. Provides the transcribed text and optional JSON result.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "ELEVENLABS_STT"
+            ],
+            "description": "Transcribe audio using ElevenLabs STT. Provides the transcribed text and optional JSON result."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'ELEVENLABS'."
+          },
+          "apiKey": {
+            "type": "string",
+            "description": "Override API key from service configuration"
+          },
+          "endpoint": {
+            "type": "string",
+            "description": "Override endpoint URL from service configuration"
+          },
+          "model_id": {
+            "type": "string",
+            "description": "Model id to use for transcription - default: scribe_v1"
+          },
+          "language_code": {
+            "type": "string",
+            "description": "Language code for transcription"
+          },
+          "tag_audio_events": {
+            "type": "boolean",
+            "description": "Tag audio events option"
+          },
+          "num_speakers": {
+            "type": "number",
+            "description": "Number of speakers to detect"
+          },
+          "timestamps_granularity": {
+            "type": "string",
+            "description": "Timestamps granularity"
+          },
+          "diarize": {
+            "type": "boolean",
+            "description": "Enable diarization"
+          },
+          "additional_formats": {
+            "type": "array",
+            "description": "Additional output formats"
+          },
+          "file_format": {
+            "type": "string",
+            "description": "Input file format (e.g. wav, mp3)"
+          },
+          "cloud_storage_url": {
+            "type": "string",
+            "description": "URL to fetch input from cloud"
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "file",
+                  "description": "Audio file or blob to transcribe"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "Transcribed text"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "json",
+                      "description": "Full transcription result (optional)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "OPENAI_IMAGE_GENERATION": {
         "type": "object",
         "description": "Generate images using OpenAI image models (DALL·E and GPT-Image-1). Supports model, size, quality, count (n), response_format and other parameters. The generated images are stored in the configured output key or default `imageList`.",
@@ -8144,223 +8185,6 @@
         },
         "additionalProperties": false
       },
-      "REST": {
-        "type": "object",
-        "description": "Generic REST step. Builds a Request from the given configuration (url, method, headers, parameters, body or formData) and executes it using the host HTTP helper. Results are written to cfg.outputs when provided or to the default text output.",
-        "required": [
-          "step",
-          "url"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "REST",
-              "SERVICE_REST"
-            ],
-            "description": "Generic REST step. Builds a Request from the given configuration (url, method, headers, parameters, body or formData) and executes it using the host HTTP helper. Results are written to cfg.outputs when provided or to the default text output. (Note: Aliases SERVICE_REST are deprecated, use 'REST' instead)"
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "url": {
-            "type": "string",
-            "description": "The URL to call. Supports template expressions and variable resolution.",
-            "minLength": 1
-          },
-          "method": {
-            "type": "string",
-            "description": "HTTP method to use (GET, POST, PUT, DELETE, ...). Default: GET.",
-            "enum": [
-              "GET",
-              "POST",
-              "PUT",
-              "DELETE",
-              "PATCH",
-              "HEAD",
-              "OPTIONS"
-            ],
-            "default": "GET"
-          },
-          "headers": {
-            "type": "object",
-            "description": "Optional headers object. Values will be resolved against the flow context."
-          },
-          "parameters": {
-            "type": "object",
-            "description": "Optional query parameters object. Values will be resolved against the flow context."
-          },
-          "body": {
-            "description": "Optional request body. May be a string or object. Objects are JSON-stringified by the step.",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "object"
-              }
-            ]
-          },
-          "formData": {
-            "type": "object",
-            "description": "Optional formData object. Supports File/Blob entries and arrays. Values are resolved against the flow context."
-          },
-          "requestOptions": {
-            "type": "object",
-            "description": "Optional low-level RequestInit overrides passed to the fetch helper."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "text",
-                      "description": "Default textual response when no outputs are configured"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "json",
-                      "description": "Parsed JSON response (if requested via outputs)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "blob",
-                      "description": "Binary blob response (if requested via outputs)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "bytes",
-                      "description": "Raw bytes as Uint8Array (if requested via outputs)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "arrayBuffer",
-                      "description": "ArrayBuffer response (if requested via outputs)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                },
-                {
-                  "type": "object",
-                  "required": [
-                    "type",
-                    "name"
-                  ],
-                  "properties": {
-                    "type": {
-                      "type": "string",
-                      "const": "object",
-                      "description": "Full Response object (if requested via outputs)"
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "Flow context key to store the output value in"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              ]
-            }
-          }
-        },
-        "allOf": [
-          {
-            "not": {
-              "required": [
-                "body",
-                "formData"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "formData",
-                "body"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "body",
-                "formData"
-              ]
-            }
-          }
-        ],
-        "additionalProperties": false
-      },
       "STABILITY_AI_UPSCALE": {
         "type": "object",
         "description": "Upscale an image using StabilityAI upscale endpoint. Uploads a provided image blob and returns the upscaled image blob.",
@@ -8781,23 +8605,41 @@
         },
         "additionalProperties": false
       },
-      "READ_CLIPBOARD": {
+      "HUB_MCP_INVOKE": {
         "type": "object",
-        "description": "Reads content from the user clipboard. Prefers HTML content when available, falls back to plain text.",
+        "description": "Invoke a tool on an MCP server via the Hub.",
         "required": [
-          "step"
+          "step",
+          "server",
+          "tool"
         ],
         "properties": {
           "step": {
             "type": "string",
             "enum": [
-              "READ_CLIPBOARD"
+              "HUB_MCP_INVOKE"
             ],
-            "description": "Reads content from the user clipboard. Prefers HTML content when available, falls back to plain text."
+            "description": "Invoke a tool on an MCP server via the Hub."
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "server": {
+            "type": "string",
+            "description": "The name of the MCP server."
+          },
+          "tool": {
+            "type": "string",
+            "description": "The name of the tool to invoke."
+          },
+          "arguments": {
+            "type": "object",
+            "description": "The arguments to pass to the tool."
           },
           "outputs": {
             "type": "array",
@@ -8811,8 +8653,8 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "const": "text",
-                  "description": "The clipboard content (HTML or plain text) stored in the default text output."
+                  "const": "object",
+                  "description": "The result of the tool invocation."
                 },
                 "name": {
                   "type": "string",
@@ -8825,9 +8667,9 @@
         },
         "additionalProperties": false
       },
-      "WRITE_CLIPBOARD": {
+      "HUB_MCP_TOOLS": {
         "type": "object",
-        "description": "Writes text to the user clipboard. Reads the content from the configured input (cfg.text) or from the default text input in the flow context.",
+        "description": "List available tools from an MCP server via the Hub.",
         "required": [
           "step"
         ],
@@ -8835,24 +8677,51 @@
           "step": {
             "type": "string",
             "enum": [
-              "WRITE_CLIPBOARD"
+              "HUB_MCP_TOOLS"
             ],
-            "description": "Writes text to the user clipboard. Reads the content from the configured input (cfg.text) or from the default text input in the flow context."
+            "description": "List available tools from an MCP server via the Hub."
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
-          "text": {
+          "service": {
             "type": "string",
-            "description": "Text to write to clipboard. If omitted, uses the default text input from flow context."
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "server": {
+            "type": "string",
+            "description": "The name of the MCP server to list tools from."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The list of available tools (and resources/prompts if provided by the Hub API)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
           }
         },
         "additionalProperties": false
       },
-      "DOWNLOAD": {
+      "EDAPI_OBJECT_CONTENT": {
         "type": "object",
-        "description": "Downloads a file constructed from text or an existing Blob. The filename is required.",
+        "description": "Fetch object content from EDAPI and return it as blob or configured outputs. The content id can be provided via cfg.contentId or via a text input.",
         "required": [
           "step"
         ],
@@ -8860,23 +8729,22 @@
           "step": {
             "type": "string",
             "enum": [
-              "DOWNLOAD",
-              "DOWNLOAD_TEXT"
+              "EDAPI_OBJECT_CONTENT"
             ],
-            "description": "Downloads a file constructed from text or an existing Blob. The filename is required. (Note: Aliases DOWNLOAD_TEXT are deprecated, use 'DOWNLOAD' instead)"
+            "description": "Fetch object content from EDAPI and return it as blob or configured outputs. The content id can be provided via cfg.contentId or via a text input."
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
-          "filename": {
+          "contentId": {
             "type": "string",
-            "description": "Name of the file to download (required)."
+            "description": "Explicit content id to fetch. If omitted, the step will try to read the id from the default text input."
           },
-          "contentType": {
+          "format": {
             "type": "string",
-            "description": "The content-type to set for the download of the file.",
-            "default": "text/plain"
+            "description": "Format of the content to fetch.",
+            "default": "lowres"
           },
           "inputs": {
             "type": "array",
@@ -8890,8 +8758,8 @@
               "properties": {
                 "type": {
                   "type": "string",
-                  "const": "filename",
-                  "description": "The filename to be used - use cfg.filename instead"
+                  "const": "text",
+                  "description": "Alternate input path to read the content id from the flow context (used if contentId is not provided)."
                 },
                 "name": {
                   "type": "string",
@@ -8900,13 +8768,36 @@
               },
               "additionalProperties": false
             }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "blob",
+                  "description": "The fetched content blob (default output)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
           }
         },
         "additionalProperties": false
       },
-      "FILE_UPLOAD": {
+      "UPLOAD_IMAGE": {
         "type": "object",
-        "description": "Opens a file upload dialog (modal) and stores selected file(s) into the flow context. Supports output mapping via the `outputs` config or default file output.",
+        "description": "Upload an image to EDAPI by providing an image object (url or blob). Returns the created object metadata as output.",
         "required": [
           "step"
         ],
@@ -8914,30 +8805,677 @@
           "step": {
             "type": "string",
             "enum": [
-              "FILE_UPLOAD",
-              "USER_FILE_UPLOAD"
+              "UPLOAD_IMAGE",
+              "CTX_UPLOAD_IMAGE"
             ],
-            "description": "Opens a file upload dialog (modal) and stores selected file(s) into the flow context. Supports output mapping via the `outputs` config or default file output. (Note: Aliases USER_FILE_UPLOAD are deprecated, use 'FILE_UPLOAD' instead)"
+            "description": "Upload an image to EDAPI by providing an image object (url or blob). Returns the created object metadata as output. (Note: Aliases CTX_UPLOAD_IMAGE are deprecated, use 'UPLOAD_IMAGE' instead)"
           },
           "monitorLabel": {
             "type": "string",
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
-          "promptText": {
+          "objectType": {
             "type": "string",
-            "description": "Prompt text shown in the upload dialog."
+            "description": "Type of object to create (default: Image)."
           },
-          "accept": {
+          "createMode": {
             "type": "string",
-            "description": "Comma-separated list of accepted MIME types for upload (e.g. \"image/png,application/pdf\")."
+            "description": "Creation mode, e.g. AUTO_RENAME."
           },
-          "fileTypes": {
+          "inputs": {
             "type": "array",
-            "description": "Array of accepted MIME types for the upload (e.g. [\"audio/mp3\",\"audio/wav\"])."
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "image",
+                  "description": "Image input object or blob to upload (can come from file picker or previous step)."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
           },
-          "maxSize": {
-            "type": "number",
-            "description": "Maximum file size allowed in bytes."
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The created object metadata returned by EDAPI."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UPDATE_BINARY_CONTENT": {
+        "type": "object",
+        "description": "Update binary content of an existing object in EDAPI using the provided blob. Returns updated object metadata.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "UPDATE_BINARY_CONTENT",
+              "CTX_UPDATE_BINARY_CONTENT"
+            ],
+            "description": "Update binary content of an existing object in EDAPI using the provided blob. Returns updated object metadata. (Note: Aliases CTX_UPDATE_BINARY_CONTENT are deprecated, use 'UPDATE_BINARY_CONTENT' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "blob",
+                      "description": "Binary blob to upload for the object"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "Id of the object to update"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "Updated object metadata"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UPLOAD": {
+        "type": "object",
+        "description": "Upload content to EDAPI by providing a blob or specifying parameters (filename, type). Returns created object metadata.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "UPLOAD"
+            ],
+            "description": "Upload content to EDAPI by providing a blob or specifying parameters (filename, type). Returns created object metadata."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "options": {
+            "type": "object",
+            "description": "Obtions data for the UPLOAD"
+          },
+          "filename": {
+            "type": "string",
+            "description": "Filename to use for the uploaded object"
+          },
+          "basetype": {
+            "type": "string",
+            "description": "BaseType - Used to identify upload location when using basefolder configuration."
+          },
+          "type": {
+            "type": "string",
+            "description": "Object type to create (e.g. File, Image)"
+          },
+          "createMode": {
+            "type": "string",
+            "description": "Creation mode (e.g. AUTO_RENAME)"
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "blob",
+                  "description": "Binary blob to upload (preferred)"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The created object metadata"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_YOUTUBE_AUTH_INIT": {
+        "type": "object",
+        "description": "Initiate OAuth authorization flow for YouTube (requires ProActions-Hub). Opens the auth URL when available unless cfg.omitOpenAuth is true.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_YOUTUBE_AUTH_INIT"
+            ],
+            "description": "Initiate OAuth authorization flow for YouTube (requires ProActions-Hub). Opens the auth URL when available unless cfg.omitOpenAuth is true."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "omitOpenAuth": {
+            "type": "boolean",
+            "description": "If true, do not automatically open the authorization URL in a new window; return the URL in the response instead."
+          },
+          "account": {
+            "type": "string",
+            "description": "Optional account identifier used by the Hub API."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "Result object returned by the auth/init call (contains authUrl etc.)"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_YOUTUBE_AUTH_STATUS": {
+        "type": "object",
+        "description": "Check the status of a previously initiated YouTube OAuth authorization flow.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_YOUTUBE_AUTH_STATUS"
+            ],
+            "description": "Check the status of a previously initiated YouTube OAuth authorization flow."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "account": {
+            "type": "string",
+            "description": "Optional account identifier used by the Hub API."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "Status object returned by the auth/status endpoint"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_YOUTUBE_AUTH_LOGOUT": {
+        "type": "object",
+        "description": "Log out the configured Hub YouTube account. Uses POST to logout and returns the resulting object.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_YOUTUBE_AUTH_LOGOUT"
+            ],
+            "description": "Log out the configured Hub YouTube account. Uses POST to logout and returns the resulting object."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "account": {
+            "type": "string",
+            "description": "Account identifier to log out (resolved)."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "Result from the logout endpoint"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_YOUTUBE_UPLOAD": {
+        "type": "object",
+        "description": "Upload a video to YouTube via the Hub service. Supports video file, optional thumbnail, metadata fields (title, description, privacyStatus, categoryId), tags and additionalMetadata. Progress can be shown when cfg.updateProgress is true.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_YOUTUBE_UPLOAD"
+            ],
+            "description": "Upload a video to YouTube via the Hub service. Supports video file, optional thumbnail, metadata fields (title, description, privacyStatus, categoryId), tags and additionalMetadata. Progress can be shown when cfg.updateProgress is true."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "title": {
+            "type": "string",
+            "description": "Video title"
+          },
+          "description": {
+            "type": "string",
+            "description": "Video description"
+          },
+          "privacyStatus": {
+            "type": "string",
+            "description": "Privacy status: public, unlisted, or private",
+            "enum": [
+              "public",
+              "unlisted",
+              "private"
+            ]
+          },
+          "categoryId": {
+            "type": "string",
+            "description": "YouTube category id"
+          },
+          "tags": {
+            "type": "array",
+            "description": "Array of tags to set on the uploaded video"
+          },
+          "additionalMetadata": {
+            "type": "object",
+            "description": "Optional object with additional metadata to attach"
+          },
+          "updateProgress": {
+            "type": "boolean",
+            "description": "If true, progress will be reported to ProgressBar during upload"
+          },
+          "account": {
+            "type": "string",
+            "description": "Account identifier for the Hub target (resolved)"
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "video",
+                      "description": "Primary video file or blob to upload"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "thumbnail",
+                      "description": "Optional thumbnail file/blob"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to read the input value from"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "Result object returned by the upload endpoint (video metadata)"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_CONTENT_EXTRACTION": {
+        "type": "object",
+        "description": "Extract textual content from a URL using the ProActions-Hub extraction tool. The URL can be provided via the default text input or the `in`/`url` configuration.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_CONTENT_EXTRACTION"
+            ],
+            "description": "Extract textual content from a URL using the ProActions-Hub extraction tool. The URL can be provided via the default text input or the `in`/`url` configuration."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "text",
+                  "description": "URL to extract content from. If omitted, the step will try to read the URL from the default text input."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The parsed extraction result object returned by the Hub extraction API."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "REST": {
+        "type": "object",
+        "description": "Generic REST step. Builds a Request from the given configuration (url, method, headers, parameters, body or formData) and executes it using the host HTTP helper. Results are written to cfg.outputs when provided or to the default text output.",
+        "required": [
+          "step",
+          "url"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "REST",
+              "SERVICE_REST"
+            ],
+            "description": "Generic REST step. Builds a Request from the given configuration (url, method, headers, parameters, body or formData) and executes it using the host HTTP helper. Results are written to cfg.outputs when provided or to the default text output. (Note: Aliases SERVICE_REST are deprecated, use 'REST' instead)"
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL to call. Supports template expressions and variable resolution.",
+            "minLength": 1
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method to use (GET, POST, PUT, DELETE, ...). Default: GET.",
+            "enum": [
+              "GET",
+              "POST",
+              "PUT",
+              "DELETE",
+              "PATCH",
+              "HEAD",
+              "OPTIONS"
+            ],
+            "default": "GET"
+          },
+          "headers": {
+            "type": "object",
+            "description": "Optional headers object. Values will be resolved against the flow context."
+          },
+          "parameters": {
+            "type": "object",
+            "description": "Optional query parameters object. Values will be resolved against the flow context."
+          },
+          "body": {
+            "description": "Optional request body. May be a string or object. Objects are JSON-stringified by the step.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "formData": {
+            "type": "object",
+            "description": "Optional formData object. Supports File/Blob entries and arrays. Values are resolved against the flow context."
+          },
+          "requestOptions": {
+            "type": "object",
+            "description": "Optional low-level RequestInit overrides passed to the fetch helper."
           },
           "outputs": {
             "type": "array",
@@ -8953,8 +9491,8 @@
                   "properties": {
                     "type": {
                       "type": "string",
-                      "const": "file",
-                      "description": "Default output: the uploaded File object (when no explicit outputs are configured)."
+                      "const": "text",
+                      "description": "Default textual response when no outputs are configured"
                     },
                     "name": {
                       "type": "string",
@@ -8972,8 +9510,46 @@
                   "properties": {
                     "type": {
                       "type": "string",
-                      "const": "text",
-                      "description": "If configured, file content can be read and stored as text in the configured output name."
+                      "const": "json",
+                      "description": "Parsed JSON response (if requested via outputs)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "blob",
+                      "description": "Binary blob response (if requested via outputs)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "bytes",
+                      "description": "Raw bytes as Uint8Array (if requested via outputs)"
                     },
                     "name": {
                       "type": "string",
@@ -8992,7 +9568,26 @@
                     "type": {
                       "type": "string",
                       "const": "arrayBuffer",
-                      "description": "If configured, file content can be read as an ArrayBuffer into the configured output name."
+                      "description": "ArrayBuffer response (if requested via outputs)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "object",
+                      "description": "Full Response object (if requested via outputs)"
                     },
                     "name": {
                       "type": "string",
@@ -9005,627 +9600,32 @@
             }
           }
         },
-        "additionalProperties": false
-      },
-      "PROMPT": {
-        "type": "object",
-        "description": "Shows a simple prompt to the user and stores the entered text into the default text output.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "PROMPT",
-              "USER_PROMPT"
-            ],
-            "description": "Shows a simple prompt to the user and stores the entered text into the default text output. (Note: Aliases USER_PROMPT are deprecated, use 'PROMPT' instead)"
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "promptText": {
-            "type": "string",
-            "description": "Text displayed in the prompt. Can contain template placeholders resolved against the flowContext."
-          },
-          "placeholder": {
-            "type": "string",
-            "description": "Optional placeholder shown inside the input field."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
+        "allOf": [
+          {
+            "not": {
               "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "The text entered by the user is written to the default text output (or the configured output variable)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "FORM": {
-        "type": "object",
-        "description": "Displays a configurable form to the user (via FormBuilder). The form definition is provided in `cfg.form`. When submitted, the returned values are merged into the flowContext.",
-        "required": [
-          "step",
-          "form"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "FORM"
-            ],
-            "description": "Displays a configurable form to the user (via FormBuilder). The form definition is provided in `cfg.form`. When submitted, the returned values are merged into the flowContext."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "title": {
-            "type": "string",
-            "description": "Title of the form modal."
-          },
-          "form": {
-            "type": "object",
-            "description": "Form field definitions. Each key is the field name, and the value is a FormComponent object defining the field type and properties. See the comprehensive form documentation for all available field types and properties.",
-            "additionalProperties": {
-              "oneOf": [
-                {
-                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formComponent"
-                },
-                {
-                  "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-step.form.schema.json#/definitions/formGroup"
-                }
+                "body",
+                "formData"
               ]
             }
           },
-          "buttons": {
-            "type": "array",
-            "description": "Optional buttons configuration for the form modal. Array of button objects defining submit/cancel buttons.",
-            "minItems": 1,
-            "maxItems": 10,
-            "items": {
-              "type": "object",
-              "description": "Form button configuration",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "description": "Button type",
-                  "enum": [
-                    "submit",
-                    "cancel"
-                  ]
-                },
-                "label": {
-                  "type": "string",
-                  "description": "Button label text"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Button name attribute (used when type is submit)"
-                },
-                "title": {
-                  "type": "string",
-                  "description": "Button title attribute (tooltip)"
-                },
-                "class": {
-                  "type": "string",
-                  "description": "CSS class for button styling (e.g., \"btn btn-primary\")"
-                },
-                "flowAttribute": {
-                  "type": "string",
-                  "description": "Flow context variable name to store the button name/value when clicked"
-                }
-              },
+          {
+            "not": {
               "required": [
-                "type"
+                "formData",
+                "body"
               ]
             }
           },
-          "formConfig": {
-            "type": "object",
-            "description": "Optional modal-level configuration (width, height, fullScreen, typography). See FormModalConfig for all options.",
-            "properties": {
-              "dialogSize": {
-                "type": "string",
-                "description": "Bootstrap dialog size: \"sm\", \"md\", \"lg\", \"xl\""
-              },
-              "width": {
-                "type": "string",
-                "description": "Modal width (e.g., \"720px\", \"80vw\")"
-              },
-              "maxWidth": {
-                "type": "string",
-                "description": "Maximum modal width"
-              },
-              "height": {
-                "type": "string",
-                "description": "Modal height (e.g., \"600px\", \"80vh\")"
-              },
-              "maxHeight": {
-                "type": "string",
-                "description": "Maximum modal height"
-              },
-              "fullScreen": {
-                "type": "boolean",
-                "description": "Force modal to cover entire viewport"
-              },
-              "bodyFontSize": {
-                "type": "string",
-                "description": "Font size for modal body"
-              },
-              "bodyLineHeight": {
-                "type": "string",
-                "description": "Line height for modal body"
-              },
-              "labelFontSize": {
-                "type": "string",
-                "description": "Font size for form labels"
-              },
-              "inputFontSize": {
-                "type": "string",
-                "description": "Font size for form inputs"
-              },
-              "inputLineHeight": {
-                "type": "string",
-                "description": "Line height for form inputs"
-              },
-              "diffFontSize": {
-                "type": "string",
-                "description": "Font size for diff components"
-              },
-              "diffLineHeight": {
-                "type": "string",
-                "description": "Line height for diff components"
-              },
-              "modalClass": {
-                "type": "string",
-                "description": "Additional CSS class for modal"
-              }
-            }
-          },
-          "inlineSteps": {
-            "type": "array",
-            "description": "Optional steps to execute before showing the form while an in-place loading UI is shown.",
-            "items": {
-              "$ref": "#"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "PLAY_AUDIO": {
-        "type": "object",
-        "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "PLAY_AUDIO"
-            ],
-            "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "in": {
-            "type": "string",
-            "description": "Optional input path or variable name containing the audio source (data URL, http(s) URL or raw base64). If omitted, the default text input is used."
-          },
-          "autoplay": {
-            "type": "boolean",
-            "description": "Attempt autoplay on load. Note: browsers may block autoplay; in that case the player will show a hint and wait for user interaction.",
-            "default": true
-          },
-          "showProgress": {
-            "type": "boolean",
-            "description": "Show progress / seek bar in the player.",
-            "default": true
-          },
-          "showVolume": {
-            "type": "boolean",
-            "description": "Show volume controls in the player.",
-            "default": true
-          },
-          "showTimeDisplay": {
-            "type": "boolean",
-            "description": "Show current time and duration labels.",
-            "default": true
-          },
-          "theme": {
-            "type": "string",
-            "description": "Theme of the player: 'dark' | 'light' or any valid CSS color string.",
-            "default": "dark"
-          },
-          "position": {
-            "type": "string",
-            "description": "Player anchoring position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center' | 'center'.",
-            "default": "center"
-          },
-          "loop": {
-            "type": "boolean",
-            "description": "If true, loop playback.",
-            "default": false
-          },
-          "title": {
-            "type": "string",
-            "description": "Optional title shown in the player title bar."
-          },
-          "mimeType": {
-            "type": "string",
-            "description": "Optional MIME type hint used when the provided input is raw base64 without a data URL header (e.g. \"audio/mpeg\")."
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
+          {
+            "not": {
               "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "Audio source as data URL, http(s) URL, or raw base64. If omitted, reads from `in` config or default text input."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
+                "body",
+                "formData"
+              ]
             }
           }
-        },
-        "additionalProperties": false
-      },
-      "USER_SELECT": {
-        "type": "object",
-        "description": "Displays a selection modal allowing the user to pick one item from a list. The list may be provided directly or produced by a pre-processing step (inlineSteps). The selected value is written to the default text output.",
-        "required": [
-          "step"
         ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "USER_SELECT"
-            ],
-            "description": "Displays a selection modal allowing the user to pick one item from a list. The list may be provided directly or produced by a pre-processing step (inlineSteps). The selected value is written to the default text output."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "inlineSteps": {
-            "type": "array",
-            "description": "Optional steps to execute before showing the selection modal. Useful to prepare or transform input.",
-            "items": {
-              "$ref": "#"
-            }
-          },
-          "promptText": {
-            "type": "string",
-            "description": "Prompt or title text shown at the top of the selection modal (supports variable resolution)."
-          },
-          "infoTitle": {
-            "type": "string",
-            "description": "Optional title shown above additional info in the selection modal."
-          },
-          "infoText": {
-            "type": "string",
-            "description": "Optional descriptive text shown in the selection modal (supports variable resolution)."
-          },
-          "enableKeyboardControl": {
-            "type": "boolean",
-            "description": "Enable keyboard navigation in the selection modal."
-          },
-          "inputs": {
-            "type": "array",
-            "description": "Input mappings from flow context to step inputs",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "list",
-                  "description": "List of options for the user to select from. If omitted, converts text input to a list automatically."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to read the input value from"
-                }
-              },
-              "additionalProperties": false
-            }
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "text",
-                  "description": "The selected option (string) stored in the default text output."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "IMAGE_PICKER": {
-        "type": "object",
-        "description": "Shows an image picker modal allowing the user to pick one image from a provided list of image objects ({ url, previewUrl?, label? }). The selected image object is stored as an output.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "IMAGE_PICKER",
-              "USER_IMAGE_PICKER"
-            ],
-            "description": "Shows an image picker modal allowing the user to pick one image from a provided list of image objects ({ url, previewUrl?, label? }). The selected image object is stored as an output. (Note: Aliases USER_IMAGE_PICKER are deprecated, use 'IMAGE_PICKER' instead)"
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "promptText": {
-            "type": "string",
-            "description": "Prompt text shown in the image picker modal."
-          },
-          "imageList": {
-            "type": "array",
-            "description": "List of image objects to show. Each item should contain at least a `url` and optionally `previewUrl` and `label`."
-          },
-          "outputs": {
-            "type": "array",
-            "description": "Output mappings from step outputs to flow context",
-            "items": {
-              "type": "object",
-              "required": [
-                "type",
-                "name"
-              ],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "image",
-                  "description": "Selected image object (includes url, previewUrl?, label?)."
-                },
-                "name": {
-                  "type": "string",
-                  "description": "Flow context key to store the output value in"
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "SHOW_PROGRESS": {
-        "type": "object",
-        "description": "Show a progress bar with optional status text. Use `position` to place it and `autoHide` to auto-hide after completion.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "SHOW_PROGRESS"
-            ],
-            "description": "Show a progress bar with optional status text. Use `position` to place it and `autoHide` to auto-hide after completion."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "status": {
-            "type": "string",
-            "description": "Status text to display next to the progress bar. Supports variable resolution."
-          },
-          "position": {
-            "type": "string",
-            "description": "Position of the progress bar. Common values: 'bottom', 'top'.",
-            "enum": [
-              "bottom",
-              "top",
-              "left",
-              "right"
-            ]
-          },
-          "autoHide": {
-            "type": "boolean",
-            "description": "Whether the progress bar should auto-hide when completed."
-          }
-        },
-        "additionalProperties": false
-      },
-      "UPDATE_PROGRESS": {
-        "type": "object",
-        "description": "Update an existing progress bar. Provide percentage (0-100) and optional status text.",
-        "required": [
-          "step",
-          "percentage"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "UPDATE_PROGRESS"
-            ],
-            "description": "Update an existing progress bar. Provide percentage (0-100) and optional status text."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "status": {
-            "type": "string",
-            "description": "Status text to update on the progress bar. Supports variable resolution."
-          },
-          "percentage": {
-            "description": "Progress percentage (0-100). Can be a number or a string that resolves to a number.",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
-            ]
-          }
-        },
-        "additionalProperties": false
-      },
-      "HIDE_PROGRESS": {
-        "type": "object",
-        "description": "Hide any shown progress bar.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "HIDE_PROGRESS"
-            ],
-            "description": "Hide any shown progress bar."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          }
-        },
-        "additionalProperties": false
-      },
-      "SLEEP": {
-        "type": "object",
-        "description": "Pause execution for a given delay (ms). Useful for pacing flows or waiting for external state changes.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "SLEEP"
-            ],
-            "description": "Pause execution for a given delay (ms). Useful for pacing flows or waiting for external state changes."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "delay": {
-            "type": "number",
-            "description": "Delay in milliseconds to sleep. Defaults to 1000 ms."
-          }
-        },
-        "additionalProperties": false
-      },
-      "CLEAR_SELECTION": {
-        "type": "object",
-        "description": "Clears the current text selection and optionally repositions the cursor to the start or end of the selection. Available in Swing editor context only.",
-        "required": [
-          "step"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "CLEAR_SELECTION"
-            ],
-            "description": "Clears the current text selection and optionally repositions the cursor to the start or end of the selection. Available in Swing editor context only."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "cursorPosition": {
-            "type": "string",
-            "description": "Where to move the cursor after clearing selection. Use \"anchorStart\" to move to the start or \"anchorEnd\" to move to the end.",
-            "enum": [
-              "anchorStart",
-              "anchorEnd"
-            ]
-          }
-        },
-        "additionalProperties": false
-      },
-      "CHANGE_VIEW_SIZE": {
-        "type": "object",
-        "description": "Requests a change of the view port size. Useful to resize the command palette view in Prime 8.",
-        "required": [
-          "step",
-          "width",
-          "height"
-        ],
-        "properties": {
-          "step": {
-            "type": "string",
-            "enum": [
-              "CHANGE_VIEW_SIZE"
-            ],
-            "description": "Requests a change of the view port size. Useful to resize the command palette view in Prime 8."
-          },
-          "monitorLabel": {
-            "type": "string",
-            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
-          },
-          "width": {
-            "type": "string",
-            "description": "Target width in pixels. Can be a number or an expression resolved against the flowContext."
-          },
-          "height": {
-            "type": "string",
-            "description": "Target height in pixels. Can be a number or an expression resolved against the flowContext."
-          }
-        },
         "additionalProperties": false
       }
     }
