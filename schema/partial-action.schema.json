@@ -330,6 +330,15 @@
           "type": "boolean",
           "description": "Render markdown in feedback messages"
         },
+        "entryFadeDelay": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Override entry auto-dismiss delay (ms) for this action. 0 disables auto-dismiss."
+        },
+        "allowEntryDismiss": {
+          "type": "boolean",
+          "description": "Override whether finished entries show a dismiss button for this action"
+        },
         "defaultWidth": {
           "type": "number",
           "minimum": 200,

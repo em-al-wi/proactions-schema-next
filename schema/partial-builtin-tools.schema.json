@@ -13,6 +13,7 @@
         "FeedbackTools",
         "HighlightTools",
         "HubMcp",
+        "StoryEditor",
         "ToolDiscovery",
         "UserInfoTools",
         "UserInteractionTools",
@@ -24,11 +25,13 @@
         "addMetricsFeedback",
         "addPureTextTags",
         "addTableFeedback",
+        "appendParagraph",
         "askConfirmation",
         "askFreeformQuestion",
         "askMultipleChoice",
         "askSingleChoice",
         "callMcpTool",
+        "clearMarks",
         "clearPureTextTags",
         "getChannel",
         "getContainerChannel",
@@ -56,6 +59,7 @@
         "getDocumentSummaryInfo",
         "getDocumentUuid",
         "getDocumentWorkfolder",
+        "getField",
         "getMetadata",
         "getMetadataString",
         "getObjectType",
@@ -94,13 +98,20 @@
         "isReadonly",
         "isTextSelected",
         "listAvailableTools",
+        "markSegments",
         "markdownToHtml",
+        "readCurrentParagraph",
+        "readSelection",
+        "readStory",
+        "replaceCurrentParagraph",
         "replaceTextAtCursor",
         "replaceTextAtCursorParagraph",
         "replaceTextAtXpath",
         "replaceXmlAtCursor",
         "replaceXmlAtCursorParagraph",
         "replaceXmlAtXpath",
+        "searchAndReplaceText",
+        "setField",
         "showNotification",
         "updateProgress",
         "validateAndRepairXml",
@@ -123,6 +134,7 @@
             "DocumentInfoTools",
             "FeedbackTools",
             "HighlightTools",
+            "StoryEditor",
             "HubMcp",
             "ToolDiscovery",
             "UserInfoTools",
@@ -144,9 +156,87 @@
             "type": "string"
           },
           "description": "Named XPath mappings available as tool parameters (optional)"
+        },
+        "when": {
+          "type": [
+            "string",
+            "boolean"
+          ],
+          "description": "Optional condition evaluated once when the request/session is built (template expression like '{{ client.isTextSelected() }}' or boolean). When falsy, the entry is neither advertised to the model nor executable."
+        },
+        "config": {
+          "type": "object",
+          "description": "Provider configuration, validated against the provider's declared config options (unknown keys warn but never fail). Values support template expressions resolved once when the request/session is built."
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "class": {
+                "const": "StoryEditor"
+              }
+            },
+            "required": [
+              "class"
+            ]
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "description": "Configuration options for StoryEditor",
+                "properties": {
+                  "bodyXpath": {
+                    "type": "string",
+                    "description": "XPath of the content root that searchAndReplaceText reads and writes",
+                    "default": "/doc/story"
+                  },
+                  "appendXpath": {
+                    "type": "string",
+                    "description": "XPath of the element appendParagraph inserts new paragraphs into",
+                    "default": "/doc/story/text"
+                  },
+                  "allowedElements": {
+                    "type": "array",
+                    "description": "XML elements allowed in searchAndReplaceText replacement content",
+                    "default": [
+                      "p",
+                      "h2",
+                      "h3",
+                      "ul",
+                      "li",
+                      "b",
+                      "i",
+                      "u"
+                    ]
+                  },
+                  "inlineElements": {
+                    "type": "array",
+                    "description": "Inline formatting elements allowed in appendParagraph text",
+                    "default": [
+                      "b",
+                      "i",
+                      "u"
+                    ]
+                  },
+                  "fields": {
+                    "type": "object",
+                    "description": "Map of semantic field names to xpaths (e.g. headline: /doc/story/grouphead/headline/p). Generates the getField/setField tools with the field names as an enum; both tools are dropped when no fields are configured."
+                  },
+                  "markTag": {
+                    "type": "string",
+                    "description": "Tag name used by markSegments/clearMarks",
+                    "default": "mark"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "type": "object",
@@ -186,6 +276,13 @@
         "args": {
           "type": "object",
           "description": "Preset arguments to pass to the underlying tool (merged with AI-provided arguments)"
+        },
+        "when": {
+          "type": [
+            "string",
+            "boolean"
+          ],
+          "description": "Optional condition evaluated once when the request/session is built (template expression like '{{ client.isTextSelected() }}' or boolean). When falsy, the alias is neither advertised to the model nor executable."
         }
       },
       "additionalProperties": false
@@ -233,6 +330,13 @@
             "type": "string"
           },
           "description": "Optional list of MCP tool names to expose (accepts <tool>, mcp__<server>__<tool>, mcp.<server>.<tool>, or <server>.<tool>)"
+        },
+        "when": {
+          "type": [
+            "string",
+            "boolean"
+          ],
+          "description": "Optional condition evaluated once when the request/session is built (template expression like '{{ client.isTextSelected() }}' or boolean). When falsy, the MCP tools are neither advertised to the model nor executable."
         }
       },
       "additionalProperties": false

@@ -31,6 +31,17 @@
       "minimum": 1000,
       "description": "Delay in milliseconds before the completion pill fades out"
     },
+    "entryFadeDelay": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "description": "Delay in milliseconds before a completed or cancelled entry auto-dismisses. Set to 0 (default) to disable auto-dismiss."
+    },
+    "allowEntryDismiss": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show a dismiss (×) button on finished entries so users can remove them manually"
+    },
     "maxVisible": {
       "type": "number",
       "default": 5,

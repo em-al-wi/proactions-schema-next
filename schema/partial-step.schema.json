@@ -233,6 +233,12 @@
       "$ref": "#/definitions/steps/AZURE_OPENAI_COMPLETION"
     },
     {
+      "$ref": "#/definitions/steps/OPENAI_VOICE_AGENT"
+    },
+    {
+      "$ref": "#/definitions/steps/HUB_VOICE_AGENT"
+    },
+    {
       "$ref": "#/definitions/steps/BRIGHTER_AI"
     },
     {
@@ -795,7 +801,7 @@
           },
           "convertTo": {
             "type": "string",
-            "description": "Convert the value to a specific type (e.g., \"number\").",
+            "description": "DEPRECATED — templates now return native types automatically. Use {{ flowContext.x + 1 }} (number) instead of {{ flowContext.x }} + convertTo. This option keeps working but logs a warning per offending action.",
             "enum": [
               "number"
             ]
@@ -4773,7 +4779,7 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef. An optional `when` condition (template expression or boolean, evaluated once per request) gates whether the tool is exposed to the model."
           },
           "functions": {
             "type": "array",
@@ -4835,12 +4841,12 @@
           },
           "autoDiscoverTools": {
             "type": "boolean",
-            "description": "'Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand ' +\n    'via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. ' +\n    'Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.'",
+            "description": "Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.",
             "default": false
           },
           "builtinTools": {
             "type": "array",
-            "description": "List of built-in tool classes to enable for the AI model",
+            "description": "List of built-in tool classes to enable for the AI model. Object entries support an optional `when` condition (template expression or boolean, evaluated once per request) that gates whether the tools are exposed to the model.",
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
@@ -5000,7 +5006,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
+            "description": "List of skill names to load. Skills provide system instructions and reference documents. Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`. Entries can also be objects `{ name, when }` where `when` (template expression or boolean, evaluated once per request) gates whether the skill is loaded."
           },
           "outputs": {
             "type": "array",
@@ -5320,7 +5326,7 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef. An optional `when` condition (template expression or boolean, evaluated once per request) gates whether the tool is exposed to the model."
           },
           "functions": {
             "type": "array",
@@ -5382,12 +5388,12 @@
           },
           "autoDiscoverTools": {
             "type": "boolean",
-            "description": "'Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand ' +\n    'via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. ' +\n    'Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.'",
+            "description": "Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.",
             "default": false
           },
           "builtinTools": {
             "type": "array",
-            "description": "List of built-in tool classes to enable for the AI model",
+            "description": "List of built-in tool classes to enable for the AI model. Object entries support an optional `when` condition (template expression or boolean, evaluated once per request) that gates whether the tools are exposed to the model.",
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
@@ -5547,7 +5553,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
+            "description": "List of skill names to load. Skills provide system instructions and reference documents. Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`. Entries can also be objects `{ name, when }` where `when` (template expression or boolean, evaluated once per request) gates whether the skill is loaded."
           },
           "target": {
             "type": "string",
@@ -5872,7 +5878,7 @@
           },
           "tools": {
             "type": "array",
-            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef."
+            "description": "Array of tool/function descriptors for tool calling. Each descriptor can define template, steps, script, or scriptRef. An optional `when` condition (template expression or boolean, evaluated once per request) gates whether the tool is exposed to the model."
           },
           "functions": {
             "type": "array",
@@ -5934,12 +5940,12 @@
           },
           "autoDiscoverTools": {
             "type": "boolean",
-            "description": "'Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand ' +\n    'via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. ' +\n    'Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.'",
+            "description": "Enable dynamic tool discovery. When true, the agent can discover and activate tool providers on demand via listAvailableTools and activateTools meta-tools, instead of requiring all tools to be listed explicitly. Can be combined with builtinTools for aliases, MCP tools, and explicit provider configurations.",
             "default": false
           },
           "builtinTools": {
             "type": "array",
-            "description": "List of built-in tool classes to enable for the AI model",
+            "description": "List of built-in tool classes to enable for the AI model. Object entries support an optional `when` condition (template expression or boolean, evaluated once per request) that gates whether the tools are exposed to the model.",
             "items": {
               "$ref": "https://raw.githubusercontent.com/em-al-wi/proactions-schema-next/main/schema/partial-builtin-tools.schema.json"
             }
@@ -6099,7 +6105,7 @@
           },
           "skills": {
             "type": "array",
-            "description": "'List of skill names to load. Skills provide system instructions and reference documents. ' +\n    'Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`.'"
+            "description": "List of skill names to load. Skills provide system instructions and reference documents. Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`. Entries can also be objects `{ name, when }` where `when` (template expression or boolean, evaluated once per request) gates whether the skill is loaded."
           },
           "outputs": {
             "type": "array",
@@ -6288,6 +6294,352 @@
                       "type": "string",
                       "const": "tool_results",
                       "description": "Optional array of tool results produced during execution"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "OPENAI_VOICE_AGENT": {
+        "type": "object",
+        "description": "Full-duplex voice session using the OpenAI Realtime API over WebRTC (default, with automatic WebSocket fallback). Captures microphone input, streams to the model, plays back the spoken response, and accumulates a conversation transcript. Supports tool calls and structured results.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "OPENAI_VOICE_AGENT"
+            ],
+            "description": "Full-duplex voice session using the OpenAI Realtime API over WebRTC (default, with automatic WebSocket fallback). Captures microphone input, streams to the model, plays back the spoken response, and accumulates a conversation transcript. Supports tool calls and structured results."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'OPENAI_COMPLETION'."
+          },
+          "model": {
+            "type": "string",
+            "description": "Realtime model to use (e.g. gpt-realtime-2)"
+          },
+          "behavior": {
+            "type": "string",
+            "description": "System instructions for the voice agent"
+          },
+          "voice": {
+            "type": "string",
+            "description": "Output voice name (default: marin)"
+          },
+          "transport": {
+            "type": "string",
+            "description": "Connection transport: 'webrtc' (default — OpenAI's recommendation for browsers: native echo cancellation, automatic barge-in truncation) or 'websocket'. WebRTC falls back to WebSocket automatically when the connection cannot be established (e.g. UDP blocked)."
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Optional user-prompt passed through to OpenAIRequestBuilder for tool resolution (not sent to the Realtime API)"
+          },
+          "vad": {
+            "type": "object",
+            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press."
+          },
+          "noiseReduction": {
+            "type": "string",
+            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured."
+          },
+          "reasoningEffort": {
+            "type": "string",
+            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Default: low — recommended for production voice agents. Use 'none' to omit the field for non-reasoning models."
+          },
+          "transcriptionModel": {
+            "type": "string",
+            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize."
+          },
+          "maxDurationSecs": {
+            "type": "number",
+            "description": "Maximum session duration in seconds before auto-close (default: 300)"
+          },
+          "showToolCalls": {
+            "type": "boolean",
+            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Useful for debugging and transparency. Default: false."
+          },
+          "toolsReuseContext": {
+            "type": "boolean",
+            "description": "When true and a tool uses steps, the full flowContext is passed to the sub-flow instead of a fresh context with only the tool arguments."
+          },
+          "tools": {
+            "type": "array",
+            "description": "Array of user-defined tool/function descriptors available during the voice session. An optional `when` condition (template expression or boolean, evaluated once at session start) gates whether the tool is exposed to the model."
+          },
+          "builtinTools": {
+            "type": "array",
+            "description": "List of built-in tool classes to enable during the voice session. Object entries support an optional `when` condition (template expression or boolean, evaluated once at session start) that gates whether the tools are exposed to the model."
+          },
+          "autoDiscoverTools": {
+            "type": "boolean",
+            "description": "Enable dynamic tool discovery during the voice session"
+          },
+          "skills": {
+            "type": "array",
+            "description": "List of skill names to load for the voice session. Skill instructions are prepended to the behavior sent to the Realtime API, and skill reference documents become readable via the read_skill_reference tool. Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`. Entries can also be objects `{ name, when }` where `when` (template expression or boolean, evaluated once at session start) gates whether the skill is loaded."
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "Markdown-formatted conversation transcript (alternating **You:** / **Agent:** turns)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "object",
+                      "description": "Structured result passed by the model via end_session({ result: ... })"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "usage",
+                      "description": "Optional token usage accumulated across the voice session"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "messages",
+                      "description": "Raw transcript array of TranscriptTurn objects ({ role, content }) for downstream steps"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "HUB_VOICE_AGENT": {
+        "type": "object",
+        "description": "Full-duplex voice session routed through ProActions Hub (WebSocket only — a proxy cannot relay WebRTC media). Same capabilities as OPENAI_VOICE_AGENT but uses Hub for centralized API key management and request routing.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "HUB_VOICE_AGENT"
+            ],
+            "description": "Full-duplex voice session routed through ProActions Hub (WebSocket only — a proxy cannot relay WebRTC media). Same capabilities as OPENAI_VOICE_AGENT but uses Hub for centralized API key management and request routing."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "service": {
+            "type": "string",
+            "description": "Optional service name override. If not specified, defaults to 'HUB'."
+          },
+          "model": {
+            "type": "string",
+            "description": "Realtime model to use (e.g. gpt-realtime-2)"
+          },
+          "behavior": {
+            "type": "string",
+            "description": "System instructions for the voice agent"
+          },
+          "voice": {
+            "type": "string",
+            "description": "Output voice name (default: marin)"
+          },
+          "instruction": {
+            "type": "string",
+            "description": "Optional user-prompt passed through to OpenAIRequestBuilder for tool resolution (not sent to the Realtime API)"
+          },
+          "vad": {
+            "type": "object",
+            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press."
+          },
+          "noiseReduction": {
+            "type": "string",
+            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured."
+          },
+          "reasoningEffort": {
+            "type": "string",
+            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Default: low — recommended for production voice agents. Use 'none' to omit the field for non-reasoning models."
+          },
+          "transcriptionModel": {
+            "type": "string",
+            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize."
+          },
+          "maxDurationSecs": {
+            "type": "number",
+            "description": "Maximum session duration in seconds before auto-close (default: 300)"
+          },
+          "showToolCalls": {
+            "type": "boolean",
+            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Default: false."
+          },
+          "toolsReuseContext": {
+            "type": "boolean",
+            "description": "When true and a tool uses steps, the full flowContext is passed to the sub-flow instead of a fresh context with only the tool arguments."
+          },
+          "tools": {
+            "type": "array",
+            "description": "Array of user-defined tool/function descriptors available during the voice session. An optional `when` condition (template expression or boolean, evaluated once at session start) gates whether the tool is exposed to the model."
+          },
+          "builtinTools": {
+            "type": "array",
+            "description": "List of built-in tool classes to enable during the voice session. Object entries support an optional `when` condition (template expression or boolean, evaluated once at session start) that gates whether the tools are exposed to the model."
+          },
+          "autoDiscoverTools": {
+            "type": "boolean",
+            "description": "Enable dynamic tool discovery during the voice session"
+          },
+          "skills": {
+            "type": "array",
+            "description": "List of skill names to load for the voice session. Skill instructions are prepended to the behavior sent to the Realtime API, and skill reference documents become readable via the read_skill_reference tool. Each skill is loaded from `/SysConfig/ProActions/Skills/<skillName>/SKILL.md`. Entries can also be objects `{ name, when }` where `when` (template expression or boolean, evaluated once at session start) gates whether the skill is loaded."
+          },
+          "target": {
+            "type": "string",
+            "description": "Hub routing target name (overrides service-level target)"
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "Markdown-formatted conversation transcript (alternating **You:** / **Agent:** turns)"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "object",
+                      "description": "Structured result passed by the model via end_session({ result: ... })"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "usage",
+                      "description": "Optional token usage accumulated across the voice session"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "messages",
+                      "description": "Raw transcript array of TranscriptTurn objects ({ role, content }) for downstream steps"
                     },
                     "name": {
                       "type": "string",
