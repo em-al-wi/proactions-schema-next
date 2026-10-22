@@ -101,6 +101,15 @@
       "$ref": "#/definitions/steps/INSERT_LIST"
     },
     {
+      "$ref": "#/definitions/steps/APPLY_TEXT_CUTS"
+    },
+    {
+      "$ref": "#/definitions/steps/GET_STORY_BLOCKS"
+    },
+    {
+      "$ref": "#/definitions/steps/APPLY_TEXT_EDITS"
+    },
+    {
       "$ref": "#/definitions/steps/TAG_PURE_TEXT"
     },
     {
@@ -405,8 +414,15 @@
             "description": "Event name to emit. Supports variable resolution."
           },
           "payload": {
-            "type": "object",
-            "description": "Optional event payload object. Supports variable resolution."
+            "description": "Optional event payload object. Supports variable resolution.",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string"
+              }
+            ]
           }
         },
         "additionalProperties": false
@@ -437,16 +453,37 @@
             "minLength": 1
           },
           "start": {
-            "type": "number",
-            "description": "The starting value of the loop variable (numeric)."
+            "description": "The starting value of the loop variable (numeric).",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "end": {
-            "type": "number",
-            "description": "The ending value of the loop variable (numeric, inclusive)."
+            "description": "The ending value of the loop variable (numeric, inclusive).",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "by": {
-            "type": "number",
-            "description": "Step increment for numeric loops (can be negative). If omitted, inferred from start/end (1 or -1)."
+            "description": "Step increment for numeric loops (can be negative). If omitted, inferred from start/end (1 or -1).",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "items": {
             "type": "string",
@@ -572,7 +609,7 @@
           },
           "condition": {
             "type": "string",
-            "description": "The condition to evaluate. Can be a template expression with {{ }} syntax."
+            "description": "The condition to evaluate, e.g. \"{{ flowContext.count > 0 }}\". Templates are Nunjucks: use and / or / not (NOT && / || / !, which fail silently and make the condition false). Compare numbers directly, e.g. \"{{ flowContext.count > 0 }}\"; the | length filter works on arrays and strings only, never on a number."
           },
           "test": {
             "type": "string",
@@ -1072,8 +1109,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "tags": {
-            "type": "array",
-            "description": "Array of tag names to clear (e.g., [\"mark\", \"highlight\"]). Can be a hardcoded array, a flowContext variable, or read from the default list input."
+            "description": "Array of tag names to clear (e.g., [\"mark\", \"highlight\"]). Can be a hardcoded array, a flowContext variable, or read from the default list input.",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "inputs": {
             "type": "array",
@@ -1141,8 +1185,16 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "close": {
-            "type": "boolean",
             "description": "Whether to close the document after saving. Supports variable resolution.",
+            "oneOf": [
+              {
+                "type": "boolean",
+                "default": false
+              },
+              {
+                "type": "string"
+              }
+            ],
             "default": false
           }
         },
@@ -1532,12 +1584,26 @@
             "description": "Single object path to insert (convenience option)."
           },
           "referenceListIds": {
-            "type": "array",
-            "description": "List of object identifiers (paths, loids, or uuids)."
+            "description": "List of object identifiers (paths, loids, or uuids).",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "referenceListObjects": {
-            "type": "array",
-            "description": "List of full object entries to insert when `full` is true."
+            "description": "List of full object entries to insert when `full` is true.",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "full": {
             "type": "boolean",
@@ -2169,6 +2235,451 @@
         ],
         "additionalProperties": false
       },
+      "APPLY_TEXT_CUTS": {
+        "type": "object",
+        "description": "Cuts a story to length from LLM cut candidates: every candidate is measured, alternatives and nested removals are detected, and the cuts needed for the target are preselected. In review mode the Flow Monitor shows a cut panel with a live meter and editor highlights, and writes the chosen cuts in one validated batch.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "APPLY_TEXT_CUTS"
+            ],
+            "description": "Cuts a story to length from LLM cut candidates: every candidate is measured, alternatives and nested removals are detected, and the cuts needed for the target are preselected. In review mode the Flow Monitor shows a cut panel with a live meter and editor highlights, and writes the chosen cuts in one validated batch."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "mode": {
+            "type": "string",
+            "description": "review = let the user choose the cuts in the Flow Monitor cut panel. preview = report and highlight the preselection without writing (allowed on read-only documents). apply = write the preselection, or the ids in `selection`.",
+            "enum": [
+              "review",
+              "preview",
+              "apply"
+            ],
+            "default": "review"
+          },
+          "cutBy": {
+            "description": "Characters to remove; takes precedence over targetLength",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "targetLength": {
+            "description": "Desired story length in characters (current length − targetLength = cutBy)",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "charsPerLine": {
+            "type": "number",
+            "description": "Characters per line for the line estimate in the meter; 0 = no estimate",
+            "default": 0
+          },
+          "selection": {
+            "description": "apply mode: cut ids to write ([\"c1\",\"c3\"], c1,c3 or a template), or auto for the preselection. Default: auto",
+            "oneOf": [
+              {
+                "type": "array",
+                "default": "auto"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "default": "auto"
+          },
+          "allowMore": {
+            "type": "boolean",
+            "description": "Show an \"Ask for more cuts\" button in the review panel, so another round can add candidates",
+            "default": false
+          },
+          "previous": {
+            "type": "string",
+            "description": "flowContext path of an earlier TextCutProposal whose cuts are merged into this round and keep their ids"
+          },
+          "mark": {
+            "type": "boolean",
+            "description": "Highlight the selected cuts in the editor (preview and review). false = no highlights: the cut panel alone shows the cuts and the story is unchanged until Apply. In Prime highlights are stored in the document",
+            "default": true
+          },
+          "markTag": {
+            "type": "string",
+            "description": "Tag name used for the cut highlights",
+            "default": "mark"
+          },
+          "forceWrite": {
+            "type": "boolean",
+            "description": "Bypass the read-only check for apply/review"
+          },
+          "xpath": {
+            "type": "string",
+            "description": "XPath of the content root that is read and written (must match the GET_STORY_BLOCKS read)",
+            "default": "/doc/story"
+          },
+          "blockElements": {
+            "type": "array",
+            "description": "Elements that form editable blocks; empty = automatic detection. Must match the read",
+            "default": []
+          },
+          "ignoreElements": {
+            "type": "array",
+            "description": "Elements whose content is never shown or edited, e.g. byline. Must match the read",
+            "default": []
+          },
+          "inlineElements": {
+            "type": "array",
+            "description": "Formatting elements visible to and editable by the LLM. Must match the read",
+            "default": [
+              "b",
+              "i",
+              "u"
+            ]
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The `text_cuts` output of an LLM step, or a TextCutProposal from an earlier round."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "preview: the TextCutProposal; otherwise the TextCutReport."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "cutBy",
+                "targetLength"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      },
+      "GET_STORY_BLOCKS": {
+        "type": "object",
+        "description": "Reads the document as numbered, role-labelled text blocks for whole-document LLM use cases (proofreading, spell checking, style fixes). Inline formatting such as <b> is shown, all other markup is hidden and protected. Feed the output to an LLM and apply its answer with APPLY_TEXT_EDITS.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "GET_STORY_BLOCKS"
+            ],
+            "description": "Reads the document as numbered, role-labelled text blocks for whole-document LLM use cases (proofreading, spell checking, style fixes). Inline formatting such as <b> is shown, all other markup is hidden and protected. Feed the output to an LLM and apply its answer with APPLY_TEXT_EDITS."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "xpath": {
+            "type": "string",
+            "description": "XPath of the content root that is read and written (e.g. /doc/story or /doc/artikel)",
+            "default": "/doc/story"
+          },
+          "blockElements": {
+            "type": "array",
+            "description": "Elements that form editable blocks. Empty (default) = automatic detection: the nearest non-inline ancestor of text, which works without knowing the customer DTD.",
+            "default": []
+          },
+          "ignoreElements": {
+            "type": "array",
+            "description": "Elements whose content is never shown or edited, e.g. byline, web-image-group",
+            "default": []
+          },
+          "inlineElements": {
+            "type": "array",
+            "description": "Formatting elements visible to and editable by the LLM",
+            "default": [
+              "b",
+              "i",
+              "u"
+            ]
+          },
+          "insertElements": {
+            "type": "array",
+            "description": "Extra element names an insert or retype edit may use, in addition to the types already used under the same parent, e.g. h2",
+            "default": []
+          },
+          "allowedOps": {
+            "type": "array",
+            "description": "Edit operations this step accepts; others fail with op_not_allowed",
+            "default": [
+              "replace",
+              "rewrite",
+              "comment",
+              "insert_before",
+              "insert_after",
+              "delete",
+              "split",
+              "merge",
+              "move_before",
+              "move_after",
+              "retype"
+            ]
+          },
+          "showLength": {
+            "type": "boolean",
+            "description": "Append each block's visible character count to its line (\"[b3 text/p · 412]\") so an LLM can size cuts",
+            "default": false
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "text",
+                      "description": "The story as numbered blocks: one line per block, \"[b1 headline/p] text\"."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "type",
+                    "name"
+                  ],
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "json",
+                      "description": "Story length { chars, blocks: [{ id, role, chars }] }; written only when an output of type json is configured"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Flow context key to store the output value in"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "APPLY_TEXT_EDITS": {
+        "type": "object",
+        "description": "Applies LLM edits to the story through the story-block engine: text and inline formatting inside a block, whole-block rewrites, comments, and structural operations (insert, delete, split, merge, move, retype). Hidden markup — links, captions, embedded objects, editor placeholders — is preserved. Invalid edits change nothing and are reported with a hint.",
+        "required": [
+          "step"
+        ],
+        "properties": {
+          "step": {
+            "type": "string",
+            "enum": [
+              "APPLY_TEXT_EDITS"
+            ],
+            "description": "Applies LLM edits to the story through the story-block engine: text and inline formatting inside a block, whole-block rewrites, comments, and structural operations (insert, delete, split, merge, move, retype). Hidden markup — links, captions, embedded objects, editor placeholders — is preserved. Invalid edits change nothing and are reported with a hint."
+          },
+          "monitorLabel": {
+            "type": "string",
+            "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
+          },
+          "mode": {
+            "type": "string",
+            "description": "apply = write the validated edits. preview = report and highlight the findings without writing (allowed on read-only documents). review = let the user check the findings in the Flow Monitor.",
+            "enum": [
+              "apply",
+              "preview",
+              "review"
+            ],
+            "default": "apply"
+          },
+          "mark": {
+            "type": "boolean",
+            "description": "Create editor highlights: the findings in preview and review, and comment notes. false = the story text is never tagged — review shows each finding with its surrounding text in the Flow Monitor, notes appear only in the monitor and the report (status rejected, error marks_disabled), and nothing changes until Apply. In Prime highlights are stored in the document until CLEAR_TAGS removes them",
+            "default": true
+          },
+          "selection": {
+            "description": "Finding ids to apply when the input is a proposal; in review mode, the pre-checked ids. Accepts an array ([\"f1\",\"f3\"]), a comma-separated string (f1,f3) or a template ({{ flowContext.picked }}). Default: all",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "xpath": {
+            "type": "string",
+            "description": "XPath of the content root that is read and written (e.g. /doc/story or /doc/artikel)",
+            "default": "/doc/story"
+          },
+          "blockElements": {
+            "type": "array",
+            "description": "Elements that form editable blocks. Empty (default) = automatic detection: the nearest non-inline ancestor of text, which works without knowing the customer DTD.",
+            "default": []
+          },
+          "ignoreElements": {
+            "type": "array",
+            "description": "Elements whose content is never shown or edited, e.g. byline, web-image-group",
+            "default": []
+          },
+          "inlineElements": {
+            "type": "array",
+            "description": "Formatting elements visible to and editable by the LLM",
+            "default": [
+              "b",
+              "i",
+              "u"
+            ]
+          },
+          "insertElements": {
+            "type": "array",
+            "description": "Extra element names an insert or retype edit may use, in addition to the types already used under the same parent, e.g. h2",
+            "default": []
+          },
+          "allowedOps": {
+            "type": "array",
+            "description": "Edit operations this step accepts; others fail with op_not_allowed. E.g. [replace, rewrite, comment] for proofreading.",
+            "default": [
+              "replace",
+              "rewrite",
+              "comment",
+              "insert_before",
+              "insert_after",
+              "delete",
+              "split",
+              "merge",
+              "move_before",
+              "move_after",
+              "retype"
+            ]
+          },
+          "markTag": {
+            "type": "string",
+            "description": "Tag name used for the preview/review highlights",
+            "default": "mark"
+          },
+          "forceWrite": {
+            "type": "boolean",
+            "description": "Bypass the read-only check for apply/review"
+          },
+          "atomic": {
+            "type": "boolean",
+            "description": "Apply all edits or none: if any edit fails, nothing is written and the report lists why",
+            "default": false
+          },
+          "inputs": {
+            "type": "array",
+            "description": "Input mappings from flow context to step inputs",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "The `text_edits` output of an LLM step, or a proposal from an earlier preview."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to read the input value from"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "description": "Output mappings from step outputs to flow context",
+            "items": {
+              "type": "object",
+              "required": [
+                "type",
+                "name"
+              ],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "object",
+                  "description": "In preview mode the TextEditProposal; otherwise the TextEditReport."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Flow context key to store the output value in"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "TAG_PURE_TEXT": {
         "type": "object",
         "description": "Adds tags to pure text content in the document. Tags can highlight or annotate specific text ranges. In Swing, tags can be virtual (temporary) or persistent. In Prime, tags are always persistent.",
@@ -2188,8 +2699,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "tags": {
-            "type": "array",
-            "description": "Array of tags to add. Each tag must have: tag (tag name), start (position), size (length), and optional attributes (key-value pairs). Can be a hardcoded array, a flowContext variable, or read from the default list input."
+            "description": "Array of tags to add. Each tag must have: tag (tag name), start (position), size (length), and optional attributes (key-value pairs). Can be a hardcoded array, a flowContext variable, or read from the default list input.",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "virtual": {
             "type": "boolean",
@@ -2281,8 +2799,15 @@
             "description": "Array of choices. Each choice has: id (returned value), label (display text), optional description."
           },
           "default": {
-            "type": "object",
-            "description": "ID (or array of IDs in multi mode) of default/pre-selected choice(s)."
+            "description": "ID (or array of IDs in multi mode) of default/pre-selected choice(s).",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array"
+              }
+            ]
           },
           "selectionMode": {
             "type": "string",
@@ -2344,7 +2869,7 @@
                     "type": {
                       "type": "string",
                       "const": "object",
-                      "description": "Structured selection result in multi mode: { selectedIds, customInput }"
+                      "description": "Optional structured selection result. In single mode it contains the selected ID and custom input; in multi mode it contains { selectedIds, customInput }."
                     },
                     "name": {
                       "type": "string",
@@ -2407,13 +2932,11 @@
           },
           "confirm": {
             "type": "string",
-            "description": "Label for the confirm button (default: \"Confirm\"). Used in Yes/No mode.",
-            "default": "Confirm"
+            "description": "Label for the confirm button. Defaults to the localized \"Confirm\"."
           },
           "cancel": {
             "type": "string",
-            "description": "Label for the cancel button (default: \"Cancel\"). Used in Yes/No mode.",
-            "default": "Cancel"
+            "description": "Label for the cancel button. Defaults to the localized \"Cancel\"."
           },
           "confirmType": {
             "type": "string",
@@ -2498,8 +3021,7 @@
           },
           "errorMessage": {
             "type": "string",
-            "description": "Error message shown when the field is submitted empty and required is true.",
-            "default": "This field is required"
+            "description": "Error message shown when the field is submitted empty and required is true. Defaults to the localized \"This field is required\"."
           },
           "outputs": {
             "type": "array",
@@ -2547,8 +3069,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "data": {
-            "type": "object",
-            "description": "Object or array data to render as JSON."
+            "description": "Object or array data to render as JSON.",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "title": {
             "type": "string",
@@ -2581,8 +3110,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "data": {
-            "type": "object",
-            "description": "Object to render as key-value pairs."
+            "description": "Object to render as key-value pairs.",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "title": {
             "type": "string",
@@ -2611,8 +3147,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "data": {
-            "type": "object",
-            "description": "Metrics as object or array of label/value pairs."
+            "description": "Metrics as object or array of label/value pairs.",
+            "oneOf": [
+              {
+                "type": "object"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "title": {
             "type": "string",
@@ -2683,8 +3226,15 @@
             "description": "Optional user-friendly label shown in the Flow Monitor for this step. Supports variable resolution (e.g., \"Translating to {{ flowContext.targetLang }}...\"). Falls back to the step name if not provided."
           },
           "data": {
-            "type": "array",
-            "description": "Array of objects to render as a table."
+            "description": "Array of objects to render as a table.",
+            "oneOf": [
+              {
+                "type": "array"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "title": {
             "type": "string",
@@ -3544,66 +4094,73 @@
             }
           },
           "formConfig": {
-            "type": "object",
             "description": "Optional modal-level configuration (width, height, fullScreen, typography). See FormModalConfig for all options.",
-            "properties": {
-              "dialogSize": {
-                "type": "string",
-                "description": "Bootstrap dialog size: \"sm\", \"md\", \"lg\", \"xl\""
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "dialogSize": {
+                    "type": "string",
+                    "description": "Bootstrap dialog size: \"sm\", \"md\", \"lg\", \"xl\""
+                  },
+                  "width": {
+                    "type": "string",
+                    "description": "Modal width (e.g., \"720px\", \"80vw\")"
+                  },
+                  "maxWidth": {
+                    "type": "string",
+                    "description": "Maximum modal width"
+                  },
+                  "height": {
+                    "type": "string",
+                    "description": "Modal height (e.g., \"600px\", \"80vh\")"
+                  },
+                  "maxHeight": {
+                    "type": "string",
+                    "description": "Maximum modal height"
+                  },
+                  "fullScreen": {
+                    "type": "boolean",
+                    "description": "Force modal to cover entire viewport"
+                  },
+                  "bodyFontSize": {
+                    "type": "string",
+                    "description": "Font size for modal body"
+                  },
+                  "bodyLineHeight": {
+                    "type": "string",
+                    "description": "Line height for modal body"
+                  },
+                  "labelFontSize": {
+                    "type": "string",
+                    "description": "Font size for form labels"
+                  },
+                  "inputFontSize": {
+                    "type": "string",
+                    "description": "Font size for form inputs"
+                  },
+                  "inputLineHeight": {
+                    "type": "string",
+                    "description": "Line height for form inputs"
+                  },
+                  "diffFontSize": {
+                    "type": "string",
+                    "description": "Font size for diff components"
+                  },
+                  "diffLineHeight": {
+                    "type": "string",
+                    "description": "Line height for diff components"
+                  },
+                  "modalClass": {
+                    "type": "string",
+                    "description": "Additional CSS class for modal"
+                  }
+                }
               },
-              "width": {
-                "type": "string",
-                "description": "Modal width (e.g., \"720px\", \"80vw\")"
-              },
-              "maxWidth": {
-                "type": "string",
-                "description": "Maximum modal width"
-              },
-              "height": {
-                "type": "string",
-                "description": "Modal height (e.g., \"600px\", \"80vh\")"
-              },
-              "maxHeight": {
-                "type": "string",
-                "description": "Maximum modal height"
-              },
-              "fullScreen": {
-                "type": "boolean",
-                "description": "Force modal to cover entire viewport"
-              },
-              "bodyFontSize": {
-                "type": "string",
-                "description": "Font size for modal body"
-              },
-              "bodyLineHeight": {
-                "type": "string",
-                "description": "Line height for modal body"
-              },
-              "labelFontSize": {
-                "type": "string",
-                "description": "Font size for form labels"
-              },
-              "inputFontSize": {
-                "type": "string",
-                "description": "Font size for form inputs"
-              },
-              "inputLineHeight": {
-                "type": "string",
-                "description": "Line height for form inputs"
-              },
-              "diffFontSize": {
-                "type": "string",
-                "description": "Font size for diff components"
-              },
-              "diffLineHeight": {
-                "type": "string",
-                "description": "Line height for diff components"
-              },
-              "modalClass": {
-                "type": "string",
-                "description": "Additional CSS class for modal"
+              {
+                "type": "string"
               }
-            }
+            ]
           },
           "inlineSteps": {
             "type": "array",
@@ -3747,6 +4304,17 @@
             "type": "boolean",
             "description": "Enable keyboard navigation in the selection modal."
           },
+          "applySteps": {
+            "type": "array",
+            "description": "Enables try-out mode: steps run each time the user clicks an option, with the option in the text output. The dialog stays open; Done accepts the applied option and continues the flow. Requires restoreValue.",
+            "items": {
+              "$ref": "#"
+            }
+          },
+          "restoreValue": {
+            "type": "string",
+            "description": "Required with applySteps: the original value (supports variable resolution), resolved when the dialog opens. Backs the \"Restore original\" button and is re-applied via applySteps when the user cancels, so no tried option is left in the document."
+          },
           "inputs": {
             "type": "array",
             "description": "Input mappings from flow context to step inputs",
@@ -3794,6 +4362,20 @@
             }
           }
         },
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "applySteps"
+              ]
+            },
+            "then": {
+              "required": [
+                "restoreValue"
+              ]
+            }
+          }
+        ],
         "additionalProperties": false
       },
       "IMAGE_PICKER": {
@@ -4095,8 +4677,15 @@
             ]
           },
           "preserve_formatting": {
-            "type": "boolean",
-            "description": "Sets whether the translation engine should respect the original formatting, even if it would usually"
+            "description": "Sets whether the translation engine should respect the original formatting, even if it would usually",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "formality": {
             "type": "string",
@@ -4114,8 +4703,15 @@
             "description": "Specify the glossary to use for the translation."
           },
           "outline_detection": {
-            "type": "boolean",
-            "description": "Disable the automatic detection of XML"
+            "description": "Disable the automatic detection of XML",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "non_splitting_tags": {
             "type": "string",
@@ -4139,8 +4735,15 @@
             ]
           },
           "show_billed_characters": {
-            "type": "boolean",
-            "description": "When true, the response will include the billed_characters parameter."
+            "description": "When true, the response will include the billed_characters parameter.",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string"
+              }
+            ]
           },
           "outputs": {
             "type": "array",
@@ -4705,14 +5308,16 @@
             "description": "Additional request options object (temperature, n, top_p, model, etc.)"
           },
           "response_format": {
-            "description": "Structured response format. Can be a string (\"json_object\" or \"list\") or an object with json_schema definition",
+            "description": "Structured response format. Can be a string (\"json_object\", \"list\", \"text_edits\" or \"text_cuts\") or an object with json_schema definition",
             "oneOf": [
               {
                 "type": "string",
                 "description": "Shorthand for common structured output formats",
                 "enum": [
                   "json_object",
-                  "list"
+                  "list",
+                  "text_edits",
+                  "text_cuts"
                 ]
               },
               {
@@ -5252,14 +5857,16 @@
             "description": "Additional request options object (temperature, n, top_p, model, etc.)"
           },
           "response_format": {
-            "description": "Structured response format. Can be a string (\"json_object\" or \"list\") or an object with json_schema definition",
+            "description": "Structured response format. Can be a string (\"json_object\", \"list\", \"text_edits\" or \"text_cuts\") or an object with json_schema definition",
             "oneOf": [
               {
                 "type": "string",
                 "description": "Shorthand for common structured output formats",
                 "enum": [
                   "json_object",
-                  "list"
+                  "list",
+                  "text_edits",
+                  "text_cuts"
                 ]
               },
               {
@@ -5804,14 +6411,16 @@
             "description": "Additional request options object (temperature, n, top_p, model, etc.)"
           },
           "response_format": {
-            "description": "Structured response format. Can be a string (\"json_object\" or \"list\") or an object with json_schema definition",
+            "description": "Structured response format. Can be a string (\"json_object\", \"list\", \"text_edits\" or \"text_cuts\") or an object with json_schema definition",
             "oneOf": [
               {
                 "type": "string",
                 "description": "Shorthand for common structured output formats",
                 "enum": [
                   "json_object",
-                  "list"
+                  "list",
+                  "text_edits",
+                  "text_cuts"
                 ]
               },
               {
@@ -6332,19 +6941,37 @@
           },
           "model": {
             "type": "string",
-            "description": "Realtime model to use (e.g. gpt-realtime-2)"
+            "description": "Realtime model to use. Falls back to the service model, then gpt-realtime-2."
           },
           "behavior": {
             "type": "string",
-            "description": "System instructions for the voice agent"
+            "description": "System instructions for the voice agent. Supports variable resolution. Voice steps do not inherit service.defaultBehavior, so configure behavior here unless a loaded skill supplies all instructions."
           },
           "voice": {
             "type": "string",
-            "description": "Output voice name (default: marin)"
+            "description": "Output voice: marin, cedar, alloy, ash, ballad, coral, echo, sage, shimmer, or verse.",
+            "enum": [
+              "marin",
+              "cedar",
+              "alloy",
+              "ash",
+              "ballad",
+              "coral",
+              "echo",
+              "sage",
+              "shimmer",
+              "verse"
+            ],
+            "default": "marin"
           },
           "transport": {
             "type": "string",
-            "description": "Connection transport: 'webrtc' (default — OpenAI's recommendation for browsers: native echo cancellation, automatic barge-in truncation) or 'websocket'. WebRTC falls back to WebSocket automatically when the connection cannot be established (e.g. UDP blocked)."
+            "description": "Connection transport: 'webrtc' (default — OpenAI's recommendation for browsers: native echo cancellation, automatic barge-in truncation) or 'websocket'. WebRTC falls back to WebSocket automatically when the connection cannot be established (e.g. UDP blocked).",
+            "enum": [
+              "webrtc",
+              "websocket"
+            ],
+            "default": "webrtc"
           },
           "instruction": {
             "type": "string",
@@ -6352,35 +6979,130 @@
           },
           "vad": {
             "type": "object",
-            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press."
+            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press.",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Turn detection mode.",
+                "default": "semantic_vad",
+                "enum": [
+                  "semantic_vad",
+                  "server_vad",
+                  "push_to_talk"
+                ]
+              },
+              "mode": {
+                "type": "string",
+                "description": "Push-to-talk control mode. Only hold is currently supported.",
+                "default": "hold",
+                "enum": [
+                  "hold"
+                ]
+              },
+              "bargeIn": {
+                "type": "string",
+                "description": "When user input interrupts a response. press is intended for push_to_talk only.",
+                "enum": [
+                  "press",
+                  "speech",
+                  "off"
+                ]
+              },
+              "eagerness": {
+                "type": "string",
+                "description": "semantic_vad only: how eagerly the model ends a turn.",
+                "enum": [
+                  "auto",
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "threshold": {
+                "type": "number",
+                "description": "server_vad only: activation threshold in the inclusive range 0-1.",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "prefixPaddingMs": {
+                "type": "number",
+                "description": "server_vad only: non-negative milliseconds of audio retained before detected speech.",
+                "minimum": 0
+              },
+              "silenceDurationMs": {
+                "type": "number",
+                "description": "server_vad only: non-negative milliseconds of silence used to detect the end of speech.",
+                "minimum": 0
+              },
+              "idleTimeoutMs": {
+                "type": "number",
+                "description": "server_vad only: silence before the model prompts the user.",
+                "minimum": 5000,
+                "maximum": 30000
+              }
+            },
+            "additionalProperties": false
           },
           "noiseReduction": {
             "type": "string",
-            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured."
+            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured.",
+            "enum": [
+              "near_field",
+              "far_field",
+              "none"
+            ],
+            "default": "far_field"
           },
           "reasoningEffort": {
             "type": "string",
-            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Default: low — recommended for production voice agents. Use 'none' to omit the field for non-reasoning models."
+            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Defaults to low for gpt-realtime-2 models and is omitted for other model families. Use 'none' to omit it explicitly.",
+            "enum": [
+              "minimal",
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "none"
+            ]
           },
           "transcriptionModel": {
             "type": "string",
-            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize."
+            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize.",
+            "enum": [
+              "whisper-1",
+              "gpt-4o-transcribe",
+              "gpt-4o-mini-transcribe",
+              "gpt-4o-transcribe-diarize"
+            ],
+            "default": "gpt-4o-transcribe"
           },
           "maxDurationSecs": {
             "type": "number",
-            "description": "Maximum session duration in seconds before auto-close (default: 300)"
+            "description": "Maximum session duration in seconds before auto-close (default: 300)",
+            "default": 300,
+            "minimum": 1,
+            "maximum": 3600
           },
           "showToolCalls": {
             "type": "boolean",
-            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Useful for debugging and transparency. Default: false."
+            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Useful for debugging and transparency. Default: false.",
+            "default": false
           },
           "toolsReuseContext": {
             "type": "boolean",
             "description": "When true and a tool uses steps, the full flowContext is passed to the sub-flow instead of a fresh context with only the tool arguments."
           },
+          "functionsReuseContext": {
+            "type": "boolean",
+            "description": "Whether to reuse full flowContext for legacy cfg.functions handlers (deprecated, use toolsReuseContext instead)."
+          },
           "tools": {
             "type": "array",
             "description": "Array of user-defined tool/function descriptors available during the voice session. An optional `when` condition (template expression or boolean, evaluated once at session start) gates whether the tool is exposed to the model."
+          },
+          "functions": {
+            "type": "array",
+            "description": "Array of legacy function descriptors for tool calling (deprecated, use tools instead)."
           },
           "builtinTools": {
             "type": "array",
@@ -6389,6 +7111,11 @@
           "autoDiscoverTools": {
             "type": "boolean",
             "description": "Enable dynamic tool discovery during the voice session"
+          },
+          "toolStrict": {
+            "type": "boolean",
+            "description": "Enable strict validation of builtin tool arguments.",
+            "default": false
           },
           "skills": {
             "type": "array",
@@ -6505,15 +7232,28 @@
           },
           "model": {
             "type": "string",
-            "description": "Realtime model to use (e.g. gpt-realtime-2)"
+            "description": "Realtime model to use. Falls back to the service model, then gpt-realtime-2."
           },
           "behavior": {
             "type": "string",
-            "description": "System instructions for the voice agent"
+            "description": "System instructions for the voice agent. Supports variable resolution. Voice steps do not inherit service.defaultBehavior, so configure behavior here unless a loaded skill supplies all instructions."
           },
           "voice": {
             "type": "string",
-            "description": "Output voice name (default: marin)"
+            "description": "Output voice: marin, cedar, alloy, ash, ballad, coral, echo, sage, shimmer, or verse.",
+            "enum": [
+              "marin",
+              "cedar",
+              "alloy",
+              "ash",
+              "ballad",
+              "coral",
+              "echo",
+              "sage",
+              "shimmer",
+              "verse"
+            ],
+            "default": "marin"
           },
           "instruction": {
             "type": "string",
@@ -6521,35 +7261,130 @@
           },
           "vad": {
             "type": "object",
-            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press."
+            "description": "Voice activity detection configuration (type, eagerness, threshold, idleTimeoutMs, bargeIn, etc.). idleTimeoutMs (server_vad only, 5000–30000) makes the model prompt the user after a long silence. For server_vad, raise threshold (default 0.5) to require louder audio in noisy rooms. Set type: 'push_to_talk' to disable server-side VAD entirely — the user explicitly opens/closes the mic via a hold control in the voice bar; the VAD tuning fields are ignored in this mode. bargeIn controls when the user interrupts a speaking agent, in every mode: 'speech' (VAD default) interrupts on detected voice — under push_to_talk once actual voice is heard while holding; 'off' never interrupts (noisy rooms: VAD then answers the captured speech after the response finishes; push_to_talk refuses presses until the agent is done); 'press' (push_to_talk only, its default) cancels immediately on press.",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Turn detection mode.",
+                "default": "semantic_vad",
+                "enum": [
+                  "semantic_vad",
+                  "server_vad",
+                  "push_to_talk"
+                ]
+              },
+              "mode": {
+                "type": "string",
+                "description": "Push-to-talk control mode. Only hold is currently supported.",
+                "default": "hold",
+                "enum": [
+                  "hold"
+                ]
+              },
+              "bargeIn": {
+                "type": "string",
+                "description": "When user input interrupts a response. press is intended for push_to_talk only.",
+                "enum": [
+                  "press",
+                  "speech",
+                  "off"
+                ]
+              },
+              "eagerness": {
+                "type": "string",
+                "description": "semantic_vad only: how eagerly the model ends a turn.",
+                "enum": [
+                  "auto",
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              },
+              "threshold": {
+                "type": "number",
+                "description": "server_vad only: activation threshold in the inclusive range 0-1.",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "prefixPaddingMs": {
+                "type": "number",
+                "description": "server_vad only: non-negative milliseconds of audio retained before detected speech.",
+                "minimum": 0
+              },
+              "silenceDurationMs": {
+                "type": "number",
+                "description": "server_vad only: non-negative milliseconds of silence used to detect the end of speech.",
+                "minimum": 0
+              },
+              "idleTimeoutMs": {
+                "type": "number",
+                "description": "server_vad only: silence before the model prompts the user.",
+                "minimum": 5000,
+                "maximum": 30000
+              }
+            },
+            "additionalProperties": false
           },
           "noiseReduction": {
             "type": "string",
-            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured."
+            "description": "Server-side input noise reduction applied before VAD and the model — reduces background noise falsely triggering the listening state. 'far_field' (default) for laptop/desk/conference mics, 'near_field' for headsets, 'none' to leave unconfigured.",
+            "enum": [
+              "near_field",
+              "far_field",
+              "none"
+            ],
+            "default": "far_field"
           },
           "reasoningEffort": {
             "type": "string",
-            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Default: low — recommended for production voice agents. Use 'none' to omit the field for non-reasoning models."
+            "description": "Reasoning effort for reasoning-capable Realtime models (gpt-realtime-2): minimal | low | medium | high | xhigh | none. Defaults to low for gpt-realtime-2 models and is omitted for other model families. Use 'none' to omit it explicitly.",
+            "enum": [
+              "minimal",
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "none"
+            ]
           },
           "transcriptionModel": {
             "type": "string",
-            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize."
+            "description": "Model for server-side transcription of user speech (default: gpt-4o-transcribe). Options: whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe, gpt-4o-transcribe-diarize.",
+            "enum": [
+              "whisper-1",
+              "gpt-4o-transcribe",
+              "gpt-4o-mini-transcribe",
+              "gpt-4o-transcribe-diarize"
+            ],
+            "default": "gpt-4o-transcribe"
           },
           "maxDurationSecs": {
             "type": "number",
-            "description": "Maximum session duration in seconds before auto-close (default: 300)"
+            "description": "Maximum session duration in seconds before auto-close (default: 300)",
+            "default": 300,
+            "minimum": 1,
+            "maximum": 3600
           },
           "showToolCalls": {
             "type": "boolean",
-            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Default: false."
+            "description": "When true, each tool call is shown in the monitor as a collapsible entry (name + args + result). Default: false.",
+            "default": false
           },
           "toolsReuseContext": {
             "type": "boolean",
             "description": "When true and a tool uses steps, the full flowContext is passed to the sub-flow instead of a fresh context with only the tool arguments."
           },
+          "functionsReuseContext": {
+            "type": "boolean",
+            "description": "Whether to reuse full flowContext for legacy cfg.functions handlers (deprecated, use toolsReuseContext instead)."
+          },
           "tools": {
             "type": "array",
             "description": "Array of user-defined tool/function descriptors available during the voice session. An optional `when` condition (template expression or boolean, evaluated once at session start) gates whether the tool is exposed to the model."
+          },
+          "functions": {
+            "type": "array",
+            "description": "Array of legacy function descriptors for tool calling (deprecated, use tools instead)."
           },
           "builtinTools": {
             "type": "array",
@@ -6558,6 +7393,11 @@
           "autoDiscoverTools": {
             "type": "boolean",
             "description": "Enable dynamic tool discovery during the voice session"
+          },
+          "toolStrict": {
+            "type": "boolean",
+            "description": "Enable strict validation of builtin tool arguments.",
+            "default": false
           },
           "skills": {
             "type": "array",

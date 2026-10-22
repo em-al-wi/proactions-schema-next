@@ -26,6 +26,8 @@
         "addPureTextTags",
         "addTableFeedback",
         "appendParagraph",
+        "applyProposedEdits",
+        "applyTextEdits",
         "askConfirmation",
         "askFreeformQuestion",
         "askMultipleChoice",
@@ -100,9 +102,11 @@
         "listAvailableTools",
         "markSegments",
         "markdownToHtml",
+        "proposeTextEdits",
         "readCurrentParagraph",
         "readSelection",
         "readStory",
+        "readStoryBlocks",
         "replaceCurrentParagraph",
         "replaceTextAtCursor",
         "replaceTextAtCursorParagraph",
@@ -190,7 +194,7 @@
                 "properties": {
                   "bodyXpath": {
                     "type": "string",
-                    "description": "XPath of the content root that searchAndReplaceText reads and writes",
+                    "description": "Content root read and written by searchAndReplaceText and the story-block tools",
                     "default": "/doc/story"
                   },
                   "appendXpath": {
@@ -214,11 +218,53 @@
                   },
                   "inlineElements": {
                     "type": "array",
-                    "description": "Inline formatting elements allowed in appendParagraph text",
+                    "description": "Inline formatting elements allowed in appendParagraph text and visible/editable in story blocks",
                     "default": [
                       "b",
                       "i",
                       "u"
+                    ]
+                  },
+                  "blockElements": {
+                    "type": "array",
+                    "description": "Elements that form editable blocks; empty = automatic detection",
+                    "default": []
+                  },
+                  "ignoreElements": {
+                    "type": "array",
+                    "description": "Elements whose content is never shown or edited",
+                    "default": []
+                  },
+                  "insertElements": {
+                    "type": "array",
+                    "description": "Extra element names applyTextEdits may create as new blocks or retype to, beyond the types already used under the same parent",
+                    "default": []
+                  },
+                  "reviewEdits": {
+                    "type": "boolean",
+                    "description": "Every write by applyTextEdits/applyProposedEdits first shows the Flow Monitor checklist; the user decides what is applied",
+                    "default": false
+                  },
+                  "atomicEdits": {
+                    "type": "boolean",
+                    "description": "applyTextEdits applies all edits or none, so the agent can fix failures and resend the batch",
+                    "default": true
+                  },
+                  "allowedOps": {
+                    "type": "array",
+                    "description": "Edit operations applyTextEdits/proposeTextEdits accept; others fail with op_not_allowed",
+                    "default": [
+                      "replace",
+                      "rewrite",
+                      "comment",
+                      "insert_before",
+                      "insert_after",
+                      "delete",
+                      "split",
+                      "merge",
+                      "move_before",
+                      "move_after",
+                      "retype"
                     ]
                   },
                   "fields": {
