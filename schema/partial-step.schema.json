@@ -4174,7 +4174,7 @@
       },
       "PLAY_AUDIO": {
         "type": "object",
-        "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user.",
+        "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, raw base64 or a Blob (e.g. `in: '{{ flowContext.blob }}'` after HUB_SPEECH) via `cfg.in`, or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user.",
         "required": [
           "step"
         ],
@@ -4184,7 +4184,7 @@
             "enum": [
               "PLAY_AUDIO"
             ],
-            "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, or raw base64 via `cfg.in` or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user."
+            "description": "Plays audio in a lightweight floating player. Audio source can be provided as a data URL, http(s) URL, raw base64 or a Blob (e.g. `in: '{{ flowContext.blob }}'` after HUB_SPEECH) via `cfg.in`, or via the default text input. The step mounts a closed Shadow DOM audio player and resolves when the player is closed by the user."
           },
           "monitorLabel": {
             "type": "string",
@@ -4192,7 +4192,7 @@
           },
           "in": {
             "type": "string",
-            "description": "Optional input path or variable name containing the audio source (data URL, http(s) URL or raw base64). If omitted, the default text input is used."
+            "description": "Optional input path or variable name containing the audio source (data URL, http(s) URL, raw base64 or a Blob, e.g. `in: '{{ flowContext.blob }}'` after HUB_SPEECH). If omitted, the default text input is used."
           },
           "autoplay": {
             "type": "boolean",
@@ -4250,7 +4250,7 @@
                 "type": {
                   "type": "string",
                   "const": "text",
-                  "description": "Audio source as data URL, http(s) URL, or raw base64. If omitted, reads from `in` config or default text input."
+                  "description": "Audio source as data URL, http(s) URL, raw base64 or a Blob (e.g. `in: '{{ flowContext.blob }}'` after HUB_SPEECH). If omitted, reads from `in` config or default text input."
                 },
                 "name": {
                   "type": "string",
@@ -7864,7 +7864,7 @@
       },
       "OPENAI_IMAGE_GENERATION": {
         "type": "object",
-        "description": "Generate images using OpenAI image models (DALL·E and GPT-Image-1). Supports model, size, quality, count (n), response_format and other parameters. The generated images are stored in the configured output key or default `imageList`.",
+        "description": "Generate images using OpenAI GPT Image models (default gpt-image-2.5-sunburst). Supports model, size, quality, count (n), output_format and background. The generated images are stored in the configured output key or default `imageList`.",
         "required": [
           "step"
         ],
@@ -7875,7 +7875,7 @@
               "OPENAI_IMAGE_GENERATION",
               "SERVICE_OPENAI_IMAGE_GENERATION"
             ],
-            "description": "Generate images using OpenAI image models (DALL·E and GPT-Image-1). Supports model, size, quality, count (n), response_format and other parameters. The generated images are stored in the configured output key or default `imageList`. (Note: Aliases SERVICE_OPENAI_IMAGE_GENERATION are deprecated, use 'OPENAI_IMAGE_GENERATION' instead)"
+            "description": "Generate images using OpenAI GPT Image models (default gpt-image-2.5-sunburst). Supports model, size, quality, count (n), output_format and background. The generated images are stored in the configured output key or default `imageList`. (Note: Aliases SERVICE_OPENAI_IMAGE_GENERATION are deprecated, use 'OPENAI_IMAGE_GENERATION' instead)"
           },
           "monitorLabel": {
             "type": "string",
@@ -7887,13 +7887,8 @@
           },
           "model": {
             "type": "string",
-            "description": "Image model to use (gpt-image-1, dall-e-3, dall-e-2)",
-            "enum": [
-              "gpt-image-1",
-              "dall-e-3",
-              "dall-e-2"
-            ],
-            "default": "dall-e-3"
+            "description": "Image model (default gpt-image-2.5-sunburst). Current OpenAI models: gpt-image-2.5-sunburst, gpt-image-2.5-flare, gpt-image-2, gpt-image-1.5, gpt-image-1-mini",
+            "default": "gpt-image-2.5-sunburst"
           },
           "instruction": {
             "type": "string",
@@ -7902,53 +7897,35 @@
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)",
+            "description": "Image size: 1024x1024 (default), 1536x1024 (landscape) or 1024x1536 (portrait)",
             "enum": [
-              "256x256",
-              "512x512",
               "1024x1024",
-              "1792x1024",
-              "1024x1792"
+              "1536x1024",
+              "1024x1536"
             ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting",
+            "description": "Image quality (default auto). 'xhigh' and 'max' require a GPT Image 2.5 model; other models receive 'high'.",
             "enum": [
               "auto",
-              "standard",
-              "high",
-              "hd",
+              "low",
               "medium",
-              "low"
+              "high",
+              "xhigh",
+              "max"
             ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "description": "Number of images to generate (1-4)",
             "default": 1,
             "minimum": 1,
             "maximum": 4
           },
-          "style": {
-            "type": "string",
-            "description": "Image style for DALL-E 3 (natural, vivid)",
-            "enum": [
-              "natural",
-              "vivid"
-            ]
-          },
-          "response_format": {
-            "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
-            "enum": [
-              "url",
-              "b64_json"
-            ]
-          },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
+            "description": "Output file format: png (default), jpeg or webp",
             "enum": [
               "png",
               "jpeg",
@@ -7957,15 +7934,12 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting for gpt-image-1 only (transparent)",
+            "description": "Background: auto, transparent (needs output_format png or webp) or opaque",
             "enum": [
-              "transparent"
+              "auto",
+              "transparent",
+              "opaque"
             ]
-          },
-          "seed": {
-            "type": "number",
-            "description": "Random seed for reproducible results (gpt-image-1 only)",
-            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -8062,104 +8036,6 @@
             }
           }
         },
-        "allOf": [
-          {
-            "not": {
-              "required": [
-                "style",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "background",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "seed",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          }
-        ],
         "additionalProperties": false
       },
       "HUB_IMAGE_GENERATION": {
@@ -8186,13 +8062,8 @@
           },
           "model": {
             "type": "string",
-            "description": "Image model to use (gpt-image-1, dall-e-3, dall-e-2)",
-            "enum": [
-              "gpt-image-1",
-              "dall-e-3",
-              "dall-e-2"
-            ],
-            "default": "dall-e-3"
+            "description": "Image model (default gpt-image-2.5-sunburst). Current OpenAI models: gpt-image-2.5-sunburst, gpt-image-2.5-flare, gpt-image-2, gpt-image-1.5, gpt-image-1-mini",
+            "default": "gpt-image-2.5-sunburst"
           },
           "instruction": {
             "type": "string",
@@ -8201,53 +8072,35 @@
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)",
+            "description": "Image size: 1024x1024 (default), 1536x1024 (landscape) or 1024x1536 (portrait)",
             "enum": [
-              "256x256",
-              "512x512",
               "1024x1024",
-              "1792x1024",
-              "1024x1792"
+              "1536x1024",
+              "1024x1536"
             ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting",
+            "description": "Image quality (default auto). 'xhigh' and 'max' require a GPT Image 2.5 model; other models receive 'high'.",
             "enum": [
               "auto",
-              "standard",
-              "high",
-              "hd",
+              "low",
               "medium",
-              "low"
+              "high",
+              "xhigh",
+              "max"
             ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "description": "Number of images to generate (1-4)",
             "default": 1,
             "minimum": 1,
             "maximum": 4
           },
-          "style": {
-            "type": "string",
-            "description": "Image style for DALL-E 3 (natural, vivid)",
-            "enum": [
-              "natural",
-              "vivid"
-            ]
-          },
-          "response_format": {
-            "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
-            "enum": [
-              "url",
-              "b64_json"
-            ]
-          },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
+            "description": "Output file format: png (default), jpeg or webp",
             "enum": [
               "png",
               "jpeg",
@@ -8256,15 +8109,12 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting for gpt-image-1 only (transparent)",
+            "description": "Background: auto, transparent (needs output_format png or webp) or opaque",
             "enum": [
-              "transparent"
+              "auto",
+              "transparent",
+              "opaque"
             ]
-          },
-          "seed": {
-            "type": "number",
-            "description": "Random seed for reproducible results (gpt-image-1 only)",
-            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -8365,104 +8215,6 @@
             }
           }
         },
-        "allOf": [
-          {
-            "not": {
-              "required": [
-                "style",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "background",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "seed",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          }
-        ],
         "additionalProperties": false
       },
       "AZURE_OPENAI_IMAGE_GENERATION": {
@@ -8490,13 +8242,8 @@
           },
           "model": {
             "type": "string",
-            "description": "Image model to use (gpt-image-1, dall-e-3, dall-e-2)",
-            "enum": [
-              "gpt-image-1",
-              "dall-e-3",
-              "dall-e-2"
-            ],
-            "default": "dall-e-3"
+            "description": "Image model (default gpt-image-2.5-sunburst). Current OpenAI models: gpt-image-2.5-sunburst, gpt-image-2.5-flare, gpt-image-2, gpt-image-1.5, gpt-image-1-mini",
+            "default": "gpt-image-2.5-sunburst"
           },
           "instruction": {
             "type": "string",
@@ -8505,53 +8252,35 @@
           },
           "size": {
             "type": "string",
-            "description": "Desired image size (model-dependent)",
+            "description": "Image size: 1024x1024 (default), 1536x1024 (landscape) or 1024x1536 (portrait)",
             "enum": [
-              "256x256",
-              "512x512",
               "1024x1024",
-              "1792x1024",
-              "1024x1792"
+              "1536x1024",
+              "1024x1536"
             ]
           },
           "quality": {
             "type": "string",
-            "description": "Image quality setting",
+            "description": "Image quality (default auto). 'xhigh' and 'max' require a GPT Image 2.5 model; other models receive 'high'.",
             "enum": [
               "auto",
-              "standard",
-              "high",
-              "hd",
+              "low",
               "medium",
-              "low"
+              "high",
+              "xhigh",
+              "max"
             ]
           },
           "n": {
             "type": "number",
-            "description": "Number of images to generate (1-4; DALL·E3 supports 1)",
+            "description": "Number of images to generate (1-4)",
             "default": 1,
             "minimum": 1,
             "maximum": 4
           },
-          "style": {
-            "type": "string",
-            "description": "Image style for DALL-E 3 (natural, vivid)",
-            "enum": [
-              "natural",
-              "vivid"
-            ]
-          },
-          "response_format": {
-            "type": "string",
-            "description": "DALL·E response format: 'url' or 'b64_json' (not supported for gpt-image-1)",
-            "enum": [
-              "url",
-              "b64_json"
-            ]
-          },
           "output_format": {
             "type": "string",
-            "description": "Output format for gpt-image-1 only (png|jpeg|webp)",
+            "description": "Output file format: png (default), jpeg or webp",
             "enum": [
               "png",
               "jpeg",
@@ -8560,15 +8289,12 @@
           },
           "background": {
             "type": "string",
-            "description": "Background setting for gpt-image-1 only (transparent)",
+            "description": "Background: auto, transparent (needs output_format png or webp) or opaque",
             "enum": [
-              "transparent"
+              "auto",
+              "transparent",
+              "opaque"
             ]
-          },
-          "seed": {
-            "type": "number",
-            "description": "Random seed for reproducible results (gpt-image-1 only)",
-            "minimum": 0
           },
           "user": {
             "type": "string",
@@ -8665,104 +8391,6 @@
             }
           }
         },
-        "allOf": [
-          {
-            "not": {
-              "required": [
-                "style",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "background",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "seed",
-                "response_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "output_format"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "background"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "response_format",
-                "seed"
-              ]
-            }
-          },
-          {
-            "not": {
-              "required": [
-                "output_format",
-                "style"
-              ]
-            }
-          }
-        ],
         "additionalProperties": false
       },
       "OPENAI_SPEECH": {
@@ -8790,7 +8418,7 @@
           },
           "model": {
             "type": "string",
-            "description": "Model id to use for TTS (e.g. tts-1)"
+            "description": "Model id to use for TTS (e.g. gpt-4o-mini-tts)"
           },
           "voice": {
             "type": "string",
@@ -8881,7 +8509,7 @@
           },
           "model": {
             "type": "string",
-            "description": "Model id to use for TTS (e.g. tts-1)"
+            "description": "Model id to use for TTS (e.g. gpt-4o-mini-tts)"
           },
           "voice": {
             "type": "string",
@@ -8977,7 +8605,7 @@
           },
           "model": {
             "type": "string",
-            "description": "Model id to use for TTS (e.g. tts-1)"
+            "description": "Model id to use for TTS (e.g. gpt-4o-mini-tts)"
           },
           "voice": {
             "type": "string",
